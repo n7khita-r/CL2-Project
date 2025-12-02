@@ -335,7 +335,7 @@ class NaiveBayesTextClassifier:
         return predictions
 
 
-def load_data(data_dir='data'):
+def load_data(data_dir='../data'):
     """
     Load all CSV files from the data directory.
     
@@ -455,7 +455,7 @@ def main():
     print("="*80)
     
     print("\n1. Loading data...")
-    df = load_data('data')
+    df = load_data('../data')
     
     print("\n2. Splitting data (70% train, 30% test)...")
     X = df['description'].tolist()
