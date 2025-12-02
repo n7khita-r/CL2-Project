@@ -245,11 +245,15 @@ class NaiveBayesTextClassifier:
         for cls in self.classes:
             self.class_priors[cls] = class_counts[cls] / n_samples
         
-        # Extract features from all documents
+        # Extract features from all documents with progress reporting
         all_features = []
-        for text in X:
+        print(f"Processing {n_samples} training documents...")
+        for idx, text in enumerate(X):
+            if (idx + 1) % 100 == 0 or idx == 0:
+                print(f"  Processed {idx + 1}/{n_samples} documents ({100*(idx+1)/n_samples:.1f}%)")
             features = self.feature_extractor.extract_features(text)
             all_features.append(features)
+        print(f"  Completed: {n_samples}/{n_samples} documents (100.0%)")
         
         # Build feature vocabulary
         feature_counter = Counter()
@@ -298,25 +302,7 @@ class NaiveBayesTextClassifier:
         predictions = []
         
         for text in X:
-            features = self.feature_extractor.extract_features(text)
-            class_scores = {}
-            
-            for cls in self.classes:
-                # Start with log prior
-                log_prob = np.log(self.class_priors[cls])
-                
-                # Add log probabilities for features
-                for feature in self.feature_set:
-                    if features.get(feature, 0) == 1:
-                        # Feature is present
-                        log_prob += np.log(self.feature_probs[cls][feature])
-                    else:
-                        # Feature is absent
-                        log_prob += np.log(1 - self.feature_probs[cls][feature])
-                
-                class_scores[cls] = log_prob
-            
-            predictions.append(class_scores)
+            predictions.append(self.predict_proba_single(text))
         
         return predictions
     
@@ -330,9 +316,47 @@ class NaiveBayesTextClassifier:
         Returns:
             List of predicted class labels
         """
-        proba = self.predict_proba(X)
+        print(f"Making predictions on {len(X)} test documents...")
+        proba = []
+        for idx, text in enumerate(X):
+            if (idx + 1) % 100 == 0 or idx == 0:
+                print(f"  Predicted {idx + 1}/{len(X)} documents ({100*(idx+1)/len(X):.1f}%)")
+            scores = self.predict_proba_single(text)
+            proba.append(scores)
+        print(f"  Completed: {len(X)}/{len(X)} documents (100.0%)")
+        
         predictions = [max(scores, key=scores.get) for scores in proba]
         return predictions
+    
+    def predict_proba_single(self, text):
+        """
+        Predict class probabilities for a single document.
+        
+        Args:
+            text: Text document
+            
+        Returns:
+            Dictionary mapping classes to log probabilities
+        """
+        features = self.feature_extractor.extract_features(text)
+        class_scores = {}
+        
+        for cls in self.classes:
+            # Start with log prior
+            log_prob = np.log(self.class_priors[cls])
+            
+            # Add log probabilities for features
+            for feature in self.feature_set:
+                if features.get(feature, 0) == 1:
+                    # Feature is present
+                    log_prob += np.log(self.feature_probs[cls][feature])
+                else:
+                    # Feature is absent
+                    log_prob += np.log(1 - self.feature_probs[cls][feature])
+            
+            class_scores[cls] = log_prob
+        
+        return class_scores
 
 
 def load_data(data_dir='../data'):
@@ -458,12 +482,25 @@ def main():
     df = load_data('../data')
     
     print("\n2. Splitting data (70% train, 30% test)...")
-    X = df['description'].tolist()
-    y = df['genre'].tolist()
+    # Shuffle the dataframe first to ensure random distribution
+    df_shuffled = df.sample(frac=1, random_state=42).reset_index(drop=True)
+    
+    X = df_shuffled['description'].tolist()
+    y = df_shuffled['genre'].tolist()
     
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.3, random_state=42, stratify=y
     )
+    
+    # Verify split distribution
+    train_dist = Counter(y_train)
+    test_dist = Counter(y_test)
+    print("\nTrain set distribution:")
+    for genre, count in sorted(train_dist.items()):
+        print(f"  {genre}: {count}")
+    print("\nTest set distribution:")
+    for genre, count in sorted(test_dist.items()):
+        print(f"  {genre}: {count}")
     
     print(f"Training samples: {len(X_train)}")
     print(f"Testing samples: {len(X_test)}")
