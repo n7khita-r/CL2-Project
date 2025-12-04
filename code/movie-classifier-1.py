@@ -5,13 +5,11 @@ import re
 from collections import defaultdict, Counter
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
-from sklearn.feature_extraction.text import TfidfVectorizer
 import matplotlib.pyplot as plt
 import seaborn as sns
 import nltk
 from nltk import pos_tag, word_tokenize, sent_tokenize
 from nltk.stem import WordNetLemmatizer
-from nltk.corpus import wordnet
 
 # Download required NLTK data
 try:
@@ -31,48 +29,38 @@ except LookupError:
 class FeatureExtractor:
     """
     Extract linguistically-motivated features for text classification.
-    All features are binary (presence/absence) to maintain independence.
+    Optimized for faster computation while maintaining linguistic richness.
     """
     
     def __init__(self):
         self.lemmatizer = WordNetLemmatizer()
         
-        # Morphological patterns
-        self.suffix_patterns = ['-tion', '-ness', '-ly', '-ment', '-ing', '-ed', '-er', '-est', 
-                                '-ful', '-less', '-ous', '-ive', '-able', '-ible', '-al', '-ial']
-        self.prefix_patterns = ['un-', 're-', 'pre-', 'anti-', 'dis-', 'mis-', 'non-', 'over-', 
-                                'under-', 'super-', 'sub-', 'inter-', 'trans-']
+        # Key morphological patterns (reduced set)
+        self.suffix_patterns = ['-tion', '-ness', '-ly', '-ment', '-ing', '-ed', '-ful', '-ous', '-ive', '-able']
+        self.prefix_patterns = ['un-', 're-', 'dis-', 'non-', 'over-']
         
-        # Sentiment indicators (simple lexicon)
+        # Sentiment indicators
         self.positive_words = {'good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic',
-                               'love', 'best', 'beautiful', 'perfect', 'happy', 'joy', 'brilliant'}
+                               'love', 'best', 'beautiful', 'perfect', 'happy', 'brilliant'}
         self.negative_words = {'bad', 'terrible', 'awful', 'horrible', 'worst', 'hate', 'poor',
-                               'sad', 'angry', 'evil', 'dark', 'death', 'kill', 'murder', 'fear'}
+                               'sad', 'angry', 'evil', 'dark', 'death', 'fear'}
         
-        # Domain-specific terminology for movie genres
+        # Domain-specific terminology
         self.action_words = {'fight', 'battle', 'war', 'mission', 'escape', 'chase', 'explosion',
-                            'weapon', 'soldier', 'agent', 'rescue', 'attack', 'destroy'}
+                            'weapon', 'soldier', 'attack'}
         self.romance_words = {'love', 'relationship', 'romance', 'marry', 'wedding', 'heart',
-                             'kiss', 'couple', 'affair', 'passionate', 'desire'}
+                             'kiss', 'couple', 'passionate'}
         self.horror_words = {'horror', 'ghost', 'haunted', 'dead', 'death', 'blood', 'murder',
-                            'monster', 'terror', 'nightmare', 'evil', 'demon', 'zombie'}
-        self.comedy_words = {'comedy', 'funny', 'laugh', 'humor', 'hilarious', 'joke', 'amusing'}
-        self.scifi_words = {'space', 'future', 'alien', 'robot', 'technology', 'planet', 'galaxy',
-                           'time', 'science', 'experiment', 'dimension', 'virtual'}
+                            'monster', 'terror', 'evil'}
+        self.comedy_words = {'comedy', 'funny', 'laugh', 'humor', 'hilarious', 'joke'}
+        self.scifi_words = {'space', 'future', 'alien', 'robot', 'technology', 'planet',
+                           'time', 'science', 'virtual'}
         
         # Passive voice indicators
-        self.passive_auxiliaries = {'is', 'are', 'was', 'were', 'been', 'be', 'being'}
+        self.passive_auxiliaries = {'is', 'are', 'was', 'were', 'been', 'be'}
         
     def extract_features(self, text):
-        """
-        Extract all features from text as binary presence/absence.
-        
-        Args:
-            text: Input text string
-            
-        Returns:
-            Dictionary of binary features
-        """
+        """Extract optimized linguistic features."""
         features = {}
         
         if pd.isna(text):
@@ -85,141 +73,90 @@ class FeatureExtractor:
         words = word_tokenize(text_lower)
         words_clean = [w for w in words if w.isalpha()]
         
-        # POS tagging
+        # POS tagging (only once)
         pos_tags = pos_tag(words)
         
-        # === BASELINE FEATURES ===
-        
-        # 1. Unigrams and bigrams (top TF-IDF features only - added later)
+        # === 1. WORD FEATURES (Most discriminative) ===
+        # Only keep words, skip character n-grams for speed
         for word in words_clean:
             features[f'word_{word}'] = 1
         
-        # 2. Character n-grams (2-5) - presence for each unique n-gram
-        for n in range(2, 6):
-            for word in words_clean:
-                if len(word) >= n:
-                    for i in range(len(word) - n + 1):
-                        char_ngram = word[i:i+n]
-                        features[f'char_{n}gram_{char_ngram}'] = 1
-        
-        # 3. Document statistics - REMOVED (not linguistically motivated)
-        
-        # === MORPHOLOGICAL FEATURES ===
-        
-        # 1. Suffix patterns (presence/absence)
+        # === 2. MORPHOLOGICAL FEATURES ===
+        # Suffix patterns
         for suffix in self.suffix_patterns:
             suffix_clean = suffix.replace('-', '')
-            has_suffix = any(word.endswith(suffix_clean) for word in words_clean)
-            features[f'has_suffix{suffix}'] = 1 if has_suffix else 0
+            if any(word.endswith(suffix_clean) for word in words_clean):
+                features[f'has_suffix{suffix}'] = 1
         
-        # 2. Prefix patterns (presence/absence)
+        # Prefix patterns
         for prefix in self.prefix_patterns:
             prefix_clean = prefix.replace('-', '')
-            has_prefix = any(word.startswith(prefix_clean) for word in words_clean)
-            features[f'has_prefix{prefix}'] = 1 if has_prefix else 0
+            if any(word.startswith(prefix_clean) for word in words_clean):
+                features[f'has_prefix{prefix}'] = 1
         
-        # 3. Lemma-based features (unique lemmas)
-        lemmas = set()
-        for word in words_clean:
-            try:
-                lemma = self.lemmatizer.lemmatize(word, pos='v')
-                lemmas.add(lemma)
-                features[f'lemma_{lemma}'] = 1
-            except:
-                pass
+        # === 3. SYNTACTIC FEATURES ===
+        # POS tag presence (major categories only)
+        pos_set = set([tag for _, tag in pos_tags])
+        major_pos = ['NN', 'VB', 'JJ', 'RB', 'PRP', 'IN', 'DT']
+        for tag_prefix in major_pos:
+            if any(tag.startswith(tag_prefix) for tag in pos_set):
+                features[f'has_pos_{tag_prefix}'] = 1
         
-        # === SYNTACTIC FEATURES ===
-        
-        # 1. POS tag distribution (presence of each tag type)
-        pos_counts = Counter([tag for _, tag in pos_tags])
-        for tag in pos_counts:
-            features[f'has_pos_{tag}'] = 1
-        
-        # POS bigrams
-        for i in range(len(pos_tags) - 1):
-            bigram = f"{pos_tags[i][1]}_{pos_tags[i+1][1]}"
-            features[f'pos_bigram_{bigram}'] = 1
-        
-        # 2. Named entity indicators (simple rule-based)
-        # PERSON: capitalized words not at sentence start
-        # ORG: sequences of capitalized words
-        # DATE: year patterns, month names
-        
+        # Named entity indicators (simple)
         words_original = word_tokenize(text)
-        for i, word in enumerate(words_original):
-            if word[0].isupper() and i > 0:
-                features['has_named_entity'] = 1
-                break
+        has_capitalized = any(w[0].isupper() for i, w in enumerate(words_original) if i > 0 and w.isalpha())
+        if has_capitalized:
+            features['has_named_entity'] = 1
         
-        # Year pattern (19xx, 20xx)
         if re.search(r'\b(19|20)\d{2}\b', text):
             features['has_date_year'] = 1
         
-        # Month names
-        months = ['january', 'february', 'march', 'april', 'may', 'june',
-                  'july', 'august', 'september', 'october', 'november', 'december']
-        if any(month in text_lower for month in months):
-            features['has_date_month'] = 1
-        
-        # 3. Passive voice indicators
+        # Passive voice
         for i in range(len(pos_tags) - 1):
             word, tag = pos_tags[i]
-            next_word, next_tag = pos_tags[i + 1]
-            
-            # Pattern: auxiliary + past participle (VBN)
+            next_tag = pos_tags[i + 1][1]
             if word.lower() in self.passive_auxiliaries and next_tag == 'VBN':
                 features['has_passive_voice'] = 1
                 break
         
-        # 4. Sentence structure complexity (binned)
-        if sentences:
-            # Average words per sentence
-            avg_words_per_sent = len(words_clean) / len(sentences)
-            features['complex_sentences'] = 1 if avg_words_per_sent > 20 else 0
-            features['simple_sentences'] = 1 if avg_words_per_sent <= 20 else 0
+        # === 4. SEMANTIC FEATURES ===
+        # Lemmatize words for better domain/sentiment matching
+        lemmatized_words = set()
+        for word in words_clean:
+            # Try verb lemmatization first (most important for actions)
+            lemma_v = self.lemmatizer.lemmatize(word, pos='v')
+            lemmatized_words.add(lemma_v)
+            # Also try noun lemmatization
+            lemma_n = self.lemmatizer.lemmatize(word, pos='n')
+            lemmatized_words.add(lemma_n)
         
-        # === SEMANTIC FEATURES ===
+        # Domain-specific terminology (checked against lemmas)
+        if lemmatized_words & self.action_words:
+            features['has_action_terms'] = 1
+        if lemmatized_words & self.romance_words:
+            features['has_romance_terms'] = 1
+        if lemmatized_words & self.horror_words:
+            features['has_horror_terms'] = 1
+        if lemmatized_words & self.comedy_words:
+            features['has_comedy_terms'] = 1
+        if lemmatized_words & self.scifi_words:
+            features['has_scifi_terms'] = 1
         
-        # 1. Domain-specific terminology (presence/absence)
-        features['has_action_terms'] = 1 if any(w in words_clean for w in self.action_words) else 0
-        features['has_romance_terms'] = 1 if any(w in words_clean for w in self.romance_words) else 0
-        features['has_horror_terms'] = 1 if any(w in words_clean for w in self.horror_words) else 0
-        features['has_comedy_terms'] = 1 if any(w in words_clean for w in self.comedy_words) else 0
-        features['has_scifi_terms'] = 1 if any(w in words_clean for w in self.scifi_words) else 0
-        
-        # 2. Sentiment polarity indicators (presence/absence)
-        features['has_positive_sentiment'] = 1 if any(w in words_clean for w in self.positive_words) else 0
-        features['has_negative_sentiment'] = 1 if any(w in words_clean for w in self.negative_words) else 0
-        
-        # 3. Topic-indicative verb and noun patterns
-        verbs = [word.lower() for word, tag in pos_tags if tag.startswith('VB')]
-        nouns = [word.lower() for word, tag in pos_tags if tag.startswith('NN')]
-        
-        for verb in set(verbs):
-            if verb.isalpha():
-                features[f'verb_{verb}'] = 1
-        
-        for noun in set(nouns):
-            if noun.isalpha():
-                features[f'noun_{noun}'] = 1
+        # Sentiment (also checked against lemmas)
+        if lemmatized_words & self.positive_words:
+            features['has_positive_sentiment'] = 1
+        if lemmatized_words & self.negative_words:
+            features['has_negative_sentiment'] = 1
         
         return features
 
 
 class NaiveBayesTextClassifier:
     """
-    Naive Bayes classifier for text classification with rich linguistic features.
-    All features are binary (presence/absence) with Laplace smoothing.
+    Naive Bayes classifier optimized for speed while maintaining linguistic features.
     """
     
-    def __init__(self, alpha=1.0, top_features=1000):
-        """
-        Initialize the Naive Bayes classifier.
-        
-        Args:
-            alpha: Laplace smoothing parameter
-            top_features: Number of top features to keep (dimensionality reduction)
-        """
+    def __init__(self, alpha=1.0, top_features=3000):
         self.alpha = alpha
         self.top_features = top_features
         self.class_priors = {}
@@ -229,27 +166,21 @@ class NaiveBayesTextClassifier:
         self.feature_extractor = FeatureExtractor()
         
     def fit(self, X, y):
-        """
-        Train the Naive Bayes classifier.
-        
-        Args:
-            X: List of text documents
-            y: List of class labels
-        """
+        """Train the classifier."""
         print("Extracting features from training data...")
         self.classes = list(set(y))
         n_samples = len(y)
         
-        # Calculate class priors
+        # Class priors
         class_counts = Counter(y)
         for cls in self.classes:
             self.class_priors[cls] = class_counts[cls] / n_samples
         
-        # Extract features from all documents with progress reporting
+        # Extract features with progress
         all_features = []
         print(f"Processing {n_samples} training documents...")
         for idx, text in enumerate(X):
-            if (idx + 1) % 100 == 0 or idx == 0:
+            if (idx + 1) % 500 == 0:
                 print(f"  Processed {idx + 1}/{n_samples} documents ({100*(idx+1)/n_samples:.1f}%)")
             features = self.feature_extractor.extract_features(text)
             all_features.append(features)
@@ -260,7 +191,7 @@ class NaiveBayesTextClassifier:
         for features in all_features:
             feature_counter.update(features.keys())
         
-        # Keep only top features (by document frequency)
+        # Keep top features
         if len(feature_counter) > self.top_features:
             self.feature_set = set([f for f, _ in feature_counter.most_common(self.top_features)])
         else:
@@ -269,7 +200,7 @@ class NaiveBayesTextClassifier:
         print(f"Total unique features: {len(feature_counter)}")
         print(f"Using top {len(self.feature_set)} features")
         
-        # Calculate feature probabilities per class
+        # Calculate feature probabilities
         class_feature_counts = {cls: defaultdict(int) for cls in self.classes}
         class_doc_counts = {cls: 0 for cls in self.classes}
         
@@ -279,79 +210,39 @@ class NaiveBayesTextClassifier:
                 if features.get(feature, 0) == 1:
                     class_feature_counts[label][feature] += 1
         
-        # Calculate P(feature|class) with Laplace smoothing
+        # P(feature|class) with Laplace smoothing
         for cls in self.classes:
             self.feature_probs[cls] = {}
             total_docs = class_doc_counts[cls]
             
             for feature in self.feature_set:
                 count = class_feature_counts[cls][feature]
-                # P(feature=1|class) = (count + alpha) / (total + 2*alpha)
                 self.feature_probs[cls][feature] = (count + self.alpha) / (total_docs + 2 * self.alpha)
     
-    def predict_proba(self, X):
-        """
-        Predict class probabilities for samples.
-        
-        Args:
-            X: List of text documents
-            
-        Returns:
-            List of dictionaries mapping classes to log probabilities
-        """
-        predictions = []
-        
-        for text in X:
-            predictions.append(self.predict_proba_single(text))
-        
-        return predictions
-    
     def predict(self, X):
-        """
-        Predict class labels for samples.
-        
-        Args:
-            X: List of text documents
-            
-        Returns:
-            List of predicted class labels
-        """
+        """Predict class labels."""
         print(f"Making predictions on {len(X)} test documents...")
-        proba = []
+        predictions = []
         for idx, text in enumerate(X):
-            if (idx + 1) % 100 == 0 or idx == 0:
+            if (idx + 1) % 500 == 0:
                 print(f"  Predicted {idx + 1}/{len(X)} documents ({100*(idx+1)/len(X):.1f}%)")
             scores = self.predict_proba_single(text)
-            proba.append(scores)
+            predictions.append(max(scores, key=scores.get))
         print(f"  Completed: {len(X)}/{len(X)} documents (100.0%)")
-        
-        predictions = [max(scores, key=scores.get) for scores in proba]
         return predictions
     
     def predict_proba_single(self, text):
-        """
-        Predict class probabilities for a single document.
-        
-        Args:
-            text: Text document
-            
-        Returns:
-            Dictionary mapping classes to log probabilities
-        """
+        """Predict probabilities for single document."""
         features = self.feature_extractor.extract_features(text)
         class_scores = {}
         
         for cls in self.classes:
-            # Start with log prior
             log_prob = np.log(self.class_priors[cls])
             
-            # Add log probabilities for features
             for feature in self.feature_set:
                 if features.get(feature, 0) == 1:
-                    # Feature is present
                     log_prob += np.log(self.feature_probs[cls][feature])
                 else:
-                    # Feature is absent
                     log_prob += np.log(1 - self.feature_probs[cls][feature])
             
             class_scores[cls] = log_prob
@@ -360,19 +251,9 @@ class NaiveBayesTextClassifier:
 
 
 def load_data(data_dir='../data'):
-    """
-    Load all CSV files from the data directory.
-    
-    Args:
-        data_dir: Directory containing the CSV files
-        
-    Returns:
-        DataFrame with descriptions and genres
-    """
+    """Load CSV files from data directory."""
     all_data = []
-    
     csv_files = [f for f in os.listdir(data_dir) if f.endswith('.csv')]
-    
     print(f"Found {len(csv_files)} CSV files")
     
     for csv_file in csv_files:
@@ -381,7 +262,6 @@ def load_data(data_dir='../data'):
         
         try:
             df = pd.read_csv(filepath)
-            
             if 'description' in df.columns:
                 df_subset = df[['description']].copy()
                 df_subset['genre'] = genre
@@ -402,15 +282,13 @@ def load_data(data_dir='../data'):
 
 
 def plot_confusion_matrix(y_true, y_pred, classes, save_path='confusion_matrix.png'):
-    """
-    Plot and save confusion matrix.
-    """
+    """Plot and save confusion matrix."""
     cm = confusion_matrix(y_true, y_pred, labels=classes)
     
     plt.figure(figsize=(14, 12))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
                 xticklabels=classes, yticklabels=classes, cbar_kws={'label': 'Count'})
-    plt.title('Confusion Matrix - Naive Bayes with Linguistic Features', fontsize=16, pad=20)
+    plt.title('Confusion Matrix - Optimized NB with Linguistic Features', fontsize=16, pad=20)
     plt.ylabel('True Genre', fontsize=12)
     plt.xlabel('Predicted Genre', fontsize=12)
     plt.xticks(rotation=45, ha='right')
@@ -422,9 +300,7 @@ def plot_confusion_matrix(y_true, y_pred, classes, save_path='confusion_matrix.p
 
 
 def evaluate_classifier(y_true, y_pred, classes):
-    """
-    Calculate and display evaluation metrics.
-    """
+    """Calculate and display evaluation metrics."""
     accuracy = accuracy_score(y_true, y_pred)
     
     precision, recall, f1, support = precision_recall_fscore_support(
@@ -462,19 +338,14 @@ def evaluate_classifier(y_true, y_pred, classes):
         'accuracy': accuracy,
         'precision_macro': precision_macro,
         'recall_macro': recall_macro,
-        'f1_macro': f1_macro,
-        'precision_micro': precision_micro,
-        'recall_micro': recall_micro,
-        'f1_micro': f1_micro
+        'f1_macro': f1_macro
     }
 
 
 def main():
-    """
-    Main function to run the complete pipeline.
-    """
+    """Main pipeline."""
     print("="*80)
-    print("NAIVE BAYES MOVIE GENRE CLASSIFICATION")
+    print("OPTIMIZED NAIVE BAYES MOVIE GENRE CLASSIFICATION")
     print("WITH LINGUISTICALLY-MOTIVATED FEATURES")
     print("="*80)
     
@@ -482,7 +353,6 @@ def main():
     df = load_data('../data')
     
     print("\n2. Splitting data (70% train, 30% test)...")
-    # Shuffle the dataframe first to ensure random distribution
     df_shuffled = df.sample(frac=1, random_state=42).reset_index(drop=True)
     
     X = df_shuffled['description'].tolist()
@@ -492,24 +362,12 @@ def main():
         X, y, test_size=0.3, random_state=42, stratify=y
     )
     
-    # Verify split distribution
-    train_dist = Counter(y_train)
-    test_dist = Counter(y_test)
-    print("\nTrain set distribution:")
-    for genre, count in sorted(train_dist.items()):
-        print(f"  {genre}: {count}")
-    print("\nTest set distribution:")
-    for genre, count in sorted(test_dist.items()):
-        print(f"  {genre}: {count}")
-    
     print(f"Training samples: {len(X_train)}")
     print(f"Testing samples: {len(X_test)}")
     
-    print("\n3. Training Naive Bayes classifier with linguistic features...")
-    classifier = NaiveBayesTextClassifier(alpha=1.0, top_features=5000)
+    print("\n3. Training classifier...")
+    classifier = NaiveBayesTextClassifier(alpha=1.0, top_features=3000)
     classifier.fit(X_train, y_train)
-    
-    print(f"Number of classes: {len(classifier.classes)}")
     
     print("\n4. Making predictions...")
     y_pred = classifier.predict(X_test)
