@@ -237,7 +237,7 @@ class NaiveBayesTextClassifier:
         print(f"Making predictions on {len(X)} test documents...")
         predictions = []
         for idx, text in enumerate(X):
-            if (idx + 1) % 5000 == 0:
+            if (idx + 1) % 100 == 0:
                 print(f"  Predicted {idx + 1}/{len(X)} documents ({100*(idx+1)/len(X):.1f}%)")
             scores = self.predict_proba_single(text)
             predictions.append(max(scores, key=scores.get))
