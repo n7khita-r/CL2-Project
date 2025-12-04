@@ -1,13 +1,14 @@
 import pandas as pd
 import numpy as np
-import json
+import os
+import re
 from collections import defaultdict, Counter
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 import nltk
-from nltk import pos_tag, word_tokenize
+from nltk import pos_tag, word_tokenize, sent_tokenize
 from nltk.stem import WordNetLemmatizer
 
 # Download required NLTK data
@@ -25,68 +26,58 @@ except LookupError:
     nltk.download('wordnet')
 
 
-class NewsFeatureExtractor:
+class FeatureExtractor:
     """
-    Extract linguistically-motivated features for news classification.
-    All features are binary (presence/absence) to maintain independence.
+    Extract linguistically-motivated features for text classification.
+    Optimized for faster computation while maintaining linguistic richness.
     """
     
     def __init__(self):
         self.lemmatizer = WordNetLemmatizer()
         
-        # Morphological patterns
+        # Key morphological patterns (reduced set)
         self.suffix_patterns = ['-tion', '-ness', '-ly', '-ment', '-ing', '-ed', '-ful', '-ous', '-ive', '-able']
         self.prefix_patterns = ['un-', 're-', 'dis-', 'non-', 'over-']
         
-        # News-specific domain terminology
-        self.politics_words = {'election', 'vote', 'president', 'congress', 'senate', 'bill', 
-                              'policy', 'government', 'political', 'campaign', 'democrat', 'republican'}
+        # Sentiment indicators
+        self.positive_words = {'good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic',
+                               'love', 'best', 'beautiful', 'perfect', 'happy', 'brilliant'}
+        self.negative_words = {'bad', 'terrible', 'awful', 'horrible', 'worst', 'hate', 'poor',
+                               'sad', 'angry', 'evil', 'dark', 'death', 'fear'}
         
-        self.business_words = {'market', 'stock', 'company', 'business', 'economy', 'trade',
-                              'revenue', 'profit', 'investment', 'financial', 'corporate', 'ceo'}
-        
-        self.tech_words = {'technology', 'software', 'app', 'digital', 'computer', 'internet',
-                          'tech', 'data', 'online', 'cyber', 'AI', 'device'}
-        
-        self.sports_words = {'game', 'team', 'player', 'win', 'score', 'league', 'season',
-                            'coach', 'championship', 'tournament', 'match', 'athlete'}
-        
-        self.entertainment_words = {'movie', 'film', 'show', 'music', 'star', 'celebrity',
-                                   'actor', 'director', 'album', 'concert', 'performance'}
-        
-        self.world_news_words = {'country', 'international', 'foreign', 'nation', 'global',
-                                'minister', 'embassy', 'treaty', 'diplomacy', 'border'}
-        
-        self.crime_words = {'police', 'arrest', 'crime', 'murder', 'shooting', 'killed',
-                           'charged', 'suspect', 'investigation', 'victim', 'court'}
-        
-        # Sentiment/tone indicators
-        self.urgent_words = {'breaking', 'urgent', 'alert', 'emergency', 'crisis', 'critical'}
-        self.positive_words = {'win', 'success', 'celebrate', 'achievement', 'victory', 'amazing',
-                              'great', 'excellent', 'wonderful', 'love'}
-        self.negative_words = {'death', 'killed', 'disaster', 'tragedy', 'failure', 'crisis',
-                              'scandal', 'controversy', 'attack', 'violence'}
+        # Domain-specific terminology
+        self.action_words = {'fight', 'battle', 'war', 'mission', 'escape', 'chase', 'explosion',
+                            'weapon', 'soldier', 'attack'}
+        self.romance_words = {'love', 'relationship', 'romance', 'marry', 'wedding', 'heart',
+                             'kiss', 'couple', 'passionate'}
+        self.horror_words = {'horror', 'ghost', 'haunted', 'dead', 'death', 'blood', 'murder',
+                            'monster', 'terror', 'evil'}
+        self.comedy_words = {'comedy', 'funny', 'laugh', 'humor', 'hilarious', 'joke'}
+        self.scifi_words = {'space', 'future', 'alien', 'robot', 'technology', 'planet',
+                           'time', 'science', 'virtual'}
         
         # Passive voice indicators
         self.passive_auxiliaries = {'is', 'are', 'was', 'were', 'been', 'be'}
         
     def extract_features(self, text):
-        """Extract all features from text as binary presence/absence."""
+        """Extract optimized linguistic features."""
         features = {}
         
-        if pd.isna(text) or not isinstance(text, str):
+        if pd.isna(text):
             return features
         
         text_lower = text.lower()
         
         # Tokenization
+        sentences = sent_tokenize(text)
         words = word_tokenize(text_lower)
         words_clean = [w for w in words if w.isalpha()]
         
-        # POS tagging
+        # POS tagging (only once)
         pos_tags = pos_tag(words)
         
-        # === 1. WORD UNIGRAMS ===
+        # === 1. WORD FEATURES (Most discriminative) ===
+        # Only keep words, skip character n-grams for speed
         for word in words_clean:
             features[f'word_{word}'] = 1
         
@@ -104,22 +95,23 @@ class NewsFeatureExtractor:
                 features[f'has_prefix{prefix}'] = 1
         
         # === 3. SYNTACTIC FEATURES ===
-        # POS tag presence (major categories)
+        # POS tag presence (major categories only)
         pos_set = set([tag for _, tag in pos_tags])
-        major_pos = ['NN', 'VB', 'JJ', 'RB', 'PRP', 'IN', 'DT', 'NNP']  # Added NNP for proper nouns
+        major_pos = ['NN', 'VB', 'JJ', 'RB', 'PRP', 'IN', 'DT']
         for tag_prefix in major_pos:
             if any(tag.startswith(tag_prefix) for tag in pos_set):
                 features[f'has_pos_{tag_prefix}'] = 1
         
-        # Named entity indicators (proper nouns are common in news)
-        if any(tag.startswith('NNP') for _, tag in pos_tags):
-            features['has_proper_noun'] = 1
+        # Named entity indicators (simple)
+        words_original = word_tokenize(text)
+        has_capitalized = any(w[0].isupper() for i, w in enumerate(words_original) if i > 0 and w.isalpha())
+        if has_capitalized:
+            features['has_named_entity'] = 1
         
-        # Numbers/dates (important in news)
-        if any(tag == 'CD' for _, tag in pos_tags):  # Cardinal numbers
-            features['has_number'] = 1
+        if re.search(r'\b(19|20)\d{2}\b', text):
+            features['has_date_year'] = 1
         
-        # Passive voice (common in news reporting)
+        # Passive voice
         for i in range(len(pos_tags) - 1):
             word, tag = pos_tags[i]
             next_tag = pos_tags[i + 1][1]
@@ -128,45 +120,40 @@ class NewsFeatureExtractor:
                 break
         
         # === 4. SEMANTIC FEATURES ===
-        # Lemmatize for better domain matching
+        # Lemmatize words for better domain/sentiment matching
         lemmatized_words = set()
         for word in words_clean:
+            # Try verb lemmatization first (most important for actions)
             lemma_v = self.lemmatizer.lemmatize(word, pos='v')
             lemmatized_words.add(lemma_v)
+            # Also try noun lemmatization
             lemma_n = self.lemmatizer.lemmatize(word, pos='n')
             lemmatized_words.add(lemma_n)
         
-        # Domain-specific terminology
-        if lemmatized_words & self.politics_words:
-            features['has_politics_terms'] = 1
-        if lemmatized_words & self.business_words:
-            features['has_business_terms'] = 1
-        if lemmatized_words & self.tech_words:
-            features['has_tech_terms'] = 1
-        if lemmatized_words & self.sports_words:
-            features['has_sports_terms'] = 1
-        if lemmatized_words & self.entertainment_words:
-            features['has_entertainment_terms'] = 1
-        if lemmatized_words & self.world_news_words:
-            features['has_world_news_terms'] = 1
-        if lemmatized_words & self.crime_words:
-            features['has_crime_terms'] = 1
+        # Domain-specific terminology (checked against lemmas)
+        if lemmatized_words & self.action_words:
+            features['has_action_terms'] = 1
+        if lemmatized_words & self.romance_words:
+            features['has_romance_terms'] = 1
+        if lemmatized_words & self.horror_words:
+            features['has_horror_terms'] = 1
+        if lemmatized_words & self.comedy_words:
+            features['has_comedy_terms'] = 1
+        if lemmatized_words & self.scifi_words:
+            features['has_scifi_terms'] = 1
         
-        # Tone/urgency indicators
-        if lemmatized_words & self.urgent_words:
-            features['has_urgent_tone'] = 1
+        # Sentiment (also checked against lemmas)
         if lemmatized_words & self.positive_words:
-            features['has_positive_tone'] = 1
+            features['has_positive_sentiment'] = 1
         if lemmatized_words & self.negative_words:
-            features['has_negative_tone'] = 1
+            features['has_negative_sentiment'] = 1
         
         return features
 
 
 class NaiveBayesTextClassifier:
     """
-    Naive Bayes classifier for text classification.
-    All features are binary with Laplace smoothing.
+    Naive Bayes classifier optimized for speed while maintaining linguistic features.
     """
     
     def __init__(self, alpha=1.0, top_features=3000):
@@ -176,34 +163,35 @@ class NaiveBayesTextClassifier:
         self.feature_probs = {}
         self.feature_set = set()
         self.classes = []
-        self.feature_extractor = NewsFeatureExtractor()
+        self.feature_extractor = FeatureExtractor()
         
     def fit(self, X, y):
-        """Train the Naive Bayes classifier."""
+        """Train the classifier."""
         print("Extracting features from training data...")
         self.classes = list(set(y))
         n_samples = len(y)
         
-        # Class priors: P(class)
+        # Class priors
         class_counts = Counter(y)
         for cls in self.classes:
             self.class_priors[cls] = class_counts[cls] / n_samples
         
-        # Extract features
+        # Extract features with progress
         all_features = []
         print(f"Processing {n_samples} training documents...")
         for idx, text in enumerate(X):
-            if (idx + 1) % 5000 == 0:
+            if (idx + 1) % 500 == 0:
                 print(f"  Processed {idx + 1}/{n_samples} documents ({100*(idx+1)/n_samples:.1f}%)")
             features = self.feature_extractor.extract_features(text)
             all_features.append(features)
         print(f"  Completed: {n_samples}/{n_samples} documents (100.0%)")
         
-        # Build feature vocabulary (top features by document frequency)
+        # Build feature vocabulary
         feature_counter = Counter()
         for features in all_features:
             feature_counter.update(features.keys())
         
+        # Keep top features
         if len(feature_counter) > self.top_features:
             self.feature_set = set([f for f, _ in feature_counter.most_common(self.top_features)])
         else:
@@ -212,7 +200,7 @@ class NaiveBayesTextClassifier:
         print(f"Total unique features: {len(feature_counter)}")
         print(f"Using top {len(self.feature_set)} features")
         
-        # Calculate feature probabilities per class
+        # Calculate feature probabilities
         class_feature_counts = {cls: defaultdict(int) for cls in self.classes}
         class_doc_counts = {cls: 0 for cls in self.classes}
         
@@ -222,14 +210,13 @@ class NaiveBayesTextClassifier:
                 if features.get(feature, 0) == 1:
                     class_feature_counts[label][feature] += 1
         
-        # P(feature=1|class) with Laplace smoothing
+        # P(feature|class) with Laplace smoothing
         for cls in self.classes:
             self.feature_probs[cls] = {}
             total_docs = class_doc_counts[cls]
             
             for feature in self.feature_set:
                 count = class_feature_counts[cls][feature]
-                # Laplace smoothing: (count + alpha) / (total + 2*alpha)
                 self.feature_probs[cls][feature] = (count + self.alpha) / (total_docs + 2 * self.alpha)
     
     def predict(self, X):
@@ -237,7 +224,7 @@ class NaiveBayesTextClassifier:
         print(f"Making predictions on {len(X)} test documents...")
         predictions = []
         for idx, text in enumerate(X):
-            if (idx + 1) % 5000 == 0:
+            if (idx + 1) % 500 == 0:
                 print(f"  Predicted {idx + 1}/{len(X)} documents ({100*(idx+1)/len(X):.1f}%)")
             scores = self.predict_proba_single(text)
             predictions.append(max(scores, key=scores.get))
@@ -245,21 +232,17 @@ class NaiveBayesTextClassifier:
         return predictions
     
     def predict_proba_single(self, text):
-        """Predict log probabilities for single document."""
+        """Predict probabilities for single document."""
         features = self.feature_extractor.extract_features(text)
         class_scores = {}
         
         for cls in self.classes:
-            # Start with log prior: log P(class)
             log_prob = np.log(self.class_priors[cls])
             
-            # Add log likelihoods: log P(features|class)
             for feature in self.feature_set:
                 if features.get(feature, 0) == 1:
-                    # Feature present
                     log_prob += np.log(self.feature_probs[cls][feature])
                 else:
-                    # Feature absent
                     log_prob += np.log(1 - self.feature_probs[cls][feature])
             
             class_scores[cls] = log_prob
@@ -267,60 +250,61 @@ class NaiveBayesTextClassifier:
         return class_scores
 
 
-def load_news_data(filepath='../data/News_Category_Dataset_v3.json'):
-    """Load news dataset from JSON file."""
-    print(f"Loading data from {filepath}...")
+def load_data(filepath='../data/movies_processed.csv'):
+    """Load the preprocessed movie data from CSV."""
+    print(f"Loading data from: {filepath}")
     
-    data = []
-    with open(filepath, 'r', encoding='utf-8') as f:
-        for line in f:
-            try:
-                article = json.loads(line)
-                data.append(article)
-            except json.JSONDecodeError:
-                continue
-    
-    df = pd.DataFrame(data)
-    
-    # Use 'short_description' as the text to classify
-    if 'short_description' not in df.columns or 'category' not in df.columns:
-        raise ValueError("Dataset must have 'short_description' and 'category' columns")
-    
-    # Clean data
-    df = df[['short_description', 'category']].dropna()
-    
-    print(f"\nTotal samples: {len(df)}")
-    print(f"\nCategory distribution:")
-    print(df['category'].value_counts())
-    print(f"\nNumber of unique categories: {df['category'].nunique()}")
-    
-    return df
+    try:
+        df = pd.read_csv(filepath)
+        print(f"Successfully loaded {len(df)} samples")
+        
+        # Check required columns
+        if 'summary' not in df.columns or 'genres' not in df.columns:
+            raise ValueError("CSV must contain 'summary' and 'genres' columns")
+        
+        # For multi-label movies, take only the first genre
+        df['genre'] = df['genres'].apply(lambda x: x.split('|')[0] if pd.notna(x) else None)
+        
+        # Remove rows with missing summaries or genres
+        df = df.dropna(subset=['summary', 'genre'])
+        
+        print(f"\nGenre distribution:")
+        print(df['genre'].value_counts())
+        
+        # NO FILTERING - Keep all genres regardless of frequency
+        print(f"\nTotal samples: {len(df)}")
+        print(f"Number of genres: {df['genre'].nunique()}")
+        
+        return df
+        
+    except FileNotFoundError:
+        print(f"Error: File not found at {filepath}")
+        print("Please ensure movies_processed.csv exists in the data directory")
+        raise
+    except Exception as e:
+        print(f"Error loading data: {e}")
+        raise
 
 
-def plot_confusion_matrix(y_true, y_pred, classes, save_path='../results/news/naivebayes_confusion_matrix.png'):
+def plot_confusion_matrix(y_true, y_pred, classes, save_path='../results/CMUmovies/confusion_matrix_naivebayes.png'):
     """Plot and save confusion matrix."""
     cm = confusion_matrix(y_true, y_pred, labels=classes)
     
-    # For many categories, use smaller font and larger figure
-    n_classes = len(classes)
-    figsize = (max(12, n_classes * 0.6), max(10, n_classes * 0.5))
-    
-    plt.figure(figsize=figsize)
+    plt.figure(figsize=(14, 12))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-                xticklabels=classes, yticklabels=classes, 
-                cbar_kws={'label': 'Count'}, annot_kws={'size': 8})
-    plt.title('Confusion Matrix - News Category Classification', fontsize=14, pad=15)
-    plt.ylabel('True Category', fontsize=11)
-    plt.xlabel('Predicted Category', fontsize=11)
-    plt.xticks(rotation=45, ha='right', fontsize=9)
-    plt.yticks(rotation=0, fontsize=9)
+                xticklabels=classes, yticklabels=classes, cbar_kws={'label': 'Count'})
+    plt.title('Confusion Matrix - NB with Linguistic Features (CMU Movies)', fontsize=16, pad=20)
+    plt.ylabel('True Genre', fontsize=12)
+    plt.xlabel('Predicted Genre', fontsize=12)
+    plt.xticks(rotation=45, ha='right')
+    plt.yticks(rotation=0)
     plt.tight_layout()
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     print(f"\nConfusion matrix saved to: {save_path}")
     plt.close()
 
 
-def evaluate_classifier(y_true, y_pred, classes, save_path='../results/news/naivebayes_evaluation_metrics.txt'):
+def evaluate_classifier(y_true, y_pred, classes, save_path='../results/CMUmovies/naivebayes_evaluation_metrics.txt'):
     """Calculate and display evaluation metrics."""
     accuracy = accuracy_score(y_true, y_pred)
     
@@ -371,22 +355,21 @@ def evaluate_classifier(y_true, y_pred, classes, save_path='../results/news/naiv
         'f1_macro': f1_macro
     }
 
-
 def main():
     """Main pipeline."""
-    print("="*90)
-    print("NAIVE BAYES NEWS CATEGORY CLASSIFICATION")
+    print("="*80)
+    print("NAIVE BAYES MOVIE GENRE CLASSIFICATION - CMU DATASET")
     print("WITH LINGUISTICALLY-MOTIVATED FEATURES")
-    print("="*90)
+    print("="*80)
     
     print("\n1. Loading data...")
-    df = load_news_data('../data/News_Category_Dataset_v3.json')
+    df = load_data('../data/movies_processed.csv')
     
     print("\n2. Splitting data (70% train, 30% test)...")
     df_shuffled = df.sample(frac=1, random_state=42).reset_index(drop=True)
     
-    X = df_shuffled['short_description'].tolist()
-    y = df_shuffled['category'].tolist()
+    X = df_shuffled['summary'].tolist()
+    y = df_shuffled['genre'].tolist()
     
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.3, random_state=42, stratify=y
@@ -395,11 +378,9 @@ def main():
     print(f"Training samples: {len(X_train)}")
     print(f"Testing samples: {len(X_test)}")
     
-    print("\n3. Training Naive Bayes classifier...")
+    print("\n3. Training classifier...")
     classifier = NaiveBayesTextClassifier(alpha=1.0, top_features=3000)
     classifier.fit(X_train, y_train)
-    
-    print(f"\nNumber of classes: {len(classifier.classes)}")
     
     print("\n4. Making predictions...")
     y_pred = classifier.predict(X_test)
@@ -410,9 +391,9 @@ def main():
     print("\n6. Generating confusion matrix...")
     plot_confusion_matrix(y_test, y_pred, sorted(classifier.classes))
     
-    print("\n" + "="*90)
+    print("\n" + "="*80)
     print("CLASSIFICATION COMPLETE!")
-    print("="*90)
+    print("="*80)
 
 
 if __name__ == "__main__":

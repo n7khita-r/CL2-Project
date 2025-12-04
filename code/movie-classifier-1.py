@@ -281,7 +281,7 @@ def load_data(data_dir='../data'):
     return combined_df
 
 
-def plot_confusion_matrix(y_true, y_pred, classes, save_path='confusion_matrix.png'):
+def plot_confusion_matrix(y_true, y_pred, classes, save_path='../results/movies-2/confusion_matrix_Movies_naivebayes.png'):
     """Plot and save confusion matrix."""
     cm = confusion_matrix(y_true, y_pred, labels=classes)
     
@@ -299,7 +299,7 @@ def plot_confusion_matrix(y_true, y_pred, classes, save_path='confusion_matrix.p
     plt.close()
 
 
-def evaluate_classifier(y_true, y_pred, classes):
+def evaluate_classifier(y_true, y_pred, classes, save_path='../results/movies-2/naivebayes_evaluation_metrics.txt'):
     """Calculate and display evaluation metrics."""
     accuracy = accuracy_score(y_true, y_pred)
     
@@ -315,24 +315,33 @@ def evaluate_classifier(y_true, y_pred, classes):
         y_true, y_pred, average='micro', zero_division=0
     )
     
-    print("\n" + "="*80)
-    print("EVALUATION METRICS")
-    print("="*80)
-    print(f"\nOverall Accuracy: {accuracy:.4f}")
-    
-    print("\n" + "-"*80)
-    print("PER-CLASS METRICS")
-    print("-"*80)
-    print(f"{'Genre':<20} {'Precision':<12} {'Recall':<12} {'F1-Score':<12} {'Support':<10}")
-    print("-"*80)
+    # Prepare output text
+    output_lines = []
+    output_lines.append("="*80)
+    output_lines.append("EVALUATION METRICS")
+    output_lines.append("="*80)
+    output_lines.append(f"\nOverall Accuracy: {accuracy:.4f}\n")
+    output_lines.append("-"*80)
+    output_lines.append("PER-CLASS METRICS")
+    output_lines.append("-"*80)
+    output_lines.append(f"{'Genre':<20} {'Precision':<12} {'Recall':<12} {'F1-Score':<12} {'Support':<10}")
+    output_lines.append("-"*80)
     
     for i, cls in enumerate(classes):
-        print(f"{cls:<20} {precision[i]:<12.4f} {recall[i]:<12.4f} {f1[i]:<12.4f} {support[i]:<10.0f}")
+        output_lines.append(f"{cls:<20} {precision[i]:<12.4f} {recall[i]:<12.4f} {f1[i]:<12.4f} {support[i]:<10.0f}")
     
-    print("-"*80)
-    print(f"{'Macro Average':<20} {precision_macro:<12.4f} {recall_macro:<12.4f} {f1_macro:<12.4f}")
-    print(f"{'Micro Average':<20} {precision_micro:<12.4f} {recall_micro:<12.4f} {f1_micro:<12.4f}")
-    print("="*80)
+    output_lines.append("-"*80)
+    output_lines.append(f"{'Macro Average':<20} {precision_macro:<12.4f} {recall_macro:<12.4f} {f1_macro:<12.4f}")
+    output_lines.append(f"{'Micro Average':<20} {precision_micro:<12.4f} {recall_micro:<12.4f} {f1_micro:<12.4f}")
+    output_lines.append("="*80)
+    
+    # Print to console
+    print("\n" + "\n".join(output_lines))
+    
+    # Save to file
+    with open(save_path, 'w') as f:
+        f.write("\n".join(output_lines))
+    print(f"\nEvaluation metrics saved to: {save_path}")
     
     return {
         'accuracy': accuracy,
