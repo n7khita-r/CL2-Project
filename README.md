@@ -2,13 +2,17 @@ This repository contains the full implementation and analysis for a study for a 
 
 📁 Project Structure
 
-.
-├── code/               # All source code: feature extraction, training, evaluation
-├── data/               # Datasets used for experiments (movie genres, news categories)
-├── results/            # Model outputs, logs, confusion matrices, ablation summaries
-├── report/             # Final written report (PDF in LaTeX)
-├── requirements.txt    # Python dependencies
-└── README.md
+code/               # All source code: feature extraction, training, evaluation
+
+data/               # Datasets used for experiments (movie genres, news categories)
+
+results/            # Model outputs, logs, confusion matrices, ablation summaries
+
+report/             # Final written report (PDF in LaTeX)
+
+requirements.txt   # Python dependencies
+
+README.md
 
 🔧 Installation
 
