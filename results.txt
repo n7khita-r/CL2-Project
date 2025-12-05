@@ -1,0 +1,2863 @@
+nikhita-ravi@nikhita-ravi-HP-Pavilion-Laptop-15-eg3xxx:~/CL2-Project$ python fullnaivebayes.py
+Command 'python' not found, did you mean:
+  command 'python3' from deb python3
+  command 'python' from deb python-is-python3
+nikhita-ravi@nikhita-ravi-HP-Pavilion-Laptop-15-eg3xxx:~/CL2-Project$ source venv/bin/activate
+(venv) nikhita-ravi@nikhita-ravi-HP-Pavilion-Laptop-15-eg3xxx:~/CL2-Project$ python fullnaivebayes.py
+Checking dependencies...
+Installing scikit-learn...
+
+[notice] A new release of pip is available: 25.2 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+Downloading NLTK data...
+All dependencies ready!
+
+Loading spaCy NER model...
+spaCy model loaded!
+
+
+================================================================================
+NAIVE BAYES GENRE CLASSIFICATION
+WITH INDEPENDENT FEATURE GROUPS
+================================================================================
+
+1. Loading balanced data from ./data...
+Found 16 genre CSV files
+Target: 3000 samples per genre
+
+✓ Sampled 3000 from action.csv (had 52452)
+✓ Sampled 3000 from adventure.csv (had 25664)
+✓ Sampled 3000 from animation.csv (had 8419)
+✓ Sampled 3000 from biography.csv (had 8289)
+✓ Sampled 3000 from crime.csv (had 35852)
+✓ Sampled 3000 from family.csv (had 17095)
+✓ Sampled 3000 from fantasy.csv (had 17163)
+✓ Using all 986 samples from film-noir.csv (limited)
+✓ Sampled 3000 from history.csv (had 8996)
+✓ Sampled 3000 from horror.csv (had 36682)
+✓ Sampled 3000 from mystery.csv (had 18960)
+✓ Sampled 3000 from romance.csv (had 52617)
+✓ Sampled 3000 from scifi.csv (had 16557)
+✓ Sampled 3000 from sports.csv (had 5292)
+✓ Sampled 3000 from thriller.csv (had 53365)
+✓ Sampled 3000 from war.csv (had 9911)
+
+============================================================
+BALANCED DATASET SUMMARY
+============================================================
+Total samples: 45986
+
+Genre distribution:
+genre
+action       3000
+adventure    3000
+animation    3000
+biography    3000
+crime        3000
+family       3000
+fantasy      3000
+film-noir     986
+history      3000
+horror       3000
+mystery      3000
+romance      3000
+scifi        3000
+sports       3000
+thriller     3000
+war          3000
+Name: count, dtype: int64
+============================================================
+
+
+2. Splitting data (70% train, 30% test) with stratification...
+
+Training samples: 32190
+Testing samples: 13796
+
+3. Training classifier...
+
+============================================================
+ACTIVE FEATURE GROUPS:
+  ✓ content_words
+  ✓ pos_tags
+  ✓ structure
+  ✓ punctuation
+  ✓ lexical
+  ✓ affixes
+============================================================
+
+Extracting features from training data...
+Processing 32190 training documents...
+  Processed 500/32190 (1.6%)
+  Processed 1000/32190 (3.1%)
+  Processed 1500/32190 (4.7%)
+  Processed 2000/32190 (6.2%)
+  Processed 2500/32190 (7.8%)
+  Processed 3000/32190 (9.3%)
+  Processed 3500/32190 (10.9%)
+  Processed 4000/32190 (12.4%)
+  Processed 4500/32190 (14.0%)
+  Processed 5000/32190 (15.5%)
+  Processed 5500/32190 (17.1%)
+  Processed 6000/32190 (18.6%)
+  Processed 6500/32190 (20.2%)
+  Processed 7000/32190 (21.7%)
+  Processed 7500/32190 (23.3%)
+  Processed 8000/32190 (24.9%)
+  Processed 8500/32190 (26.4%)
+  Processed 9000/32190 (28.0%)
+  Processed 9500/32190 (29.5%)
+  Processed 10000/32190 (31.1%)
+  Processed 10500/32190 (32.6%)
+  Processed 11000/32190 (34.2%)
+  Processed 11500/32190 (35.7%)
+  Processed 12000/32190 (37.3%)
+  Processed 12500/32190 (38.8%)
+  Processed 13000/32190 (40.4%)
+  Processed 13500/32190 (41.9%)
+  Processed 14000/32190 (43.5%)
+  Processed 14500/32190 (45.0%)
+  Processed 15000/32190 (46.6%)
+  Processed 15500/32190 (48.2%)
+  Processed 16000/32190 (49.7%)
+  Processed 16500/32190 (51.3%)
+  Processed 17000/32190 (52.8%)
+  Processed 17500/32190 (54.4%)
+  Processed 18000/32190 (55.9%)
+  Processed 18500/32190 (57.5%)
+  Processed 19000/32190 (59.0%)
+  Processed 19500/32190 (60.6%)
+  Processed 20000/32190 (62.1%)
+  Processed 20500/32190 (63.7%)
+  Processed 21000/32190 (65.2%)
+  Processed 21500/32190 (66.8%)
+  Processed 22000/32190 (68.3%)
+  Processed 22500/32190 (69.9%)
+  Processed 23000/32190 (71.5%)
+  Processed 23500/32190 (73.0%)
+  Processed 24000/32190 (74.6%)
+  Processed 24500/32190 (76.1%)
+  Processed 25000/32190 (77.7%)
+  Processed 25500/32190 (79.2%)
+  Processed 26000/32190 (80.8%)
+  Processed 26500/32190 (82.3%)
+  Processed 27000/32190 (83.9%)
+  Processed 27500/32190 (85.4%)
+  Processed 28000/32190 (87.0%)
+  Processed 28500/32190 (88.5%)
+  Processed 29000/32190 (90.1%)
+  Processed 29500/32190 (91.6%)
+  Processed 30000/32190 (93.2%)
+  Processed 30500/32190 (94.7%)
+  Processed 31000/32190 (96.3%)
+  Processed 31500/32190 (97.9%)
+  Processed 32000/32190 (99.4%)
+  Completed: 32190/32190 (100.0%)
+
+Building feature vocabulary from active groups...
+Total unique features: 37475
+Using 5000 features
+  - content_words: 4919 features
+  - pos_tags: 9 features
+  - structure: 13 features
+  - punctuation: 9 features
+  - lexical: 11 features
+  - affixes: 39 features
+
+Converting to feature matrix...
+  Processed 1000/32190 (3.1%)
+  Processed 2000/32190 (6.2%)
+  Processed 3000/32190 (9.3%)
+  Processed 4000/32190 (12.4%)
+  Processed 5000/32190 (15.5%)
+  Processed 6000/32190 (18.6%)
+  Processed 7000/32190 (21.7%)
+  Processed 8000/32190 (24.9%)
+  Processed 9000/32190 (28.0%)
+  Processed 10000/32190 (31.1%)
+  Processed 11000/32190 (34.2%)
+  Processed 12000/32190 (37.3%)
+  Processed 13000/32190 (40.4%)
+  Processed 14000/32190 (43.5%)
+  Processed 15000/32190 (46.6%)
+  Processed 16000/32190 (49.7%)
+  Processed 17000/32190 (52.8%)
+  Processed 18000/32190 (55.9%)
+  Processed 19000/32190 (59.0%)
+  Processed 20000/32190 (62.1%)
+  Processed 21000/32190 (65.2%)
+  Processed 22000/32190 (68.3%)
+  Processed 23000/32190 (71.5%)
+  Processed 24000/32190 (74.6%)
+  Processed 25000/32190 (77.7%)
+  Processed 26000/32190 (80.8%)
+  Processed 27000/32190 (83.9%)
+  Processed 28000/32190 (87.0%)
+  Processed 29000/32190 (90.1%)
+  Processed 30000/32190 (93.2%)
+  Processed 31000/32190 (96.3%)
+  Processed 32000/32190 (99.4%)
+
+Feature matrix shape: (32190, 5000)
+
+Training Multinomial Naive Bayes model...
+
+Training accuracy: 0.4445
+Training complete!
+
+4. Making predictions...
+
+Making predictions on 13796 test documents...
+  Processed 500/13796 (3.6%)
+  Processed 1000/13796 (7.2%)
+  Processed 1500/13796 (10.9%)
+  Processed 2000/13796 (14.5%)
+  Processed 2500/13796 (18.1%)
+  Processed 3000/13796 (21.7%)
+  Processed 3500/13796 (25.4%)
+  Processed 4000/13796 (29.0%)
+  Processed 4500/13796 (32.6%)
+  Processed 5000/13796 (36.2%)
+  Processed 5500/13796 (39.9%)
+  Processed 6000/13796 (43.5%)
+  Processed 6500/13796 (47.1%)
+  Processed 7000/13796 (50.7%)
+  Processed 7500/13796 (54.4%)
+  Processed 8000/13796 (58.0%)
+  Processed 8500/13796 (61.6%)
+  Processed 9000/13796 (65.2%)
+  Processed 9500/13796 (68.9%)
+  Processed 10000/13796 (72.5%)
+  Processed 10500/13796 (76.1%)
+  Processed 11000/13796 (79.7%)
+  Processed 11500/13796 (83.4%)
+  Processed 12000/13796 (87.0%)
+  Processed 12500/13796 (90.6%)
+  Processed 13000/13796 (94.2%)
+  Processed 13500/13796 (97.9%)
+  Completed: 13796/13796 (100.0%)
+
+Converting to feature matrix...
+  Processed 1000/13796 (7.2%)
+  Processed 2000/13796 (14.5%)
+  Processed 3000/13796 (21.7%)
+  Processed 4000/13796 (29.0%)
+  Processed 5000/13796 (36.2%)
+  Processed 6000/13796 (43.5%)
+  Processed 7000/13796 (50.7%)
+  Processed 8000/13796 (58.0%)
+  Processed 9000/13796 (65.2%)
+  Processed 10000/13796 (72.5%)
+  Processed 11000/13796 (79.7%)
+  Processed 12000/13796 (87.0%)
+  Processed 13000/13796 (94.2%)
+
+5. Evaluating performance...
+
+================================================================================
+NAIVE BAYES CLASSIFIER - EVALUATION METRICS
+================================================================================
+
+Overall Accuracy: 0.2794
+
+--------------------------------------------------------------------------------
+Genre                Precision    Recall       F1-Score     Support   
+--------------------------------------------------------------------------------
+action               0.1856       0.0889       0.1202       900       
+adventure            0.2112       0.0922       0.1284       900       
+animation            0.3019       0.1989       0.2398       900       
+biography            0.4051       0.3911       0.3980       900       
+crime                0.2893       0.2556       0.2714       900       
+family               0.2819       0.2556       0.2681       900       
+fantasy              0.2130       0.1456       0.1729       900       
+film-noir            0.3349       0.2432       0.2818       296       
+history              0.2850       0.2422       0.2619       900       
+horror               0.3472       0.3056       0.3251       900       
+mystery              0.2521       0.2367       0.2441       900       
+romance              0.3043       0.3422       0.3222       900       
+scifi                0.3708       0.3844       0.3775       900       
+sports               0.1925       0.6878       0.3008       900       
+thriller             0.1562       0.1022       0.1236       900       
+war                  0.4656       0.4744       0.4700       900       
+--------------------------------------------------------------------------------
+Macro Average        0.2873       0.2779       0.2691      
+================================================================================
+
+✓ Evaluation metrics saved to: results/naivebayes/nonerevaluation_metrics.txt
+
+6. Generating confusion matrix...
+
+✓ Confusion matrix saved to: results/naivebayes/nonerconfusion_matrix.png
+
+7. Top features per genre (by log probability):
+
+ACTION:
+  pos_count_noun                 -1.8553
+  pos_count_verb                 -2.5082
+  pos_count_det                  -2.7250
+  pos_count_prep                 -2.8440
+  pos_count_adj                  -3.0147
+
+ADVENTURE:
+  pos_count_noun                 -1.8546
+  pos_count_verb                 -2.5040
+  pos_count_det                  -2.6952
+  pos_count_prep                 -2.8181
+  pos_count_adj                  -3.0012
+
+ANIMATION:
+  pos_count_noun                 -1.8601
+  pos_count_verb                 -2.5090
+  pos_count_det                  -2.6857
+  pos_count_prep                 -2.8612
+  pos_count_adj                  -2.9561
+
+BIOGRAPHY:
+  pos_count_noun                 -1.7880
+  pos_count_prep                 -2.7127
+  pos_count_verb                 -2.7247
+  pos_count_det                  -2.7636
+  pos_count_adj                  -2.8785
+
+CRIME:
+  pos_count_noun                 -1.8816
+  pos_count_verb                 -2.4858
+  pos_count_det                  -2.7555
+  pos_count_prep                 -2.8700
+  pos_count_adj                  -3.0216
+
+FAMILY:
+  pos_count_noun                 -1.8640
+  pos_count_verb                 -2.4734
+  pos_count_det                  -2.7684
+  pos_count_prep                 -2.8700
+  pos_count_adj                  -3.0037
+
+FANTASY:
+  pos_count_noun                 -1.8951
+  pos_count_verb                 -2.4912
+  pos_count_det                  -2.6844
+  pos_count_prep                 -2.8177
+  pos_count_adj                  -2.9689
+
+FILM-NOIR:
+  pos_count_noun                 -1.9387
+  pos_count_verb                 -2.5663
+  pos_count_det                  -2.8170
+  pos_count_prep                 -2.9391
+  pos_count_adj                  -3.1554
+
+HISTORY:
+  pos_count_noun                 -1.8231
+  pos_count_verb                 -2.6541
+  pos_count_det                  -2.6631
+  pos_count_prep                 -2.6658
+  pos_count_adj                  -2.8744
+
+HORROR:
+  pos_count_noun                 -1.9128
+  pos_count_verb                 -2.4817
+  pos_count_det                  -2.6945
+  pos_count_prep                 -2.8336
+  pos_count_adj                  -2.9898
+
+MYSTERY:
+  pos_count_noun                 -1.9030
+  pos_count_verb                 -2.4871
+  pos_count_det                  -2.6911
+  pos_count_prep                 -2.8494
+  pos_count_adj                  -2.9719
+
+ROMANCE:
+  pos_count_noun                 -1.8864
+  pos_count_verb                 -2.4793
+  pos_count_det                  -2.8223
+  pos_count_prep                 -2.8495
+  pos_count_adj                  -2.9743
+
+SCIFI:
+  pos_count_noun                 -1.8946
+  pos_count_verb                 -2.5135
+  pos_count_det                  -2.6616
+  pos_count_prep                 -2.8280
+  pos_count_adj                  -2.9403
+
+SPORTS:
+  pos_count_noun                 -1.8274
+  pos_count_verb                 -2.5572
+  pos_count_det                  -2.7533
+  pos_count_prep                 -2.8951
+  pos_count_adj                  -2.9950
+
+THRILLER:
+  pos_count_noun                 -1.9152
+  pos_count_verb                 -2.4581
+  pos_count_det                  -2.7140
+  pos_count_prep                 -2.8460
+  pos_count_adj                  -2.9980
+
+WAR:
+  pos_count_noun                 -1.8440
+  pos_count_verb                 -2.6190
+  pos_count_prep                 -2.6648
+  pos_count_det                  -2.6890
+  pos_count_adj                  -2.8453
+
+✓ Top features saved to: results/naivebayes/nonertop_features.txt
+✓ Predictions saved to: results/naivebayes/nonerpredictions.csv
+✓ Model summary saved to: results/naivebayes/nonersummary.txt
+
+================================================================================
+FINAL ACCURACY: 0.2794
+FINAL MACRO F1: 0.2691
+================================================================================
+
+✓ All results saved to results/naivebayes/noner
+(venv) nikhita-ravi@nikhita-ravi-HP-Pavilion-Laptop-15-eg3xxx:~/CL2-Project$ python fullnaivebayes.py
+Checking dependencies...
+Installing scikit-learn...
+
+[notice] A new release of pip is available: 25.2 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+Downloading NLTK data...
+All dependencies ready!
+
+Loading spaCy NER model...
+spaCy model loaded!
+
+
+================================================================================
+NAIVE BAYES GENRE CLASSIFICATION
+WITH INDEPENDENT FEATURE GROUPS
+================================================================================
+
+1. Loading balanced data from ./data...
+Found 16 genre CSV files
+Target: 3000 samples per genre
+
+✓ Sampled 3000 from action.csv (had 52452)
+✓ Sampled 3000 from adventure.csv (had 25664)
+✓ Sampled 3000 from animation.csv (had 8419)
+✓ Sampled 3000 from biography.csv (had 8289)
+✓ Sampled 3000 from crime.csv (had 35852)
+✓ Sampled 3000 from family.csv (had 17095)
+✓ Sampled 3000 from fantasy.csv (had 17163)
+✓ Using all 986 samples from film-noir.csv (limited)
+✓ Sampled 3000 from history.csv (had 8996)
+✓ Sampled 3000 from horror.csv (had 36682)
+✓ Sampled 3000 from mystery.csv (had 18960)
+✓ Sampled 3000 from romance.csv (had 52617)
+✓ Sampled 3000 from scifi.csv (had 16557)
+✓ Sampled 3000 from sports.csv (had 5292)
+✓ Sampled 3000 from thriller.csv (had 53365)
+✓ Sampled 3000 from war.csv (had 9911)
+
+============================================================
+BALANCED DATASET SUMMARY
+============================================================
+Total samples: 45986
+
+Genre distribution:
+genre
+action       3000
+adventure    3000
+animation    3000
+biography    3000
+crime        3000
+family       3000
+fantasy      3000
+film-noir     986
+history      3000
+horror       3000
+mystery      3000
+romance      3000
+scifi        3000
+sports       3000
+thriller     3000
+war          3000
+Name: count, dtype: int64
+============================================================
+
+
+2. Splitting data (70% train, 30% test) with stratification...
+
+Training samples: 32190
+Testing samples: 13796
+
+3. Training classifier...
+
+============================================================
+ACTIVE FEATURE GROUPS:
+  ✓ content_words
+  ✓ pos_tags
+  ✓ structure
+  ✓ punctuation
+  ✓ lexical
+  ✓ affixes
+============================================================
+
+Extracting features from training data...
+Processing 32190 training documents...
+  Processed 500/32190 (1.6%)
+  Processed 1000/32190 (3.1%)
+  Processed 1500/32190 (4.7%)
+  Processed 2000/32190 (6.2%)
+  Processed 2500/32190 (7.8%)
+  Processed 3000/32190 (9.3%)
+  Processed 3500/32190 (10.9%)
+  Processed 4000/32190 (12.4%)
+  Processed 4500/32190 (14.0%)
+  Processed 5000/32190 (15.5%)
+  Processed 5500/32190 (17.1%)
+  Processed 6000/32190 (18.6%)
+  Processed 6500/32190 (20.2%)
+  Processed 7000/32190 (21.7%)
+  Processed 7500/32190 (23.3%)
+  Processed 8000/32190 (24.9%)
+  Processed 8500/32190 (26.4%)
+  Processed 9000/32190 (28.0%)
+  Processed 9500/32190 (29.5%)
+  Processed 10000/32190 (31.1%)
+  Processed 10500/32190 (32.6%)
+  Processed 11000/32190 (34.2%)
+  Processed 11500/32190 (35.7%)
+  Processed 12000/32190 (37.3%)
+  Processed 12500/32190 (38.8%)
+  Processed 13000/32190 (40.4%)
+  Processed 13500/32190 (41.9%)
+  Processed 14000/32190 (43.5%)
+  Processed 14500/32190 (45.0%)
+  Processed 15000/32190 (46.6%)
+  Processed 15500/32190 (48.2%)
+  Processed 16000/32190 (49.7%)
+  Processed 16500/32190 (51.3%)
+  Processed 17000/32190 (52.8%)
+  Processed 17500/32190 (54.4%)
+  Processed 18000/32190 (55.9%)
+  Processed 18500/32190 (57.5%)
+  Processed 19000/32190 (59.0%)
+  Processed 19500/32190 (60.6%)
+  Processed 20000/32190 (62.1%)
+  Processed 20500/32190 (63.7%)
+  Processed 21000/32190 (65.2%)
+  Processed 21500/32190 (66.8%)
+  Processed 22000/32190 (68.3%)
+  Processed 22500/32190 (69.9%)
+  Processed 23000/32190 (71.5%)
+  Processed 23500/32190 (73.0%)
+  Processed 24000/32190 (74.6%)
+  Processed 24500/32190 (76.1%)
+  Processed 25000/32190 (77.7%)
+  Processed 25500/32190 (79.2%)
+  Processed 26000/32190 (80.8%)
+  Processed 26500/32190 (82.3%)
+  Processed 27000/32190 (83.9%)
+  Processed 27500/32190 (85.4%)
+  Processed 28000/32190 (87.0%)
+  Processed 28500/32190 (88.5%)
+  Processed 29000/32190 (90.1%)
+  Processed 29500/32190 (91.6%)
+  Processed 30000/32190 (93.2%)
+  Processed 30500/32190 (94.7%)
+  Processed 31000/32190 (96.3%)
+  Processed 31500/32190 (97.9%)
+  Processed 32000/32190 (99.4%)
+  Completed: 32190/32190 (100.0%)
+
+Building feature vocabulary from active groups...
+Total unique features: 37475
+Using 5000 features
+  - content_words: 4919 features
+  - pos_tags: 9 features
+  - structure: 13 features
+  - punctuation: 9 features
+  - lexical: 11 features
+  - affixes: 39 features
+
+Converting to feature matrix...
+  Processed 1000/32190 (3.1%)
+  Processed 2000/32190 (6.2%)
+  Processed 3000/32190 (9.3%)
+  Processed 4000/32190 (12.4%)
+  Processed 5000/32190 (15.5%)
+  Processed 6000/32190 (18.6%)
+  Processed 7000/32190 (21.7%)
+  Processed 8000/32190 (24.9%)
+  Processed 9000/32190 (28.0%)
+  Processed 10000/32190 (31.1%)
+  Processed 11000/32190 (34.2%)
+  Processed 12000/32190 (37.3%)
+  Processed 13000/32190 (40.4%)
+  Processed 14000/32190 (43.5%)
+  Processed 15000/32190 (46.6%)
+  Processed 16000/32190 (49.7%)
+  Processed 17000/32190 (52.8%)
+  Processed 18000/32190 (55.9%)
+  Processed 19000/32190 (59.0%)
+  Processed 20000/32190 (62.1%)
+  Processed 21000/32190 (65.2%)
+  Processed 22000/32190 (68.3%)
+  Processed 23000/32190 (71.5%)
+  Processed 24000/32190 (74.6%)
+  Processed 25000/32190 (77.7%)
+  Processed 26000/32190 (80.8%)
+  Processed 27000/32190 (83.9%)
+  Processed 28000/32190 (87.0%)
+  Processed 29000/32190 (90.1%)
+  Processed 30000/32190 (93.2%)
+  Processed 31000/32190 (96.3%)
+  Processed 32000/32190 (99.4%)
+
+Feature matrix shape: (32190, 5000)
+
+Training Multinomial Naive Bayes model...
+
+Training accuracy: 0.4445
+Training complete!
+
+4. Making predictions...
+
+Making predictions on 13796 test documents...
+  Processed 500/13796 (3.6%)
+  Processed 1000/13796 (7.2%)
+  Processed 1500/13796 (10.9%)
+  Processed 2000/13796 (14.5%)
+  Processed 2500/13796 (18.1%)
+  Processed 3000/13796 (21.7%)
+  Processed 3500/13796 (25.4%)
+  Processed 4000/13796 (29.0%)
+  Processed 4500/13796 (32.6%)
+  Processed 5000/13796 (36.2%)
+  Processed 5500/13796 (39.9%)
+  Processed 6000/13796 (43.5%)
+  Processed 6500/13796 (47.1%)
+  Processed 7000/13796 (50.7%)
+  Processed 7500/13796 (54.4%)
+  Processed 8000/13796 (58.0%)
+  Processed 8500/13796 (61.6%)
+  Processed 9000/13796 (65.2%)
+  Processed 9500/13796 (68.9%)
+  Processed 10000/13796 (72.5%)
+  Processed 10500/13796 (76.1%)
+  Processed 11000/13796 (79.7%)
+  Processed 11500/13796 (83.4%)
+  Processed 12000/13796 (87.0%)
+  Processed 12500/13796 (90.6%)
+  Processed 13000/13796 (94.2%)
+  Processed 13500/13796 (97.9%)
+  Completed: 13796/13796 (100.0%)
+
+Converting to feature matrix...
+  Processed 1000/13796 (7.2%)
+  Processed 2000/13796 (14.5%)
+  Processed 3000/13796 (21.7%)
+  Processed 4000/13796 (29.0%)
+  Processed 5000/13796 (36.2%)
+  Processed 6000/13796 (43.5%)
+  Processed 7000/13796 (50.7%)
+  Processed 8000/13796 (58.0%)
+  Processed 9000/13796 (65.2%)
+  Processed 10000/13796 (72.5%)
+  Processed 11000/13796 (79.7%)
+  Processed 12000/13796 (87.0%)
+  Processed 13000/13796 (94.2%)
+
+5. Evaluating performance...
+
+================================================================================
+NAIVE BAYES CLASSIFIER - EVALUATION METRICS
+================================================================================
+
+Overall Accuracy: 0.2794
+
+--------------------------------------------------------------------------------
+Genre                Precision    Recall       F1-Score     Support   
+--------------------------------------------------------------------------------
+action               0.1856       0.0889       0.1202       900       
+adventure            0.2112       0.0922       0.1284       900       
+animation            0.3019       0.1989       0.2398       900       
+biography            0.4051       0.3911       0.3980       900       
+crime                0.2893       0.2556       0.2714       900       
+family               0.2819       0.2556       0.2681       900       
+fantasy              0.2130       0.1456       0.1729       900       
+film-noir            0.3349       0.2432       0.2818       296       
+history              0.2850       0.2422       0.2619       900       
+horror               0.3472       0.3056       0.3251       900       
+mystery              0.2521       0.2367       0.2441       900       
+romance              0.3043       0.3422       0.3222       900       
+scifi                0.3708       0.3844       0.3775       900       
+sports               0.1925       0.6878       0.3008       900       
+thriller             0.1562       0.1022       0.1236       900       
+war                  0.4656       0.4744       0.4700       900       
+--------------------------------------------------------------------------------
+Macro Average        0.2873       0.2779       0.2691      
+================================================================================
+
+✓ Evaluation metrics saved to: results/naivebayes/nonerevaluation_metrics.txt
+
+6. Generating confusion matrix...
+
+✓ Confusion matrix saved to: results/naivebayes/nonerconfusion_matrix.png
+
+7. Top features per genre (by log probability):
+
+ACTION:
+  pos_count_noun                 -1.8553
+  pos_count_verb                 -2.5082
+  pos_count_det                  -2.7250
+  pos_count_prep                 -2.8440
+  pos_count_adj                  -3.0147
+
+ADVENTURE:
+  pos_count_noun                 -1.8546
+  pos_count_verb                 -2.5040
+  pos_count_det                  -2.6952
+  pos_count_prep                 -2.8181
+  pos_count_adj                  -3.0012
+
+ANIMATION:
+  pos_count_noun                 -1.8601
+  pos_count_verb                 -2.5090
+  pos_count_det                  -2.6857
+  pos_count_prep                 -2.8612
+  pos_count_adj                  -2.9561
+
+BIOGRAPHY:
+  pos_count_noun                 -1.7880
+  pos_count_prep                 -2.7127
+  pos_count_verb                 -2.7247
+  pos_count_det                  -2.7636
+  pos_count_adj                  -2.8785
+
+CRIME:
+  pos_count_noun                 -1.8816
+  pos_count_verb                 -2.4858
+  pos_count_det                  -2.7555
+  pos_count_prep                 -2.8700
+  pos_count_adj                  -3.0216
+
+FAMILY:
+  pos_count_noun                 -1.8640
+  pos_count_verb                 -2.4734
+  pos_count_det                  -2.7684
+  pos_count_prep                 -2.8700
+  pos_count_adj                  -3.0037
+
+FANTASY:
+  pos_count_noun                 -1.8951
+  pos_count_verb                 -2.4912
+  pos_count_det                  -2.6844
+  pos_count_prep                 -2.8177
+  pos_count_adj                  -2.9689
+
+FILM-NOIR:
+  pos_count_noun                 -1.9387
+  pos_count_verb                 -2.5663
+  pos_count_det                  -2.8170
+  pos_count_prep                 -2.9391
+  pos_count_adj                  -3.1554
+
+HISTORY:
+  pos_count_noun                 -1.8231
+  pos_count_verb                 -2.6541
+  pos_count_det                  -2.6631
+  pos_count_prep                 -2.6658
+  pos_count_adj                  -2.8744
+
+HORROR:
+  pos_count_noun                 -1.9128
+  pos_count_verb                 -2.4817
+  pos_count_det                  -2.6945
+  pos_count_prep                 -2.8336
+  pos_count_adj                  -2.9898
+
+MYSTERY:
+  pos_count_noun                 -1.9030
+  pos_count_verb                 -2.4871
+  pos_count_det                  -2.6911
+  pos_count_prep                 -2.8494
+  pos_count_adj                  -2.9719
+
+ROMANCE:
+  pos_count_noun                 -1.8864
+  pos_count_verb                 -2.4793
+  pos_count_det                  -2.8223
+  pos_count_prep                 -2.8495
+  pos_count_adj                  -2.9743
+
+SCIFI:
+  pos_count_noun                 -1.8946
+  pos_count_verb                 -2.5135
+  pos_count_det                  -2.6616
+  pos_count_prep                 -2.8280
+  pos_count_adj                  -2.9403
+
+SPORTS:
+  pos_count_noun                 -1.8274
+  pos_count_verb                 -2.5572
+  pos_count_det                  -2.7533
+  pos_count_prep                 -2.8951
+  pos_count_adj                  -2.9950
+
+THRILLER:
+  pos_count_noun                 -1.9152
+  pos_count_verb                 -2.4581
+  pos_count_det                  -2.7140
+  pos_count_prep                 -2.8460
+  pos_count_adj                  -2.9980
+
+WAR:
+  pos_count_noun                 -1.8440
+  pos_count_verb                 -2.6190
+  pos_count_prep                 -2.6648
+  pos_count_det                  -2.6890
+  pos_count_adj                  -2.8453
+
+✓ Top features saved to: results/naivebayes/nonertop_features.txt
+✓ Predictions saved to: results/naivebayes/nonerpredictions.csv
+✓ Model summary saved to: results/naivebayes/nonersummary.txt
+THIS IS NO AFFIXES
+================================================================================
+FINAL ACCURACY: 0.2794
+FINAL MACRO F1: 0.2691
+================================================================================
+
+✓ All results saved to results/naivebayes/noner
+(venv) nikhita-ravi@nikhita-ravi-HP-Pavilion-Laptop-15-eg3xxx:~/CL2-Project$ 
+
+  punct_period                   -3.0579
+  punct_comma                    +3.0556
+  bigram_has_let_know            +2.7566
+  ner_density                    +2.5905
+  prefix_ex_count                +2.3235
+
+DIVORCE:
+  punct_period                   -5.9089
+  stddev_sent_length             +2.3547
+  bigram_has_life_divorce        +2.0879
+  bigram_has_single_moms         +2.0162
+  bigram_has_seen_many           +1.9842
+
+EDUCATION:
+  suffix_tion_count              +4.7873
+  punct_quotes                   -4.2089
+  bigram_has_public_education    +3.2173
+  ner_density                    -3.1984
+  bigram_has_betsy_devos         +3.1303
+
+ENTERTAINMENT:
+  punct_quotes                   +2.7978
+  sentence_count                 -2.2311
+  doc_length_tokens              -2.1053
+  punct_period                   +2.0913
+  bigram_has_yet_another         +1.8970
+
+ENVIRONMENT:
+  punct_period                   -5.9937
+  bigram_has_mother_nature       +3.7230
+  bigram_has_climate_change      +3.1862
+  suffix_al_count                +2.6614
+  bigram_has_take_look           +2.2202
+
+FIFTY:
+  doc_length_tokens              +9.5866
+  sentence_count                 +8.1276
+  ner_density                    -4.0380
+  stddev_sent_length             +3.8430
+  punct_period                   +2.9088
+
+FOOD & DRINK:
+  suffix_ed_count                -2.0962
+  doc_length_tokens              -1.9144
+  suffix_al_count                -1.8803
+  suffix_tion_count              -1.8762
+  ner_density                    -1.5878
+
+GOOD NEWS:
+  titlecase_ratio                -1.8938
+  stddev_sent_length             -1.8733
+  bigram_has_police_officer      +1.7368
+  prefix_re_count                -1.7213
+  bigram_has_video_make          +1.6403
+
+GREEN:
+  bigram_has_climate_change      +3.7015
+  bigram_has_global_warming      +2.8013
+  bigram_has_donald_trump        +2.2953
+  suffix_al_count                +2.0648
+  ner_loc                        +1.9562
+
+HEALTHY LIVING:
+  bigram_has_mental_health       +2.4161
+  suffix_ed_count                -2.4145
+  doc_length_tokens              +1.8961
+  prefix_dis_count               +1.7832
+  ner_density                    -1.7025
+
+HOME & LIVING:
+  suffix_ed_count                -3.2899
+  ner_density                    -2.9290
+  punct_period                   -2.8353
+  bigram_has_check_huffpost      +2.5734
+  bigram_has_real_estate         +2.2767
+
+IMPACT:
+  bigram_has_ways_help           +2.0674
+  punct_quotes                   -2.0561
+  suffix_tion_count              +2.0086
+  bigram_has_need_help           +1.8787
+  bigram_has_work_together       +1.7118
+
+LATINO VOICES:
+  bigram_has_puerto_rico         +2.9667
+  punct_quotes                   +2.4213
+  bigram_has_jennifer_lopez      +1.8454
+  ner_language                   +1.7855
+  bigram_has_donald_trump        +1.6857
+
+MEDIA:
+  punct_quotes                   +3.0690
+  bigram_has_digital_media       +1.9604
+  punct_period                   +1.9434
+  bigram_has_white_house         +1.8926
+  bigram_has_wall_street         +1.8650
+
+MONEY:
+  punct_period                   -4.5188
+  bigram_has_credit_card         +3.2807
+  ner_money                      +2.5022
+  bigram_has_credit_cards        +2.3092
+  prefix_re_count                +2.2555
+
+PARENTING:
+  punct_period                   -3.4216
+  ner_density                    -3.0406
+  sentence_count                 +2.4241
+  stddev_sent_length             +2.0306
+  bigram_has_reddit_user         +1.5015
+
+PARENTS:
+  titlecase_ratio                -2.5092
+  prefix_re_count                -1.9162
+  doc_length_tokens              +1.8861
+  ner_loc                        -1.7731
+  suffix_tion_count              -1.6173
+
+POLITICS:
+  bigram_has_donald_trump        +2.3720
+  bigram_has_bernie_sanders      +2.3618
+  stddev_sent_length             -2.2841
+  prefix_de_count                +2.2789
+  punct_period                   +2.1533
+
+QUEER VOICES:
+  bigram_has_gay_men             +2.7188
+  punct_quotes                   +2.4953
+  bigram_has_lgbt_people         +2.3581
+  bigram_has_harvey_milk         +2.1630
+  bigram_has_love_love           +1.8789
+
+RELIGION:
+  ner_norp                       +2.0421
+  ner_money                      -1.6044
+  suffix_ing_count               -1.5726
+  bigram_has_muslim_americans    +1.5625
+  bigram_has_role_models         +1.3739
+
+SCIENCE:
+  ner_loc                        +2.1978
+  bigram_has_space_agency        +1.8813
+  prefix_ex_count                +1.8318
+  allcaps_ratio                  +1.6709
+  ner_density                    +1.5938
+
+SPORTS:
+  ner_event                      +2.0619
+  bigram_has_super_bowl          +1.9300
+  stddev_sent_length             -1.8591
+  sentence_count                 -1.8212
+  bigram_has_world_cup           +1.7939
+
+STYLE:
+  mean_sent_length               -2.3081
+  punct_period                   +2.1476
+  median_sent_length             -2.1155
+  bigram_has_time_year           +1.9127
+  prefix_re_count                -1.8823
+
+STYLE & BEAUTY:
+  punct_period                   -3.7871
+  bigram_has_huffpost_style      +3.1145
+  punct_colon                    +3.0630
+  bigram_has_look_back           +2.1825
+  bigram_has_golden_globes       +1.8466
+
+TASTE:
+  titlecase_ratio                -2.6629
+  suffix_ed_count                -2.2682
+  suffix_tion_count              -1.9244
+  punct_period                   +1.7483
+  suffix_ing_count               -1.7445
+
+TECH:
+  bigram_has_looking_see         +4.0645
+  bigram_has_chief_executive     +2.0943
+  bigram_has_every_week          +2.0835
+  bigram_has_social_media        +1.8513
+  bigram_has_san_francisco       +1.7872
+
+THE WORLDPOST:
+  stddev_sent_length             -3.9793
+  ner_density                    +3.0472
+  punct_comma                    -2.7960
+  suffix_ed_count                +2.6932
+  bigram_has_human_rights        +2.4369
+
+TRAVEL:
+  ner_loc                        +2.1632
+  bigram_has_great_deal          +2.0710
+  stddev_sent_length             +1.8614
+  punct_comma                    +1.6291
+  bigram_has_summer_vacation     +1.5855
+
+U.S. NEWS:
+  suffix_ed_count                +4.7387
+  stddev_sent_length             -3.5705
+  punct_period                   +2.9779
+  punct_comma                    -2.4011
+  suffix_ing_count               +2.2910
+
+WEDDINGS:
+  punct_period                   -5.4104
+  bigram_has_huffpost_weddings   +3.9979
+  suffix_ing_count               +3.3492
+  bigram_has_click_slideshow     +3.0563
+  titlecase_ratio                +2.1899
+
+WEIRD NEWS:
+  stddev_sent_length             -4.3509
+  mean_sent_length               -2.5706
+  median_sent_length             -2.3097
+  doc_length_tokens              -2.0188
+  punct_quotes                   +1.8694
+
+WELLNESS:
+  punct_period                   -3.8994
+  ner_density                    -3.8401
+  stddev_sent_length             +2.5395
+  doc_length_tokens              +2.3622
+  sentence_count                 +2.2464
+
+WOMEN:
+  bigram_has_planned_parenthood  +3.5587
+  bigram_has_sexual_assault      +2.3676
+  bigram_has_sexual_harassment   +2.0605
+  punct_period                   +1.7862
+  bigram_has_women_share         +1.6872
+
+WORLD NEWS:
+  stddev_sent_length             -4.3136
+  suffix_ed_count                +4.0317
+  bigram_has_prime_minister      +2.9574
+  doc_length_tokens              -2.3333
+  punct_comma                    -2.3023
+
+WORLDPOST:
+  doc_length_tokens              +7.4753
+  sentence_count                 +4.2928
+  stddev_sent_length             +3.7524
+  ner_norp                       +2.9574
+  ner_gpe                        +2.7847
+
+✓ Top features saved to: results/maxent/top_features.txt
+✓ Predictions saved to: results/maxent/predictions.csv
+✓ Model summary saved to: results/maxent/summary.txt
+
+================================================================================
+FINAL ACCURACY: 0.1301
+FINAL MACRO F1: 0.1144
+================================================================================
+
+✓ All results saved to results/maxent/
+(venv) nikhita-ravi@nikhita-ravi-HP-Pavilion-Laptop-15-eg3xxx:~/CL2-Project$ python newsmaxent.py
+Checking dependencies...
+Installing scikit-learn...
+
+[notice] A new release of pip is available: 25.2 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+Downloading NLTK data...
+All dependencies ready!
+
+Loading spaCy NER model...
+spaCy model loaded!
+
+
+================================================================================
+MAXIMUM ENTROPY category CLASSIFICATION
+WITH BALANCED SAMPLING AND AFFIX FEATURES
+================================================================================
+
+1. Loading balanced data from ./data...
+Loading data from News_Category_Dataset_v3.json...
+Target: 1000 samples per category
+
+✓ Loaded 209527 total records
+
+Available columns: ['link', 'headline', 'category', 'short_description', 'authors', 'date']
+Using 'short_description' as text content
+
+After removing empty descriptions: 189815 records
+
+Original category distribution:
+category
+POLITICS          32441
+WELLNESS          17943
+ENTERTAINMENT     14774
+STYLE & BEAUTY     9802
+TRAVEL             9421
+PARENTING          8790
+FOOD & DRINK       6331
+QUEER VOICES       5603
+HEALTHY LIVING     5265
+BUSINESS           5132
+COMEDY             4642
+SPORTS             4414
+HOME & LIVING      4317
+BLACK VOICES       4177
+THE WORLDPOST      3664
+WEDDINGS           3653
+PARENTS            3556
+DIVORCE            3426
+WORLD NEWS         3297
+WOMEN              3184
+IMPACT             3086
+CRIME              2832
+MEDIA              2404
+WEIRD NEWS         2316
+TECH               2103
+GREEN              2046
+TASTE              1940
+RELIGION           1879
+SCIENCE            1803
+MONEY              1755
+STYLE              1567
+ENVIRONMENT        1442
+U.S. NEWS          1377
+ARTS & CULTURE     1339
+WORLDPOST          1242
+CULTURE & ARTS     1063
+FIFTY              1042
+GOOD NEWS          1039
+LATINO VOICES      1022
+COLLEGE             921
+EDUCATION           902
+ARTS                863
+Name: count, dtype: int64
+
+Categories with at least 500 samples: 42
+
+✓ Using all 863 samples from 'ARTS'
+✓ Sampled 1000 from 'ARTS & CULTURE' (had 1339)
+✓ Sampled 1000 from 'BLACK VOICES' (had 4177)
+✓ Sampled 1000 from 'BUSINESS' (had 5132)
+✓ Using all 921 samples from 'COLLEGE'
+✓ Sampled 1000 from 'COMEDY' (had 4642)
+✓ Sampled 1000 from 'CRIME' (had 2832)
+✓ Sampled 1000 from 'CULTURE & ARTS' (had 1063)
+✓ Sampled 1000 from 'DIVORCE' (had 3426)
+✓ Using all 902 samples from 'EDUCATION'
+✓ Sampled 1000 from 'ENTERTAINMENT' (had 14774)
+✓ Sampled 1000 from 'ENVIRONMENT' (had 1442)
+✓ Sampled 1000 from 'FIFTY' (had 1042)
+✓ Sampled 1000 from 'FOOD & DRINK' (had 6331)
+✓ Sampled 1000 from 'GOOD NEWS' (had 1039)
+✓ Sampled 1000 from 'GREEN' (had 2046)
+✓ Sampled 1000 from 'HEALTHY LIVING' (had 5265)
+✓ Sampled 1000 from 'HOME & LIVING' (had 4317)
+✓ Sampled 1000 from 'IMPACT' (had 3086)
+✓ Sampled 1000 from 'LATINO VOICES' (had 1022)
+✓ Sampled 1000 from 'MEDIA' (had 2404)
+✓ Sampled 1000 from 'MONEY' (had 1755)
+✓ Sampled 1000 from 'PARENTING' (had 8790)
+✓ Sampled 1000 from 'PARENTS' (had 3556)
+✓ Sampled 1000 from 'POLITICS' (had 32441)
+✓ Sampled 1000 from 'QUEER VOICES' (had 5603)
+✓ Sampled 1000 from 'RELIGION' (had 1879)
+✓ Sampled 1000 from 'SCIENCE' (had 1803)
+✓ Sampled 1000 from 'SPORTS' (had 4414)
+✓ Sampled 1000 from 'STYLE' (had 1567)
+✓ Sampled 1000 from 'STYLE & BEAUTY' (had 9802)
+✓ Sampled 1000 from 'TASTE' (had 1940)
+✓ Sampled 1000 from 'TECH' (had 2103)
+✓ Sampled 1000 from 'THE WORLDPOST' (had 3664)
+✓ Sampled 1000 from 'TRAVEL' (had 9421)
+✓ Sampled 1000 from 'U.S. NEWS' (had 1377)
+✓ Sampled 1000 from 'WEDDINGS' (had 3653)
+✓ Sampled 1000 from 'WEIRD NEWS' (had 2316)
+✓ Sampled 1000 from 'WELLNESS' (had 17943)
+✓ Sampled 1000 from 'WOMEN' (had 3184)
+✓ Sampled 1000 from 'WORLD NEWS' (had 3297)
+✓ Sampled 1000 from 'WORLDPOST' (had 1242)
+
+============================================================
+BALANCED DATASET SUMMARY
+============================================================
+Total samples: 41686
+Number of categories: 42
+
+Category distribution:
+category
+ARTS               863
+ARTS & CULTURE    1000
+BLACK VOICES      1000
+BUSINESS          1000
+COLLEGE            921
+COMEDY            1000
+CRIME             1000
+CULTURE & ARTS    1000
+DIVORCE           1000
+EDUCATION          902
+ENTERTAINMENT     1000
+ENVIRONMENT       1000
+FIFTY             1000
+FOOD & DRINK      1000
+GOOD NEWS         1000
+GREEN             1000
+HEALTHY LIVING    1000
+HOME & LIVING     1000
+IMPACT            1000
+LATINO VOICES     1000
+MEDIA             1000
+MONEY             1000
+PARENTING         1000
+PARENTS           1000
+POLITICS          1000
+QUEER VOICES      1000
+RELIGION          1000
+SCIENCE           1000
+SPORTS            1000
+STYLE             1000
+STYLE & BEAUTY    1000
+TASTE             1000
+TECH              1000
+THE WORLDPOST     1000
+TRAVEL            1000
+U.S. NEWS         1000
+WEDDINGS          1000
+WEIRD NEWS        1000
+WELLNESS          1000
+WOMEN             1000
+WORLD NEWS        1000
+WORLDPOST         1000
+Name: count, dtype: int64
+============================================================
+
+
+2. Splitting data (70% train, 30% test) with stratification...
+
+============================================================
+Training samples: 29180
+Testing samples: 12506
+
+Train distribution:
+  ARTS           :  604 samples
+  ARTS & CULTURE :  700 samples
+  BLACK VOICES   :  700 samples
+  BUSINESS       :  700 samples
+  COLLEGE        :  645 samples
+  COMEDY         :  700 samples
+  CRIME          :  700 samples
+  CULTURE & ARTS :  700 samples
+  DIVORCE        :  700 samples
+  EDUCATION      :  631 samples
+  ENTERTAINMENT  :  700 samples
+  ENVIRONMENT    :  700 samples
+  FIFTY          :  700 samples
+  FOOD & DRINK   :  700 samples
+  GOOD NEWS      :  700 samples
+  GREEN          :  700 samples
+  HEALTHY LIVING :  700 samples
+  HOME & LIVING  :  700 samples
+  IMPACT         :  700 samples
+  LATINO VOICES  :  700 samples
+  MEDIA          :  700 samples
+  MONEY          :  700 samples
+  PARENTING      :  700 samples
+  PARENTS        :  700 samples
+  POLITICS       :  700 samples
+  QUEER VOICES   :  700 samples
+  RELIGION       :  700 samples
+  SCIENCE        :  700 samples
+  SPORTS         :  700 samples
+  STYLE          :  700 samples
+  STYLE & BEAUTY :  700 samples
+  TASTE          :  700 samples
+  TECH           :  700 samples
+  THE WORLDPOST  :  700 samples
+  TRAVEL         :  700 samples
+  U.S. NEWS      :  700 samples
+  WEDDINGS       :  700 samples
+  WEIRD NEWS     :  700 samples
+  WELLNESS       :  700 samples
+  WOMEN          :  700 samples
+  WORLD NEWS     :  700 samples
+  WORLDPOST      :  700 samples
+
+Test distribution:
+  ARTS           :  259 samples
+  ARTS & CULTURE :  300 samples
+  BLACK VOICES   :  300 samples
+  BUSINESS       :  300 samples
+  COLLEGE        :  276 samples
+  COMEDY         :  300 samples
+  CRIME          :  300 samples
+  CULTURE & ARTS :  300 samples
+  DIVORCE        :  300 samples
+  EDUCATION      :  271 samples
+  ENTERTAINMENT  :  300 samples
+  ENVIRONMENT    :  300 samples
+  FIFTY          :  300 samples
+  FOOD & DRINK   :  300 samples
+  GOOD NEWS      :  300 samples
+  GREEN          :  300 samples
+  HEALTHY LIVING :  300 samples
+  HOME & LIVING  :  300 samples
+  IMPACT         :  300 samples
+  LATINO VOICES  :  300 samples
+  MEDIA          :  300 samples
+  MONEY          :  300 samples
+  PARENTING      :  300 samples
+  PARENTS        :  300 samples
+  POLITICS       :  300 samples
+  QUEER VOICES   :  300 samples
+  RELIGION       :  300 samples
+  SCIENCE        :  300 samples
+  SPORTS         :  300 samples
+  STYLE          :  300 samples
+  STYLE & BEAUTY :  300 samples
+  TASTE          :  300 samples
+  TECH           :  300 samples
+  THE WORLDPOST  :  300 samples
+  TRAVEL         :  300 samples
+  U.S. NEWS      :  300 samples
+  WEDDINGS       :  300 samples
+  WEIRD NEWS     :  300 samples
+  WELLNESS       :  300 samples
+  WOMEN          :  300 samples
+  WORLD NEWS     :  300 samples
+  WORLDPOST      :  300 samples
+============================================================
+
+
+3. Training classifier...
+Extracting features from training data...
+Processing 29180 training documents...
+  Processed 500/29180 (1.7%)
+  Processed 1000/29180 (3.4%)
+  Processed 1500/29180 (5.1%)
+  Processed 2000/29180 (6.9%)
+  Processed 2500/29180 (8.6%)
+  Processed 3000/29180 (10.3%)
+  Processed 3500/29180 (12.0%)
+  Processed 4000/29180 (13.7%)
+  Processed 4500/29180 (15.4%)
+  Processed 5000/29180 (17.1%)
+  Processed 5500/29180 (18.8%)
+  Processed 6000/29180 (20.6%)
+  Processed 6500/29180 (22.3%)
+  Processed 7000/29180 (24.0%)
+  Processed 7500/29180 (25.7%)
+  Processed 8000/29180 (27.4%)
+  Processed 8500/29180 (29.1%)
+  Processed 9000/29180 (30.8%)
+  Processed 9500/29180 (32.6%)
+  Processed 10000/29180 (34.3%)
+  Processed 10500/29180 (36.0%)
+  Processed 11000/29180 (37.7%)
+  Processed 11500/29180 (39.4%)
+  Processed 12000/29180 (41.1%)
+  Processed 12500/29180 (42.8%)
+  Processed 13000/29180 (44.6%)
+  Processed 13500/29180 (46.3%)
+  Processed 14000/29180 (48.0%)
+  Processed 14500/29180 (49.7%)
+  Processed 15000/29180 (51.4%)
+  Processed 15500/29180 (53.1%)
+  Processed 16000/29180 (54.8%)
+  Processed 16500/29180 (56.5%)
+  Processed 17000/29180 (58.3%)
+  Processed 17500/29180 (60.0%)
+  Processed 18000/29180 (61.7%)
+  Processed 18500/29180 (63.4%)
+  Processed 19000/29180 (65.1%)
+  Processed 19500/29180 (66.8%)
+  Processed 20000/29180 (68.5%)
+  Processed 20500/29180 (70.3%)
+  Processed 21000/29180 (72.0%)
+  Processed 21500/29180 (73.7%)
+  Processed 22000/29180 (75.4%)
+  Processed 22500/29180 (77.1%)
+  Processed 23000/29180 (78.8%)
+  Processed 23500/29180 (80.5%)
+  Processed 24000/29180 (82.2%)
+  Processed 24500/29180 (84.0%)
+  Processed 25000/29180 (85.7%)
+  Processed 25500/29180 (87.4%)
+  Processed 26000/29180 (89.1%)
+  Processed 26500/29180 (90.8%)
+  Processed 27000/29180 (92.5%)
+  Processed 27500/29180 (94.2%)
+  Processed 28000/29180 (96.0%)
+  Processed 28500/29180 (97.7%)
+  Processed 29000/29180 (99.4%)
+  Completed: 29180/29180 (100.0%)
+
+Building feature vocabulary...
+Total unique features: 261898
+Using 5000 features (memory optimized)
+
+Converting to feature matrix (using sparse format)...
+  Processed batch 1/6
+  Processed batch 2/6
+  Processed batch 3/6
+  Processed batch 4/6
+  Processed batch 5/6
+  Processed batch 6/6
+Sparse feature matrix shape: (29180, 5000)
+Memory usage: ~2.9 MB
+Sparsity: 99.7% zeros
+
+Feature matrix stats:
+  Non-zero elements: 374279
+  Min value: 0.0020
+  Max value: 5.0000
+  Mean value: 0.2832
+
+Training Maximum Entropy model...
+/home/nikhita-ravi/CL2-Project/venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+
+Training accuracy: 0.1816
+Training complete!
+
+4. Making predictions...
+
+Making predictions on 12506 test documents...
+  Processed 500/12506 (4.0%)
+  Processed 1000/12506 (8.0%)
+  Processed 1500/12506 (12.0%)
+  Processed 2000/12506 (16.0%)
+  Processed 2500/12506 (20.0%)
+  Processed 3000/12506 (24.0%)
+  Processed 3500/12506 (28.0%)
+  Processed 4000/12506 (32.0%)
+  Processed 4500/12506 (36.0%)
+  Processed 5000/12506 (40.0%)
+  Processed 5500/12506 (44.0%)
+  Processed 6000/12506 (48.0%)
+  Processed 6500/12506 (52.0%)
+  Processed 7000/12506 (56.0%)
+  Processed 7500/12506 (60.0%)
+  Processed 8000/12506 (64.0%)
+  Processed 8500/12506 (68.0%)
+  Processed 9000/12506 (72.0%)
+  Processed 9500/12506 (76.0%)
+  Processed 10000/12506 (80.0%)
+  Processed 10500/12506 (84.0%)
+  Processed 11000/12506 (88.0%)
+  Processed 11500/12506 (92.0%)
+  Processed 12000/12506 (96.0%)
+  Processed 12500/12506 (100.0%)
+  Completed: 12506/12506 (100.0%)
+
+Converting to feature matrix...
+
+5. Evaluating performance...
+
+================================================================================
+MAXIMUM ENTROPY CLASSIFIER - EVALUATION METRICS
+================================================================================
+
+Overall Accuracy: 0.1275
+
+--------------------------------------------------------------------------------
+category             Precision    Recall       F1-Score     Support   
+--------------------------------------------------------------------------------
+ARTS                 0.1781       0.2896       0.2206       259       
+ARTS & CULTURE       0.0900       0.1200       0.1029       300       
+BLACK VOICES         0.1707       0.0233       0.0411       300       
+BUSINESS             0.0800       0.0200       0.0320       300       
+COLLEGE              0.0939       0.0725       0.0818       276       
+COMEDY               0.1937       0.1233       0.1507       300       
+CRIME                0.1022       0.1100       0.1059       300       
+CULTURE & ARTS       0.0861       0.1367       0.1057       300       
+DIVORCE              0.1221       0.1067       0.1139       300       
+EDUCATION            0.2560       0.1587       0.1959       271       
+ENTERTAINMENT        0.1143       0.0533       0.0727       300       
+ENVIRONMENT          0.2872       0.0900       0.1371       300       
+FIFTY                0.1711       0.4333       0.2453       300       
+FOOD & DRINK         0.0676       0.0500       0.0575       300       
+GOOD NEWS            0.0769       0.0300       0.0432       300       
+GREEN                0.1909       0.0700       0.1024       300       
+HEALTHY LIVING       0.0451       0.1233       0.0661       300       
+HOME & LIVING        0.1294       0.1233       0.1263       300       
+IMPACT               0.0510       0.0167       0.0251       300       
+LATINO VOICES        0.1129       0.0233       0.0387       300       
+MEDIA                0.0831       0.1067       0.0934       300       
+MONEY                0.2410       0.1567       0.1899       300       
+PARENTING            0.0783       0.0300       0.0434       300       
+PARENTS              0.0765       0.0467       0.0580       300       
+POLITICS             0.1546       0.1000       0.1215       300       
+QUEER VOICES         0.1918       0.0467       0.0751       300       
+RELIGION             0.1912       0.0867       0.1193       300       
+SCIENCE              0.1504       0.0567       0.0823       300       
+SPORTS               0.1152       0.0633       0.0817       300       
+STYLE                0.1222       0.3333       0.1789       300       
+STYLE & BEAUTY       0.1514       0.2033       0.1735       300       
+TASTE                0.0779       0.0400       0.0529       300       
+TECH                 0.1304       0.0800       0.0992       300       
+THE WORLDPOST        0.1081       0.2233       0.1457       300       
+TRAVEL               0.1173       0.0633       0.0823       300       
+U.S. NEWS            0.1057       0.3433       0.1617       300       
+WEDDINGS             0.2529       0.0733       0.1137       300       
+WEIRD NEWS           0.0851       0.2333       0.1247       300       
+WELLNESS             0.0954       0.1167       0.1049       300       
+WOMEN                0.1011       0.0300       0.0463       300       
+WORLD NEWS           0.1295       0.1567       0.1418       300       
+WORLDPOST            0.2933       0.6100       0.3961       300       
+--------------------------------------------------------------------------------
+Macro Average        0.1350       0.1280       0.1131      
+================================================================================
+
+✓ Evaluation metrics saved to: results/maxent/evaluation_metrics.txt
+
+6. Generating confusion matrix...
+
+✓ Confusion matrix saved to: results/maxent/confusion_matrix.png
+
+7. Top features per category (by absolute weight):
+
+ARTS:
+  doc_length_tokens              +3.3704
+  sentence_count                 +2.8452
+  stddev_sent_length             +2.7614
+  type_token_ratio               -2.5250
+  bigram_has_art_form            +2.2473
+
+ARTS & CULTURE:
+  stddev_sent_length             -4.9032
+  doc_length_tokens              -2.4170
+  suffix_ed_count                -1.9863
+  ner_work_of_art                +1.9767
+  suffix_ly_count                -1.8615
+
+BLACK VOICES:
+  bigram_has_muhammad_ali        +2.5015
+  bigram_has_rights_movement     +1.8407
+  punct_quotes                   +1.7247
+  bigram_has_black_woman         +1.6853
+  bigram_has_barack_obama        +1.5541
+
+BUSINESS:
+  prefix_in_count                +2.2761
+  bigram_has_small_business      +2.0915
+  bigram_has_wall_street         +2.0848
+  bigram_has_berkshire_hathaway  +1.8644
+  ner_money                      +1.7720
+
+COLLEGE:
+  prefix_un_count                +3.4264
+  bigram_has_sexual_assault      +3.1831
+  suffix_ty_count                +2.8390
+  suffix_ity_count               +2.3344
+  suffix_tion_count              +2.1587
+
+COMEDY:
+  punct_quotes                   +3.1791
+  bigram_has_late_show           +2.8744
+  bigram_has_bill_maher          +2.5492
+  bigram_has_people_say          +1.8929
+  ner_work_of_art                +1.8674
+
+CRIME:
+  suffix_ed_count                +4.9508
+  bigram_has_police_say          +3.5109
+  bigram_has_fatally_shot        +2.6926
+  bigram_has_sexual_assault      +1.9209
+  punct_quotes                   +1.7905
+
+CULTURE & ARTS:
+  ner_density                    +2.9333
+  bigram_has_let_know            +2.8335
+  prefix_ex_count                +2.3126
+  bigram_has_courtesy_artist     +2.2395
+  titlecase_ratio                +2.1616
+
+DIVORCE:
+  stddev_sent_length             +2.6254
+  bigram_has_life_divorce        +2.1681
+  bigram_has_single_moms         +2.0140
+  bigram_has_seen_many           +1.9728
+  ner_norp                       -1.8804
+
+EDUCATION:
+  suffix_tion_count              +4.8213
+  punct_quotes                   -4.2336
+  bigram_has_public_education    +3.2438
+  bigram_has_betsy_devos         +3.1775
+  ner_density                    -3.1180
+
+ENTERTAINMENT:
+  punct_quotes                   +2.9222
+  sentence_count                 -2.0886
+  doc_length_tokens              -2.0483
+  stddev_sent_length             -1.9393
+  bigram_has_yet_another         +1.8836
+
+ENVIRONMENT:
+  bigram_has_mother_nature       +3.8398
+  bigram_has_climate_change      +3.1278
+  suffix_al_count                +2.4376
+  bigram_has_take_look           +2.2984
+  punct_colon                    +2.0076
+
+FIFTY:
+  doc_length_tokens              +8.3088
+  sentence_count                 +7.3069
+  type_token_ratio               -3.8441
+  ner_density                    -3.5133
+  stddev_sent_length             +3.5086
+
+FOOD & DRINK:
+  suffix_ed_count                -2.2335
+  suffix_al_count                -1.9633
+  suffix_tion_count              -1.8960
+  type_token_ratio               +1.8731
+  ner_density                    -1.7462
+
+GOOD NEWS:
+  stddev_sent_length             -2.0800
+  titlecase_ratio                -1.9265
+  prefix_re_count                -1.7493
+  bigram_has_police_officer      +1.7459
+  bigram_has_felt_like           +1.6361
+
+GREEN:
+  bigram_has_climate_change      +3.6546
+  bigram_has_global_warming      +2.8668
+  bigram_has_donald_trump        +2.3030
+  suffix_al_count                +1.9738
+  ner_loc                        +1.9681
+
+HEALTHY LIVING:
+  suffix_ed_count                -2.4829
+  bigram_has_mental_health       +2.4662
+  doc_length_tokens              +2.0162
+  prefix_dis_count               +1.7585
+  ner_density                    -1.7076
+
+HOME & LIVING:
+  suffix_ed_count                -3.4020
+  ner_density                    -3.2469
+  type_token_ratio               +3.0200
+  bigram_has_check_huffpost      +2.6135
+  bigram_has_twitter_facebook    +2.2856
+
+IMPACT:
+  bigram_has_ways_help           +2.0859
+  suffix_tion_count              +2.0034
+  punct_quotes                   -2.0008
+  bigram_has_need_help           +1.8945
+  bigram_has_work_together       +1.7217
+
+LATINO VOICES:
+  bigram_has_puerto_rico         +2.9890
+  punct_quotes                   +2.4503
+  bigram_has_jennifer_lopez      +1.8573
+  ner_language                   +1.8101
+  bigram_has_donald_trump        +1.6841
+
+MEDIA:
+  punct_quotes                   +3.1830
+  bigram_has_digital_media       +1.9803
+  bigram_has_white_house         +1.9415
+  bigram_has_wall_street         +1.8895
+  bigram_has_media_company       +1.8744
+
+MONEY:
+  bigram_has_credit_card         +3.3854
+  ner_money                      +2.4947
+  bigram_has_credit_cards        +2.3621
+  prefix_re_count                +2.2231
+  stddev_sent_length             +2.2211
+
+PARENTING:
+  ner_density                    -2.9690
+  sentence_count                 +2.1014
+  stddev_sent_length             +2.0934
+  mean_sent_length               +1.6482
+  bigram_has_reddit_user         +1.5319
+
+PARENTS:
+  titlecase_ratio                -2.6061
+  prefix_re_count                -1.9233
+  ner_loc                        -1.7931
+  doc_length_tokens              +1.7449
+  bigram_has_mother_day          +1.6034
+
+POLITICS:
+  stddev_sent_length             -2.5210
+  bigram_has_donald_trump        +2.4267
+  bigram_has_bernie_sanders      +2.3751
+  prefix_de_count                +2.3166
+  prefix_pre_count               +2.0748
+
+QUEER VOICES:
+  bigram_has_gay_men             +2.7266
+  punct_quotes                   +2.5819
+  bigram_has_lgbt_people         +2.3713
+  bigram_has_harvey_milk         +2.1478
+  bigram_has_huffpost_live       +1.8441
+
+RELIGION:
+  ner_norp                       +2.0719
+  type_token_ratio               -1.9086
+  ner_money                      -1.6057
+  bigram_has_muslim_americans    +1.6019
+  suffix_ing_count               -1.4561
+
+SCIENCE:
+  ner_loc                        +2.2477
+  bigram_has_space_agency        +1.8603
+  prefix_ex_count                +1.8289
+  bigram_has_mental_health       +1.4975
+  bigram_has_middle_school       +1.4476
+
+SPORTS:
+  ner_event                      +2.0447
+  stddev_sent_length             -1.9377
+  bigram_has_super_bowl          +1.9324
+  punct_quotes                   +1.8207
+  bigram_has_world_cup           +1.8115
+
+STYLE:
+  mean_sent_length               -2.5308
+  median_sent_length             -2.3077
+  stddev_sent_length             -2.1098
+  bigram_has_time_year           +1.9357
+  prop_long_sent                 +1.9253
+
+STYLE & BEAUTY:
+  bigram_has_huffpost_style      +3.2937
+  punct_colon                    +2.9673
+  bigram_has_look_back           +2.1881
+  bigram_has_golden_globes       +1.8600
+  type_token_ratio               +1.7850
+
+TASTE:
+  titlecase_ratio                -2.6668
+  suffix_ed_count                -2.4406
+  suffix_tion_count              -1.9649
+  suffix_ing_count               -1.8389
+  type_token_ratio               +1.6212
+
+TECH:
+  bigram_has_looking_see         +4.1239
+  bigram_has_every_week          +2.1057
+  bigram_has_chief_executive     +2.0526
+  bigram_has_social_media        +1.8580
+  bigram_has_san_francisco       +1.7781
+
+THE WORLDPOST:
+  stddev_sent_length             -3.8295
+  suffix_ed_count                +2.6209
+  ner_density                    +2.4784
+  bigram_has_human_rights        +2.4724
+  bigram_has_prime_minister      +2.4122
+
+TRAVEL:
+  ner_loc                        +2.1677
+  bigram_has_great_deal          +2.1009
+  stddev_sent_length             +1.9424
+  bigram_has_summer_vacation     +1.5641
+  suffix_ed_count                -1.3957
+
+U.S. NEWS:
+  suffix_ed_count                +4.8171
+  stddev_sent_length             -3.1467
+  type_token_ratio               +2.9515
+  suffix_ing_count               +2.2936
+  punct_quotes                   -2.0105
+
+WEDDINGS:
+  bigram_has_huffpost_weddings   +4.1156
+  bigram_has_click_slideshow     +3.2184
+  suffix_ing_count               +2.9400
+  titlecase_ratio                +2.3426
+  stddev_sent_length             +2.3253
+
+WEIRD NEWS:
+  stddev_sent_length             -4.4651
+  mean_sent_length               -2.8147
+  median_sent_length             -2.5563
+  doc_length_tokens              -1.9499
+  punct_quotes                   +1.8983
+
+WELLNESS:
+  ner_density                    -3.7597
+  stddev_sent_length             +2.5516
+  punct_quotes                   -2.1317
+  doc_length_tokens              +1.8602
+  sentence_count                 +1.8571
+
+WOMEN:
+  bigram_has_planned_parenthood  +3.6029
+  bigram_has_sexual_assault      +2.3767
+  bigram_has_sexual_harassment   +2.1081
+  bigram_has_women_share         +1.6760
+  type_token_ratio               -1.6590
+
+WORLD NEWS:
+  stddev_sent_length             -4.2465
+  suffix_ed_count                +4.0648
+  bigram_has_prime_minister      +2.9893
+  bigram_has_hong_kong           +2.1677
+  suffix_er_count                -2.1080
+
+WORLDPOST:
+  doc_length_tokens              +6.4525
+  type_token_ratio               -3.7124
+  sentence_count                 +3.6699
+  stddev_sent_length             +3.3427
+  ner_norp                       +3.0299
+
+✓ Top features saved to: results/maxent/top_features.txt
+✓ Predictions saved to: results/maxent/predictions.csv
+✓ Model summary saved to: results/maxent/summary.txt
+
+================================================================================
+FINAL ACCURACY: 0.1275
+FINAL MACRO F1: 0.1131
+================================================================================
+
+✓ All results saved to results/maxent/
+
+  prefix_re_count                -1.8094
+  ner_loc                        -1.6412
+
+POLITICS:
+  bigram_has_donald_trump        +2.4114
+  bigram_has_bernie_sanders      +2.3480
+  prefix_de_count                +2.1803
+  fw_the                         +2.1306
+  stddev_sent_length             -2.0848
+
+QUEER VOICES:
+  bigram_has_gay_men             +2.7418
+  punct_quotes                   +2.5293
+  bigram_has_lgbt_people         +2.3172
+  bigram_has_harvey_milk         +2.1160
+  fw_i                           +1.9010
+
+RELIGION:
+  ner_norp                       +2.0735
+  type_token_ratio               -1.8022
+  function_word_ratio            +1.6320
+  ner_money                      -1.6191
+  bigram_has_muslim_americans    +1.5736
+
+SCIENCE:
+  pos_prop_pron                  -2.8284
+  fw_it                          +2.5024
+  fw_i                           -2.1321
+  ner_loc                        +2.0360
+  fw_the                         +1.9456
+
+SPORTS:
+  fw_the                         +2.6764
+  fw_was                         +2.2433
+  fw_of                          -2.2144
+  ner_event                      +1.9390
+  bigram_has_super_bowl          +1.8652
+
+STYLE:
+  punct_period                   +2.2963
+  mean_sent_length               -1.9841
+  bigram_has_time_year           +1.9078
+  stddev_sent_length             -1.8227
+  median_sent_length             -1.8109
+
+STYLE & BEAUTY:
+  punct_period                   -3.7372
+  punct_colon                    +2.9672
+  bigram_has_huffpost_style      +2.9124
+  pos_prop_pron                  +2.2017
+  bigram_has_look_back           +2.1377
+
+TASTE:
+  titlecase_ratio                -2.5849
+  fw_it                          +2.2040
+  suffix_tion_count              -1.8688
+  suffix_ed_count                -1.8652
+  punct_period                   +1.6779
+
+TECH:
+  bigram_has_looking_see         +4.0965
+  bigram_has_every_week          +2.0888
+  bigram_has_chief_executive     +2.0655
+  bigram_has_social_media        +1.8092
+  fw_i                           -1.7845
+
+THE WORLDPOST:
+  stddev_sent_length             -3.3401
+  ner_density                    +2.6365
+  punct_comma                    -2.5718
+  bigram_has_human_rights        +2.3672
+  fw_the                         +2.3615
+
+TRAVEL:
+  ner_loc                        +2.0646
+  bigram_has_great_deal          +2.0544
+  stddev_sent_length             +1.7605
+  punct_comma                    +1.6490
+  bigram_has_summer_vacation     +1.5630
+
+U.S. NEWS:
+  suffix_ed_count                +3.4846
+  pos_prop_verb                  +2.9561
+  punct_period                   +2.6250
+  fw_the                         +2.5932
+  type_token_ratio               +2.5346
+
+WEDDINGS:
+  punct_period                   -5.2737
+  bigram_has_huffpost_weddings   +3.8829
+  suffix_ing_count               +3.6427
+  bigram_has_click_slideshow     +3.0795
+  titlecase_ratio                +2.5707
+
+WEIRD NEWS:
+  stddev_sent_length             -4.1510
+  mean_sent_length               -2.5208
+  median_sent_length             -2.2805
+  pos_prop_det                   +1.8809
+  doc_length_tokens              -1.8200
+
+WELLNESS:
+  punct_period                   -3.7756
+  ner_density                    -3.4721
+  pos_prop_det                   -2.4577
+  stddev_sent_length             +2.1475
+  punct_quotes                   -1.9565
+
+WOMEN:
+  bigram_has_planned_parenthood  +3.5077
+  fw_i                           +2.5898
+  bigram_has_sexual_assault      +2.4066
+  bigram_has_sexual_harassment   +2.2326
+  type_token_ratio               -1.7586
+
+WORLD NEWS:
+  stddev_sent_length             -3.4934
+  suffix_ed_count                +3.4496
+  fw_the                         +3.0887
+  bigram_has_prime_minister      +2.8756
+  pos_prop_pron                  -2.7091
+
+WORLDPOST:
+  doc_length_tokens              +6.2691
+  sentence_count                 +3.6857
+  type_token_ratio               -3.5186
+  stddev_sent_length             +3.2716
+  pos_prop_pron                  -3.0160
+
+✓ Top features saved to: results/maxent/top_features.txt
+✓ Predictions saved to: results/maxent/predictions.csv
+✓ Model summary saved to: results/maxent/summary.txt
+
+================================================================================
+FINAL ACCURACY: 0.1454
+FINAL MACRO F1: 0.1300
+================================================================================
+
+✓ All results saved to results/maxent/
+(venv) nikhita-ravi@nikhita-ravi-HP-Pavilion-Laptop-15-eg3xxx:~/CL2-Project$ python newsmaxent.py
+Checking dependencies...
+Installing scikit-learn...
+
+[notice] A new release of pip is available: 25.2 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+Downloading NLTK data...
+All dependencies ready!
+
+Loading spaCy NER model...
+spaCy model loaded!
+
+
+================================================================================
+MAXIMUM ENTROPY category CLASSIFICATION
+WITH BALANCED SAMPLING AND AFFIX FEATURES
+================================================================================
+
+1. Loading balanced data from ./data...
+Loading data from News_Category_Dataset_v3.json...
+Target: 3000 samples per category
+
+✓ Loaded 209527 total records
+
+Available columns: ['link', 'headline', 'category', 'short_description', 'authors', 'date']
+Using 'short_description' as text content
+
+After removing empty descriptions: 189815 records
+
+Original category distribution:
+category
+POLITICS          32441
+WELLNESS          17943
+ENTERTAINMENT     14774
+STYLE & BEAUTY     9802
+TRAVEL             9421
+PARENTING          8790
+FOOD & DRINK       6331
+QUEER VOICES       5603
+HEALTHY LIVING     5265
+BUSINESS           5132
+COMEDY             4642
+SPORTS             4414
+HOME & LIVING      4317
+BLACK VOICES       4177
+THE WORLDPOST      3664
+WEDDINGS           3653
+PARENTS            3556
+DIVORCE            3426
+WORLD NEWS         3297
+WOMEN              3184
+IMPACT             3086
+CRIME              2832
+MEDIA              2404
+WEIRD NEWS         2316
+TECH               2103
+GREEN              2046
+TASTE              1940
+RELIGION           1879
+SCIENCE            1803
+MONEY              1755
+STYLE              1567
+ENVIRONMENT        1442
+U.S. NEWS          1377
+ARTS & CULTURE     1339
+WORLDPOST          1242
+CULTURE & ARTS     1063
+FIFTY              1042
+GOOD NEWS          1039
+LATINO VOICES      1022
+COLLEGE             921
+EDUCATION           902
+ARTS                863
+Name: count, dtype: int64
+
+Categories with at least 500 samples: 42
+
+✓ Using all 863 samples from 'ARTS'
+✓ Using all 1339 samples from 'ARTS & CULTURE'
+✓ Sampled 3000 from 'BLACK VOICES' (had 4177)
+✓ Sampled 3000 from 'BUSINESS' (had 5132)
+✓ Using all 921 samples from 'COLLEGE'
+✓ Sampled 3000 from 'COMEDY' (had 4642)
+✓ Using all 2832 samples from 'CRIME'
+✓ Using all 1063 samples from 'CULTURE & ARTS'
+✓ Sampled 3000 from 'DIVORCE' (had 3426)
+✓ Using all 902 samples from 'EDUCATION'
+✓ Sampled 3000 from 'ENTERTAINMENT' (had 14774)
+✓ Using all 1442 samples from 'ENVIRONMENT'
+✓ Using all 1042 samples from 'FIFTY'
+✓ Sampled 3000 from 'FOOD & DRINK' (had 6331)
+✓ Using all 1039 samples from 'GOOD NEWS'
+✓ Using all 2046 samples from 'GREEN'
+✓ Sampled 3000 from 'HEALTHY LIVING' (had 5265)
+✓ Sampled 3000 from 'HOME & LIVING' (had 4317)
+✓ Sampled 3000 from 'IMPACT' (had 3086)
+✓ Using all 1022 samples from 'LATINO VOICES'
+✓ Using all 2404 samples from 'MEDIA'
+✓ Using all 1755 samples from 'MONEY'
+✓ Sampled 3000 from 'PARENTING' (had 8790)
+✓ Sampled 3000 from 'PARENTS' (had 3556)
+✓ Sampled 3000 from 'POLITICS' (had 32441)
+✓ Sampled 3000 from 'QUEER VOICES' (had 5603)
+✓ Using all 1879 samples from 'RELIGION'
+✓ Using all 1803 samples from 'SCIENCE'
+✓ Sampled 3000 from 'SPORTS' (had 4414)
+✓ Using all 1567 samples from 'STYLE'
+✓ Sampled 3000 from 'STYLE & BEAUTY' (had 9802)
+✓ Using all 1940 samples from 'TASTE'
+✓ Using all 2103 samples from 'TECH'
+✓ Sampled 3000 from 'THE WORLDPOST' (had 3664)
+✓ Sampled 3000 from 'TRAVEL' (had 9421)
+✓ Using all 1377 samples from 'U.S. NEWS'
+✓ Sampled 3000 from 'WEDDINGS' (had 3653)
+✓ Using all 2316 samples from 'WEIRD NEWS'
+✓ Sampled 3000 from 'WELLNESS' (had 17943)
+✓ Sampled 3000 from 'WOMEN' (had 3184)
+✓ Sampled 3000 from 'WORLD NEWS' (had 3297)
+✓ Using all 1242 samples from 'WORLDPOST'
+
+============================================================
+BALANCED DATASET SUMMARY
+============================================================
+Total samples: 95897
+Number of categories: 42
+
+Category distribution:
+category
+ARTS               863
+ARTS & CULTURE    1339
+BLACK VOICES      3000
+BUSINESS          3000
+COLLEGE            921
+COMEDY            3000
+CRIME             2832
+CULTURE & ARTS    1063
+DIVORCE           3000
+EDUCATION          902
+ENTERTAINMENT     3000
+ENVIRONMENT       1442
+FIFTY             1042
+FOOD & DRINK      3000
+GOOD NEWS         1039
+GREEN             2046
+HEALTHY LIVING    3000
+HOME & LIVING     3000
+IMPACT            3000
+LATINO VOICES     1022
+MEDIA             2404
+MONEY             1755
+PARENTING         3000
+PARENTS           3000
+POLITICS          3000
+QUEER VOICES      3000
+RELIGION          1879
+SCIENCE           1803
+SPORTS            3000
+STYLE             1567
+STYLE & BEAUTY    3000
+TASTE             1940
+TECH              2103
+THE WORLDPOST     3000
+TRAVEL            3000
+U.S. NEWS         1377
+WEDDINGS          3000
+WEIRD NEWS        2316
+WELLNESS          3000
+WOMEN             3000
+WORLD NEWS        3000
+WORLDPOST         1242
+Name: count, dtype: int64
+============================================================
+
+
+2. Splitting data (70% train, 30% test) with stratification...
+
+============================================================
+Training samples: 67127
+Testing samples: 28770
+
+Train distribution:
+  ARTS           :  604 samples
+  ARTS & CULTURE :  937 samples
+  BLACK VOICES   : 2100 samples
+  BUSINESS       : 2100 samples
+  COLLEGE        :  645 samples
+  COMEDY         : 2100 samples
+  CRIME          : 1982 samples
+  CULTURE & ARTS :  744 samples
+  DIVORCE        : 2100 samples
+  EDUCATION      :  632 samples
+  ENTERTAINMENT  : 2100 samples
+  ENVIRONMENT    : 1009 samples
+  FIFTY          :  729 samples
+  FOOD & DRINK   : 2100 samples
+  GOOD NEWS      :  727 samples
+  GREEN          : 1432 samples
+  HEALTHY LIVING : 2100 samples
+  HOME & LIVING  : 2100 samples
+  IMPACT         : 2100 samples
+  LATINO VOICES  :  716 samples
+  MEDIA          : 1683 samples
+  MONEY          : 1229 samples
+  PARENTING      : 2100 samples
+  PARENTS        : 2100 samples
+  POLITICS       : 2100 samples
+  QUEER VOICES   : 2100 samples
+  RELIGION       : 1315 samples
+  SCIENCE        : 1262 samples
+  SPORTS         : 2100 samples
+  STYLE          : 1097 samples
+  STYLE & BEAUTY : 2100 samples
+  TASTE          : 1358 samples
+  TECH           : 1472 samples
+  THE WORLDPOST  : 2100 samples
+  TRAVEL         : 2100 samples
+  U.S. NEWS      :  964 samples
+  WEDDINGS       : 2100 samples
+  WEIRD NEWS     : 1621 samples
+  WELLNESS       : 2100 samples
+  WOMEN          : 2100 samples
+  WORLD NEWS     : 2100 samples
+  WORLDPOST      :  869 samples
+
+Test distribution:
+  ARTS           :  259 samples
+  ARTS & CULTURE :  402 samples
+  BLACK VOICES   :  900 samples
+  BUSINESS       :  900 samples
+  COLLEGE        :  276 samples
+  COMEDY         :  900 samples
+  CRIME          :  850 samples
+  CULTURE & ARTS :  319 samples
+  DIVORCE        :  900 samples
+  EDUCATION      :  270 samples
+  ENTERTAINMENT  :  900 samples
+  ENVIRONMENT    :  433 samples
+  FIFTY          :  313 samples
+  FOOD & DRINK   :  900 samples
+  GOOD NEWS      :  312 samples
+  GREEN          :  614 samples
+  HEALTHY LIVING :  900 samples
+  HOME & LIVING  :  900 samples
+  IMPACT         :  900 samples
+  LATINO VOICES  :  306 samples
+  MEDIA          :  721 samples
+  MONEY          :  526 samples
+  PARENTING      :  900 samples
+  PARENTS        :  900 samples
+  POLITICS       :  900 samples
+  QUEER VOICES   :  900 samples
+  RELIGION       :  564 samples
+  SCIENCE        :  541 samples
+  SPORTS         :  900 samples
+  STYLE          :  470 samples
+  STYLE & BEAUTY :  900 samples
+  TASTE          :  582 samples
+  TECH           :  631 samples
+  THE WORLDPOST  :  900 samples
+  TRAVEL         :  900 samples
+  U.S. NEWS      :  413 samples
+  WEDDINGS       :  900 samples
+  WEIRD NEWS     :  695 samples
+  WELLNESS       :  900 samples
+  WOMEN          :  900 samples
+  WORLD NEWS     :  900 samples
+  WORLDPOST      :  373 samples
+============================================================
+
+
+3. Training classifier...
+Extracting features from training data...
+Processing 67127 training documents...
+  Processed 500/67127 (0.7%)
+  Processed 1000/67127 (1.5%)
+  Processed 1500/67127 (2.2%)
+  Processed 2000/67127 (3.0%)
+  Processed 2500/67127 (3.7%)
+  Processed 3000/67127 (4.5%)
+  Processed 3500/67127 (5.2%)
+  Processed 4000/67127 (6.0%)
+  Processed 4500/67127 (6.7%)
+  Processed 5000/67127 (7.4%)
+  Processed 5500/67127 (8.2%)
+  Processed 6000/67127 (8.9%)
+  Processed 6500/67127 (9.7%)
+  Processed 7000/67127 (10.4%)
+  Processed 7500/67127 (11.2%)
+  Processed 8000/67127 (11.9%)
+  Processed 8500/67127 (12.7%)
+  Processed 9000/67127 (13.4%)
+  Processed 9500/67127 (14.2%)
+  Processed 10000/67127 (14.9%)
+  Processed 10500/67127 (15.6%)
+  Processed 11000/67127 (16.4%)
+  Processed 11500/67127 (17.1%)
+  Processed 12000/67127 (17.9%)
+  Processed 12500/67127 (18.6%)
+  Processed 13000/67127 (19.4%)
+  Processed 13500/67127 (20.1%)
+  Processed 14000/67127 (20.9%)
+  Processed 14500/67127 (21.6%)
+  Processed 15000/67127 (22.3%)
+  Processed 15500/67127 (23.1%)
+  Processed 16000/67127 (23.8%)
+  Processed 16500/67127 (24.6%)
+  Processed 17000/67127 (25.3%)
+  Processed 17500/67127 (26.1%)
+  Processed 18000/67127 (26.8%)
+  Processed 18500/67127 (27.6%)
+  Processed 19000/67127 (28.3%)
+  Processed 19500/67127 (29.0%)
+  Processed 20000/67127 (29.8%)
+  Processed 20500/67127 (30.5%)
+  Processed 21000/67127 (31.3%)
+  Processed 21500/67127 (32.0%)
+  Processed 22000/67127 (32.8%)
+  Processed 22500/67127 (33.5%)
+  Processed 23000/67127 (34.3%)
+  Processed 23500/67127 (35.0%)
+  Processed 24000/67127 (35.8%)
+  Processed 24500/67127 (36.5%)
+  Processed 25000/67127 (37.2%)
+  Processed 25500/67127 (38.0%)
+  Processed 26000/67127 (38.7%)
+  Processed 26500/67127 (39.5%)
+  Processed 27000/67127 (40.2%)
+  Processed 27500/67127 (41.0%)
+  Processed 28000/67127 (41.7%)
+  Processed 28500/67127 (42.5%)
+  Processed 29000/67127 (43.2%)
+  Processed 29500/67127 (43.9%)
+  Processed 30000/67127 (44.7%)
+  Processed 30500/67127 (45.4%)
+  Processed 31000/67127 (46.2%)
+  Processed 31500/67127 (46.9%)
+  Processed 32000/67127 (47.7%)
+  Processed 32500/67127 (48.4%)
+  Processed 33000/67127 (49.2%)
+  Processed 33500/67127 (49.9%)
+  Processed 34000/67127 (50.7%)
+  Processed 34500/67127 (51.4%)
+  Processed 35000/67127 (52.1%)
+  Processed 35500/67127 (52.9%)
+  Processed 36000/67127 (53.6%)
+  Processed 36500/67127 (54.4%)
+  Processed 37000/67127 (55.1%)
+  Processed 37500/67127 (55.9%)
+  Processed 38000/67127 (56.6%)
+  Processed 38500/67127 (57.4%)
+  Processed 39000/67127 (58.1%)
+  Processed 39500/67127 (58.8%)
+  Processed 40000/67127 (59.6%)
+  Processed 40500/67127 (60.3%)
+  Processed 41000/67127 (61.1%)
+  Processed 41500/67127 (61.8%)
+  Processed 42000/67127 (62.6%)
+  Processed 42500/67127 (63.3%)
+  Processed 43000/67127 (64.1%)
+  Processed 43500/67127 (64.8%)
+  Processed 44000/67127 (65.5%)
+  Processed 44500/67127 (66.3%)
+  Processed 45000/67127 (67.0%)
+  Processed 45500/67127 (67.8%)
+  Processed 46000/67127 (68.5%)
+  Processed 46500/67127 (69.3%)
+  Processed 47000/67127 (70.0%)
+  Processed 47500/67127 (70.8%)
+  Processed 48000/67127 (71.5%)
+  Processed 48500/67127 (72.3%)
+  Processed 49000/67127 (73.0%)
+  Processed 49500/67127 (73.7%)
+  Processed 50000/67127 (74.5%)
+  Processed 50500/67127 (75.2%)
+  Processed 51000/67127 (76.0%)
+  Processed 51500/67127 (76.7%)
+  Processed 52000/67127 (77.5%)
+  Processed 52500/67127 (78.2%)
+  Processed 53000/67127 (79.0%)
+  Processed 53500/67127 (79.7%)
+  Processed 54000/67127 (80.4%)
+  Processed 54500/67127 (81.2%)
+  Processed 55000/67127 (81.9%)
+  Processed 55500/67127 (82.7%)
+  Processed 56000/67127 (83.4%)
+  Processed 56500/67127 (84.2%)
+  Processed 57000/67127 (84.9%)
+  Processed 57500/67127 (85.7%)
+  Processed 58000/67127 (86.4%)
+  Processed 58500/67127 (87.1%)
+  Processed 59000/67127 (87.9%)
+  Processed 59500/67127 (88.6%)
+  Processed 60000/67127 (89.4%)
+  Processed 60500/67127 (90.1%)
+  Processed 61000/67127 (90.9%)
+  Processed 61500/67127 (91.6%)
+  Processed 62000/67127 (92.4%)
+  Processed 62500/67127 (93.1%)
+  Processed 63000/67127 (93.9%)
+  Processed 63500/67127 (94.6%)
+  Processed 64000/67127 (95.3%)
+  Processed 64500/67127 (96.1%)
+  Processed 65000/67127 (96.8%)
+  Processed 65500/67127 (97.6%)
+  Processed 66000/67127 (98.3%)
+  Processed 66500/67127 (99.1%)
+  Processed 67000/67127 (99.8%)
+  Completed: 67127/67127 (100.0%)
+
+Building feature vocabulary...
+Total unique features: 585092
+Using 5000 features (memory optimized)
+
+Converting to feature matrix (using sparse format)...
+  Processed batch 1/14
+  Processed batch 2/14
+  Processed batch 3/14
+  Processed batch 4/14
+  Processed batch 5/14
+  Processed batch 6/14
+  Processed batch 7/14
+  Processed batch 8/14
+  Processed batch 9/14
+  Processed batch 10/14
+  Processed batch 11/14
+  Processed batch 12/14
+  Processed batch 13/14
+  Processed batch 14/14
+Sparse feature matrix shape: (67127, 5000)
+Memory usage: ~13.1 MB
+Sparsity: 99.5% zeros
+
+Feature matrix stats:
+  Non-zero elements: 1710669
+  Min value: 0.0020
+  Max value: 5.0000
+  Mean value: 0.2040
+
+Training Maximum Entropy model...
+/home/nikhita-ravi/CL2-Project/venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+
+Training accuracy: 0.1800
+Training complete!
+
+4. Making predictions...
+
+Making predictions on 28770 test documents...
+  Processed 500/28770 (1.7%)
+  Processed 1000/28770 (3.5%)
+  Processed 1500/28770 (5.2%)
+  Processed 2000/28770 (7.0%)
+  Processed 2500/28770 (8.7%)
+  Processed 3000/28770 (10.4%)
+  Processed 3500/28770 (12.2%)
+  Processed 4000/28770 (13.9%)
+  Processed 4500/28770 (15.6%)
+  Processed 5000/28770 (17.4%)
+  Processed 5500/28770 (19.1%)
+  Processed 6000/28770 (20.9%)
+  Processed 6500/28770 (22.6%)
+  Processed 7000/28770 (24.3%)
+  Processed 7500/28770 (26.1%)
+  Processed 8000/28770 (27.8%)
+  Processed 8500/28770 (29.5%)
+  Processed 9000/28770 (31.3%)
+  Processed 9500/28770 (33.0%)
+  Processed 10000/28770 (34.8%)
+  Processed 10500/28770 (36.5%)
+  Processed 11000/28770 (38.2%)
+  Processed 11500/28770 (40.0%)
+  Processed 12000/28770 (41.7%)
+  Processed 12500/28770 (43.4%)
+  Processed 13000/28770 (45.2%)
+  Processed 13500/28770 (46.9%)
+  Processed 14000/28770 (48.7%)
+  Processed 14500/28770 (50.4%)
+  Processed 15000/28770 (52.1%)
+  Processed 15500/28770 (53.9%)
+  Processed 16000/28770 (55.6%)
+  Processed 16500/28770 (57.4%)
+  Processed 17000/28770 (59.1%)
+  Processed 17500/28770 (60.8%)
+  Processed 18000/28770 (62.6%)
+  Processed 18500/28770 (64.3%)
+  Processed 19000/28770 (66.0%)
+  Processed 19500/28770 (67.8%)
+  Processed 20000/28770 (69.5%)
+  Processed 20500/28770 (71.3%)
+  Processed 21000/28770 (73.0%)
+  Processed 21500/28770 (74.7%)
+  Processed 22000/28770 (76.5%)
+  Processed 22500/28770 (78.2%)
+  Processed 23000/28770 (79.9%)
+  Processed 23500/28770 (81.7%)
+  Processed 24000/28770 (83.4%)
+  Processed 24500/28770 (85.2%)
+  Processed 25000/28770 (86.9%)
+  Processed 25500/28770 (88.6%)
+  Processed 26000/28770 (90.4%)
+  Processed 26500/28770 (92.1%)
+  Processed 27000/28770 (93.8%)
+  Processed 27500/28770 (95.6%)
+  Processed 28000/28770 (97.3%)
+  Processed 28500/28770 (99.1%)
+  Completed: 28770/28770 (100.0%)
+
+Converting to feature matrix...
+
+5. Evaluating performance...
+
+================================================================================
+MAXIMUM ENTROPY CLASSIFIER - EVALUATION METRICS
+================================================================================
+
+Overall Accuracy: 0.1482
+
+--------------------------------------------------------------------------------
+category             Precision    Recall       F1-Score     Support   
+--------------------------------------------------------------------------------
+ARTS                 0.1345       0.1158       0.1245       259       
+ARTS & CULTURE       0.0811       0.0075       0.0137       402       
+BLACK VOICES         0.1520       0.0789       0.1039       900       
+BUSINESS             0.1111       0.0878       0.0981       900       
+COLLEGE              0.5000       0.0217       0.0417       276       
+COMEDY               0.1821       0.1489       0.1638       900       
+CRIME                0.1596       0.3129       0.2114       850       
+CULTURE & ARTS       0.1875       0.0376       0.0627       319       
+DIVORCE              0.1701       0.2367       0.1980       900       
+EDUCATION            0.2128       0.0370       0.0631       270       
+ENTERTAINMENT        0.1399       0.1356       0.1377       900       
+ENVIRONMENT          0.2188       0.0485       0.0794       433       
+FIFTY                0.1444       0.1246       0.1338       313       
+FOOD & DRINK         0.1210       0.1789       0.1443       900       
+GOOD NEWS            0.0000       0.0000       0.0000       312       
+GREEN                0.4000       0.1010       0.1612       614       
+HEALTHY LIVING       0.0861       0.1200       0.1002       900       
+HOME & LIVING        0.1455       0.2378       0.1805       900       
+IMPACT               0.1436       0.1244       0.1333       900       
+LATINO VOICES        0.1765       0.0098       0.0186       306       
+MEDIA                0.1916       0.0888       0.1213       721       
+MONEY                0.1576       0.0608       0.0878       526       
+PARENTING            0.1099       0.1044       0.1071       900       
+PARENTS              0.0812       0.0933       0.0869       900       
+POLITICS             0.1623       0.1733       0.1677       900       
+QUEER VOICES         0.1203       0.0500       0.0706       900       
+RELIGION             0.2311       0.0869       0.1263       564       
+SCIENCE              0.1325       0.0407       0.0622       541       
+SPORTS               0.1278       0.1222       0.1249       900       
+STYLE                0.1196       0.0702       0.0885       470       
+STYLE & BEAUTY       0.1833       0.3733       0.2459       900       
+TASTE                0.1081       0.0344       0.0522       582       
+TECH                 0.0664       0.0285       0.0399       631       
+THE WORLDPOST        0.1495       0.2333       0.1822       900       
+TRAVEL               0.1679       0.2444       0.1991       900       
+U.S. NEWS            0.1862       0.0654       0.0968       413       
+WEDDINGS             0.2136       0.1922       0.2023       900       
+WEIRD NEWS           0.1059       0.1770       0.1325       695       
+WELLNESS             0.1236       0.2922       0.1738       900       
+WOMEN                0.0865       0.0300       0.0446       900       
+WORLD NEWS           0.1752       0.3700       0.2378       900       
+WORLDPOST            0.2817       0.4290       0.3401       373       
+--------------------------------------------------------------------------------
+Macro Average        0.1607       0.1316       0.1229      
+================================================================================
+
+✓ Evaluation metrics saved to: results/maxent/evaluation_metrics.txt
+
+6. Generating confusion matrix...
+
+✓ Confusion matrix saved to: results/maxent/confusion_matrix.png
+
+7. Top features per category (by absolute weight):
+
+ARTS:
+  doc_length_tokens              +3.9239
+  sentence_count                 +3.1387
+  bigram_has_contemporary_art    +2.7077
+  type_token_ratio               -2.6782
+  stddev_sent_length             +2.4584
+
+ARTS & CULTURE:
+  stddev_sent_length             -5.1721
+  doc_length_tokens              -2.7727
+  fw_and                         +1.8570
+  ner_work_of_art                +1.8288
+  punct_question                 +1.7797
+
+BLACK VOICES:
+  bigram_has_black_history       +3.4434
+  bigram_has_black_community     +3.3934
+  bigram_has_black_men           +3.0816
+  bigram_has_civil_rights        +2.8712
+  bigram_has_lee_daniels         +2.8105
+
+BUSINESS:
+  fw_i                           -3.8985
+  suffix_ness_count              +3.2820
+  prefix_in_count                +3.2146
+  bigram_has_federal_reserve     +2.6393
+  bigram_has_wells_fargo         +2.3451
+
+COLLEGE:
+  bigram_has_colleges_universities +3.9737
+  prefix_un_count                +3.0928
+  bigram_has_academic_freedom    +2.6983
+  bigram_has_students_families   +2.4974
+  suffix_ity_count               +2.4754
+
+COMEDY:
+  punct_quotes                   +3.3027
+  bigram_has_late_night          +3.1717
+  bigram_has_mitt_romney         +2.8307
+  doc_length_tokens              -2.7942
+  bigram_has_night_live          +2.6730
+
+CRIME:
+  fw_was                         +6.9053
+  suffix_ed_count                +4.7805
+  pos_prop_verb                  +4.0710
+  fw_a                           +3.8080
+  fw_the                         +3.5760
+
+CULTURE & ARTS:
+  punct_period                   -3.5626
+  punct_comma                    +3.1983
+  prefix_ex_count                +3.0529
+  pos_prop_prep                  +1.8068
+  bigram_has_end_life            +1.5806
+
+DIVORCE:
+  punct_period                   -8.4632
+  bigram_has_click_slideshow     +3.5275
+  punct_exclaim                  -3.4691
+  bigram_has_going_divorce       +3.3448
+  fw_i                           +3.3389
+
+EDUCATION:
+  suffix_tion_count              +4.6265
+  punct_quotes                   -3.8669
+  bigram_has_public_schools      +3.7286
+  ner_density                    -2.7910
+  bigram_has_high_school         +2.7090
+
+ENTERTAINMENT:
+  sentence_count                 -5.0464
+  doc_length_tokens              -3.7425
+  punct_quotes                   +2.8503
+  punct_period                   +2.5442
+  fw_was                         +2.2712
+
+ENVIRONMENT:
+  punct_period                   -6.9842
+  punct_colon                    +3.7423
+  bigram_has_climate_change      +3.5554
+  suffix_al_count                +2.6958
+  fw_i                           -2.5929
+
+FIFTY:
+  doc_length_tokens              +8.5671
+  sentence_count                 +7.1315
+  fw_i                           +4.7578
+  type_token_ratio               -3.6513
+  stddev_sent_length             +3.1055
+
+FOOD & DRINK:
+  suffix_al_count                -4.0864
+  fw_the                         -3.8170
+  fw_with                        +3.7844
+  fw_was                         -3.7149
+  suffix_tion_count              -3.1295
+
+GOOD NEWS:
+  bigram_has_give_back           +2.8165
+  fw_i                           +2.4041
+  stddev_sent_length             -2.2885
+  punct_exclaim                  +2.2632
+  fw_it                          -2.1069
+
+GREEN:
+  bigram_has_climate_change      +3.8536
+  fw_i                           -3.6036
+  bigram_has_fossil_fuels        +2.9223
+  bigram_has_fossil_fuel         +2.8870
+  bigram_has_global_warming      +2.7755
+
+HEALTHY LIVING:
+  doc_length_tokens              +4.1317
+  prefix_dis_count               +2.9451
+  punct_quotes                   -2.6570
+  suffix_ness_count              +2.4844
+  titlecase_ratio                -2.4474
+
+HOME & LIVING:
+  fw_the                         -3.9305
+  suffix_ed_count                -3.9197
+  punct_ellipsis                 +3.9135
+  fw_i                           -3.8489
+  bigram_has_interior_designer   +3.7456
+
+IMPACT:
+  doc_length_tokens              +3.4430
+  punct_quotes                   -2.5105
+  fw_a                           -2.3071
+  suffix_tion_count              +2.3007
+  fw_the                         -2.1729
+
+LATINO VOICES:
+  bigram_has_puerto_rico         +3.3766
+  ner_language                   +3.1360
+  punct_quotes                   +2.3149
+  pos_prop_pron                  +1.7385
+  fw_the                         +1.7182
+
+MEDIA:
+  bigram_has_fox_news            +4.0534
+  punct_quotes                   +2.8435
+  bigram_has_news_media          +2.5497
+  fw_the                         +2.5007
+  suffix_ive_count               +2.4304
+
+MONEY:
+  punct_period                   -5.6699
+  fw_i                           -3.6214
+  bigram_has_black_friday        +2.8923
+  ner_money                      +2.8256
+  prefix_re_count                +2.7704
+
+PARENTING:
+  punct_period                   -4.8271
+  sentence_count                 +4.5337
+  fw_i                           +4.2406
+  ner_density                    -3.7239
+  prefix_de_count                -2.6643
+
+PARENTS:
+  fw_i                           +6.0561
+  pos_prop_pron                  +2.8991
+  doc_length_tokens              +2.8664
+  titlecase_ratio                -2.6337
+  fw_the                         -2.5982
+
+POLITICS:
+  prefix_pre_count               +3.7292
+  prefix_de_count                +3.4358
+  suffix_tion_count              +2.6195
+  punct_period                   +2.6125
+  bigram_has_donald_trump        +2.4833
+
+QUEER VOICES:
+  suffix_ity_count               +4.3004
+  fw_i                           +3.5852
+  bigram_has_drag_race           +2.8142
+  bigram_has_pat_mccrory         +2.4641
+  suffix_ty_count                +2.4410
+
+RELIGION:
+  bigram_has_religious_beliefs   +2.3644
+  bigram_has_people_faith        +2.3606
+  suffix_ous_count               +2.2751
+  suffix_ious_count              +2.1995
+  bigram_has_kim_davis           +2.1311
+
+SCIENCE:
+  pos_prop_pron                  -3.8718
+  fw_i                           -3.0446
+  fw_it                          +2.8570
+  ner_loc                        +2.3377
+  prefix_ex_count                +2.1381
+
+SPORTS:
+  sentence_count                 -3.6412
+  bigram_has_colin_kaepernick    +2.8717
+  fw_was                         +2.8654
+  doc_length_tokens              -2.7768
+  ner_event                      +2.4378
+
+STYLE:
+  bigram_has_fashion_week        +2.8464
+  punct_period                   +2.5548
+  mean_sent_length               -2.4301
+  bigram_has_red_carpet          +2.1956
+  sentence_count                 -2.1405
+
+STYLE & BEAUTY:
+  punct_period                   -5.8653
+  punct_colon                    +5.7784
+  bigram_has_check_huffpost      +3.8492
+  punct_ellipsis                 +3.5676
+  bigram_has_fashion_week        +3.3657
+
+TASTE:
+  titlecase_ratio                -2.7516
+  suffix_tion_count              -2.6612
+  fw_was                         -2.6297
+  suffix_al_count                -2.4223
+  suffix_ed_count                -2.3922
+
+TECH:
+  fw_i                           -2.6536
+  doc_length_tokens              -2.4055
+  sentence_count                 -2.2847
+  ner_product                    +2.2593
+  prefix_in_count                +1.8509
+
+THE WORLDPOST:
+  doc_length_tokens              -4.3186
+  fw_the                         +3.9817
+  stddev_sent_length             -3.1899
+  sentence_count                 -2.8573
+  ner_density                    +2.8437
+
+TRAVEL:
+  bigram_has_huffpost_travel     +2.9013
+  suffix_ment_count              -2.6758
+  sentence_count                 +2.6200
+  pos_prop_verb                  -2.4663
+  ner_loc                        +2.1617
+
+U.S. NEWS:
+  suffix_ed_count                +4.8985
+  fw_the                         +3.3241
+  punct_period                   +3.3200
+  pos_prop_verb                  +3.2550
+  fw_was                         +3.0118
+
+WEDDINGS:
+  punct_period                   -8.1258
+  suffix_ing_count               +5.7419
+  bigram_has_huffpost_weddings   +4.8115
+  bigram_has_click_slideshow     +3.4808
+  bigram_has_getting_married     +3.4276
+
+WEIRD NEWS:
+  stddev_sent_length             -4.1927
+  doc_length_tokens              -3.0949
+  fw_was                         +3.0512
+  sentence_count                 -2.7836
+  mean_sent_length               -2.6222
+
+WELLNESS:
+  punct_period                   -5.7425
+  sentence_count                 +4.3518
+  ner_density                    -4.0421
+  doc_length_tokens              +3.5859
+  suffix_ness_count              +3.1402
+
+WOMEN:
+  fw_i                           +4.5596
+  bigram_has_planned_parenthood  +3.8450
+  bigram_has_women_get           +2.4197
+  punct_period                   +2.1534
+  bigram_has_first_female        +1.9140
+
+WORLD NEWS:
+  fw_the                         +4.5323
+  doc_length_tokens              -3.8074
+  suffix_ed_count                +3.7327
+  allcaps_ratio                  -3.3323
+  prefix_pre_count               +2.9568
+
+WORLDPOST:
+  doc_length_tokens              +7.5886
+  sentence_count                 +4.6006
+  type_token_ratio               -3.8006
+  pos_prop_pron                  -3.5828
+  stddev_sent_length             +2.8679
+
+✓ Top features saved to: results/maxent/top_features.txt
+✓ Predictions saved to: results/maxent/predictions.csv
+✓ Model summary saved to: results/maxent/summary.txt
+
+================================================================================
+FINAL ACCURACY: 0.1482
+FINAL MACRO F1: 0.1229
+================================================================================
+
+✓ All results saved to results/maxent/
