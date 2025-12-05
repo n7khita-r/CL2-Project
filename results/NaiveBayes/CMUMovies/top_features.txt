@@ -1,0 +1,346 @@
+================================================================================
+TOP FEATURES PER GENRE (by log probability)
+================================================================================
+
+ACTION:
+  pos_count_noun                 -1.6460
+  pos_count_verb                 -2.0547
+  pos_count_prep                 -2.5083
+  pos_count_det                  -2.5937
+  pos_count_adj                  -2.9687
+
+ACTION/ADVENTURE:
+  pos_count_noun                 -1.6191
+  pos_count_verb                 -1.9979
+  pos_count_prep                 -2.4750
+  pos_count_det                  -2.5527
+  pos_count_adj                  -2.9588
+
+ADVENTURE:
+  pos_count_noun                 -1.6169
+  pos_count_verb                 -1.9629
+  pos_count_prep                 -2.4609
+  pos_count_det                  -2.4982
+  pos_count_pron                 -2.8888
+
+ANIMATION:
+  pos_count_noun                 -1.7040
+  pos_count_verb                 -2.0750
+  pos_count_prep                 -2.5086
+  pos_count_det                  -2.5135
+  pos_count_adj                  -3.0510
+
+B-MOVIE:
+  pos_count_noun                 -1.8197
+  pos_count_verb                 -2.1551
+  pos_count_det                  -2.6412
+  pos_count_prep                 -2.6454
+  pos_count_pron                 -3.0799
+
+BIOGRAPHICAL FILM:
+  pos_count_noun                 -1.6925
+  pos_count_verb                 -2.1543
+  pos_count_prep                 -2.5035
+  pos_count_det                  -2.7207
+  pos_count_pron                 -2.9357
+
+BIOGRAPHY:
+  pos_count_noun                 -1.6277
+  pos_count_verb                 -2.1081
+  pos_count_prep                 -2.4216
+  pos_count_det                  -2.6493
+  pos_count_adj                  -2.9072
+
+BLACK COMEDY:
+  pos_count_noun                 -1.7060
+  pos_count_verb                 -2.0442
+  pos_count_prep                 -2.4896
+  pos_count_det                  -2.6563
+  pos_count_pron                 -2.8382
+
+BLACK-AND-WHITE:
+  pos_count_noun                 -1.8103
+  pos_count_verb                 -2.1389
+  pos_count_prep                 -2.6378
+  pos_count_det                  -2.7181
+  pos_count_pron                 -2.9437
+
+BOLLYWOOD:
+  pos_count_noun                 -1.7756
+  pos_count_verb                 -2.0682
+  pos_count_prep                 -2.6470
+  pos_count_det                  -2.8046
+  pos_count_pron                 -2.8596
+
+CHILDREN'S/FAMILY:
+  pos_count_noun                 -1.6852
+  pos_count_verb                 -1.9932
+  pos_count_prep                 -2.5131
+  pos_count_det                  -2.5606
+  pos_count_pron                 -2.8758
+
+CHRISTIAN FILM:
+  pos_count_noun                 -1.7003
+  pos_count_verb                 -2.0541
+  pos_count_prep                 -2.4756
+  pos_count_det                  -2.5878
+  pos_count_pron                 -2.9121
+
+COMEDY:
+  pos_count_noun                 -1.6890
+  pos_count_verb                 -2.0567
+  pos_count_prep                 -2.5124
+  pos_count_det                  -2.5953
+  pos_count_pron                 -2.9033
+
+COMEDY FILM:
+  pos_count_noun                 -1.6987
+  pos_count_verb                 -2.0970
+  pos_count_prep                 -2.5472
+  pos_count_det                  -2.6634
+  pos_count_pron                 -2.9118
+
+COMEDY-DRAMA:
+  pos_count_noun                 -1.7491
+  pos_count_verb                 -2.1177
+  pos_count_prep                 -2.5535
+  pos_count_det                  -2.6962
+  pos_count_pron                 -2.8375
+
+COSTUME DRAMA:
+  pos_count_noun                 -1.6824
+  pos_count_verb                 -2.0217
+  pos_count_prep                 -2.4930
+  pos_count_det                  -2.7287
+  pos_count_pron                 -2.8698
+
+CRIME FICTION:
+  pos_count_noun                 -1.6305
+  pos_count_verb                 -1.9842
+  pos_count_prep                 -2.4552
+  pos_count_det                  -2.5773
+  pos_count_pron                 -2.8492
+
+CULT:
+  pos_count_noun                 -1.6399
+  pos_count_verb                 -1.9754
+  pos_count_prep                 -2.4665
+  pos_count_det                  -2.5076
+  pos_count_pron                 -2.8859
+
+CULTURE & SOCIETY:
+  pos_count_noun                 -1.7283
+  pos_count_verb                 -2.3549
+  pos_count_prep                 -2.5679
+  pos_count_det                  -2.6737
+  pos_count_adj                  -2.9237
+
+DOCUMENTARY:
+  pos_count_noun                 -1.6342
+  pos_count_verb                 -2.3181
+  pos_count_prep                 -2.4449
+  pos_count_det                  -2.5217
+  pos_count_adj                  -2.8472
+
+DRAMA:
+  pos_count_noun                 -1.6925
+  pos_count_verb                 -2.0519
+  pos_count_prep                 -2.4806
+  pos_count_det                  -2.6347
+  pos_count_pron                 -2.7881
+
+ENSEMBLE FILM:
+  pos_count_noun                 -1.6790
+  pos_count_verb                 -2.0619
+  pos_count_prep                 -2.5069
+  pos_count_det                  -2.6127
+  pos_count_pron                 -2.9387
+
+FAMILY DRAMA:
+  pos_count_noun                 -1.7341
+  pos_count_verb                 -2.0561
+  pos_count_prep                 -2.5523
+  pos_count_det                  -2.7479
+  pos_count_pron                 -2.7912
+
+FAMILY FILM:
+  pos_count_noun                 -1.6664
+  pos_count_verb                 -1.9765
+  pos_count_prep                 -2.4963
+  pos_count_det                  -2.5512
+  pos_count_pron                 -2.8269
+
+FANTASY:
+  pos_count_noun                 -1.6710
+  pos_count_verb                 -2.0035
+  pos_count_prep                 -2.4667
+  pos_count_det                  -2.4930
+  pos_count_pron                 -2.8479
+
+HISTORY:
+  pos_count_noun                 -1.6987
+  pos_count_verb                 -2.2086
+  pos_count_prep                 -2.5193
+  pos_count_det                  -2.6129
+  pos_count_adj                  -2.9332
+
+HORROR:
+  pos_count_noun                 -1.6593
+  pos_count_verb                 -1.9579
+  pos_count_prep                 -2.4489
+  pos_count_det                  -2.4786
+  pos_count_pron                 -2.8042
+
+INDIE:
+  pos_count_noun                 -1.6942
+  pos_count_verb                 -2.0569
+  pos_count_prep                 -2.4761
+  pos_count_det                  -2.6605
+  pos_count_pron                 -2.8125
+
+JAPANESE MOVIES:
+  pos_count_noun                 -1.6631
+  pos_count_verb                 -1.9978
+  pos_count_prep                 -2.4603
+  pos_count_det                  -2.5241
+  pos_count_pron                 -2.8698
+
+LGBT:
+  pos_count_noun                 -1.6682
+  pos_count_verb                 -2.0512
+  pos_count_prep                 -2.4665
+  pos_count_det                  -2.6747
+  pos_count_pron                 -2.8378
+
+MELODRAMA:
+  pos_count_noun                 -1.7760
+  pos_count_verb                 -2.0711
+  pos_count_prep                 -2.5734
+  pos_count_det                  -2.7585
+  pos_count_pron                 -2.8216
+
+MONSTER MOVIE:
+  pos_count_noun                 -1.6709
+  pos_count_verb                 -2.0506
+  pos_count_det                  -2.4482
+  pos_count_prep                 -2.4943
+  pos_count_pron                 -3.0403
+
+MUSIC:
+  pos_count_noun                 -1.7336
+  pos_count_verb                 -2.2204
+  pos_count_prep                 -2.5889
+  pos_count_det                  -2.6838
+  pos_count_adj                  -3.0026
+
+MUSICAL:
+  pos_count_noun                 -1.6696
+  pos_count_verb                 -2.0386
+  pos_count_prep                 -2.5076
+  pos_count_det                  -2.6275
+  pos_count_pron                 -2.8268
+
+MYSTERY:
+  pos_count_noun                 -1.7207
+  pos_count_verb                 -2.0844
+  pos_count_prep                 -2.5563
+  pos_count_det                  -2.5884
+  pos_count_pron                 -2.9714
+
+PARODY:
+  pos_count_noun                 -1.6211
+  pos_count_verb                 -2.0337
+  pos_count_prep                 -2.4731
+  pos_count_det                  -2.5122
+  pos_count_adj                  -2.9295
+
+PERIOD PIECE:
+  pos_count_noun                 -1.7451
+  pos_count_verb                 -2.1109
+  pos_count_prep                 -2.4986
+  pos_count_det                  -2.6408
+  pos_count_pron                 -2.9004
+
+ROMANCE FILM:
+  pos_count_noun                 -1.7145
+  pos_count_verb                 -2.0002
+  pos_count_prep                 -2.5006
+  pos_count_pron                 -2.6896
+  pos_count_det                  -2.7294
+
+ROMANTIC COMEDY:
+  pos_count_noun                 -1.7020
+  pos_count_verb                 -1.9824
+  pos_count_prep                 -2.4737
+  pos_count_pron                 -2.6747
+  pos_count_det                  -2.7325
+
+ROMANTIC DRAMA:
+  pos_count_noun                 -1.7286
+  pos_count_verb                 -2.0012
+  pos_count_prep                 -2.4781
+  pos_count_pron                 -2.6388
+  pos_count_det                  -2.7294
+
+SCIENCE FICTION:
+  pos_count_noun                 -1.5872
+  pos_count_verb                 -1.9732
+  pos_count_det                  -2.4126
+  pos_count_prep                 -2.4366
+  pos_count_adj                  -2.9408
+
+SHORT FILM:
+  pos_count_noun                 -1.6863
+  pos_count_verb                 -2.0645
+  pos_count_det                  -2.4140
+  pos_count_prep                 -2.4894
+  pos_count_pron                 -3.0350
+
+SILENT FILM:
+  pos_count_noun                 -1.7337
+  pos_count_verb                 -2.0654
+  pos_count_prep                 -2.5871
+  pos_count_det                  -2.6434
+  pos_count_pron                 -2.8589
+
+SPORTS:
+  pos_count_noun                 -1.6518
+  pos_count_verb                 -2.0944
+  pos_count_prep                 -2.4828
+  pos_count_det                  -2.5891
+  pos_count_adj                  -2.9197
+
+THRILLER:
+  pos_count_noun                 -1.6219
+  pos_count_verb                 -1.9444
+  pos_count_prep                 -2.4425
+  pos_count_det                  -2.5149
+  pos_count_pron                 -2.8312
+
+WAR FILM:
+  pos_count_noun                 -1.7636
+  pos_count_verb                 -2.2024
+  pos_count_prep                 -2.5716
+  pos_count_det                  -2.6316
+  pos_count_adj                  -3.0407
+
+WESTERN:
+  pos_count_noun                 -1.7086
+  pos_count_verb                 -2.1123
+  pos_count_prep                 -2.6199
+  pos_count_det                  -2.6732
+  pos_count_pron                 -3.0502
+
+WORLD CINEMA:
+  pos_count_noun                 -1.6886
+  pos_count_verb                 -2.0044
+  pos_count_prep                 -2.4939
+  pos_count_det                  -2.6941
+  pos_count_pron                 -2.7615
+
+ZOMBIE FILM:
+  pos_count_noun                 -1.7323
+  pos_count_verb                 -2.0815
+  pos_count_det                  -2.5026
+  pos_count_prep                 -2.5321
+  pos_count_pron                 -3.0482

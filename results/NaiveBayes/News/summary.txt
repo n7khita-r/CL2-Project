@@ -1,0 +1,15 @@
+================================================================================
+MODEL SUMMARY
+================================================================================
+
+Model Type: Multinomial Naive Bayes
+Smoothing (alpha): 1.0
+Active Feature Groups: content_words, pos_tags, structure, punctuation, ner, lexical, affixes
+Total Features: 5000
+Number of Classes: 42
+Training Samples: 29180
+Testing Samples: 12506
+
+Final Accuracy: 0.2905
+Final Macro F1: 0.2870
+================================================================================

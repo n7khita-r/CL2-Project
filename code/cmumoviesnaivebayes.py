@@ -380,7 +380,7 @@ class NaiveBayesTextClassifier:
 
 
 def load_data(data_dir='../data', csv_filename='movies_processed.csv', 
-              samples_per_genre=3000, min_samples_threshold=100):
+              samples_per_genre=6000, min_samples_threshold=100):
     """
     Load movie data from CSV file with balanced sampling per genre.
     Uses the FIRST genre from the genres column as the gold standard label.
@@ -580,7 +580,7 @@ def main():
     print("="*80)
     
     print("\n1. Loading balanced data from ../data...")
-    df = load_data('../data', samples_per_genre=3000)
+    df = load_data('../data', samples_per_genre=6000)
     
     print("\n2. Splitting data (70% train, 30% test) with stratification...")
     X = df['description'].tolist()

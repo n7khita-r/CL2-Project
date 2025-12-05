@@ -1,0 +1,297 @@
+================================================================================
+TOP FEATURES PER category (by absolute weight)
+================================================================================
+
+ARTS:
+  doc_length_tokens              +3.4017
+  sentence_count                 +2.8162
+  stddev_sent_length             +2.6669
+  type_token_ratio               -2.4712
+  bigram_has_art_form            +2.1621
+
+ARTS & CULTURE:
+  stddev_sent_length             -4.7419
+  doc_length_tokens              -2.3430
+  ner_work_of_art                +1.9821
+  punct_period                   +1.8487
+  suffix_ly_count                -1.8137
+
+BLACK VOICES:
+  bigram_has_muhammad_ali        +2.5148
+  bigram_has_rights_movement     +1.7879
+  bigram_has_black_woman         +1.6931
+  punct_quotes                   +1.6300
+  bigram_has_barack_obama        +1.5408
+
+BUSINESS:
+  bigram_has_small_business      +2.0867
+  prefix_in_count                +2.0832
+  bigram_has_wall_street         +2.0601
+  bigram_has_berkshire_hathaway  +1.8480
+  fw_i                           -1.8222
+
+COLLEGE:
+  prefix_un_count                +3.4350
+  bigram_has_sexual_assault      +3.0171
+  suffix_ty_count                +2.7409
+  suffix_ity_count               +2.2151
+  suffix_tion_count              +1.9854
+
+COMEDY:
+  punct_quotes                   +2.9734
+  bigram_has_late_show           +2.8061
+  bigram_has_bill_maher          +2.5818
+  ner_work_of_art                +1.9132
+  bigram_has_people_say          +1.8787
+
+CRIME:
+  fw_was                         +4.7622
+  suffix_ed_count                +4.3410
+  bigram_has_police_say          +3.2266
+  fw_a                           +2.5930
+  bigram_has_fatally_shot        +2.5594
+
+CULTURE & ARTS:
+  punct_comma                    +3.2860
+  punct_period                   -2.9097
+  bigram_has_let_know            +2.7936
+  prefix_ex_count                +2.2127
+  ner_density                    +2.1748
+
+DIVORCE:
+  punct_period                   -5.7602
+  stddev_sent_length             +2.0904
+  bigram_has_single_moms         +2.0499
+  bigram_has_life_divorce        +2.0382
+  bigram_has_seen_many           +2.0235
+
+EDUCATION:
+  suffix_tion_count              +4.5271
+  punct_quotes                   -3.9886
+  bigram_has_public_education    +3.2789
+  ner_density                    -3.2256
+  bigram_has_betsy_devos         +3.0887
+
+ENTERTAINMENT:
+  punct_quotes                   +2.6638
+  punct_period                   +2.1410
+  sentence_count                 -2.0760
+  bigram_has_yet_another         +1.9521
+  doc_length_tokens              -1.9338
+
+ENVIRONMENT:
+  punct_period                   -5.8510
+  bigram_has_mother_nature       +3.7370
+  bigram_has_climate_change      +3.0132
+  pos_prop_pron                  -2.6803
+  bigram_has_take_look           +2.1920
+
+FIFTY:
+  doc_length_tokens              +7.6867
+  sentence_count                 +6.4499
+  fw_i                           +4.1290
+  type_token_ratio               -3.6800
+  stddev_sent_length             +3.4173
+
+FOOD & DRINK:
+  fw_the                         -2.7665
+  suffix_al_count                -1.9935
+  pos_prop_verb                  -1.9022
+  type_token_ratio               +1.7374
+  fw_in                          -1.7131
+
+GOOD NEWS:
+  stddev_sent_length             -2.0892
+  fw_i                           +1.8780
+  fw_a                           +1.8547
+  bigram_has_police_officer      +1.8062
+  fw_the                         -1.7571
+
+GREEN:
+  bigram_has_climate_change      +3.5498
+  bigram_has_global_warming      +2.8208
+  pos_prop_pron                  -2.8057
+  bigram_has_donald_trump        +2.2565
+  fw_i                           -2.1853
+
+HEALTHY LIVING:
+  suffix_ed_count                -2.4186
+  bigram_has_mental_health       +2.3741
+  fw_the                         -2.2744
+  doc_length_tokens              +1.7947
+  prefix_dis_count               +1.7369
+
+HOME & LIVING:
+  ner_density                    -3.0400
+  type_token_ratio               +2.9598
+  suffix_ed_count                -2.8585
+  punct_period                   -2.7370
+  bigram_has_check_huffpost      +2.6475
+
+IMPACT:
+  bigram_has_ways_help           +2.0533
+  punct_quotes                   -1.9456
+  suffix_tion_count              +1.9327
+  bigram_has_need_help           +1.8730
+  bigram_has_work_together       +1.7505
+
+LATINO VOICES:
+  bigram_has_puerto_rico         +2.9592
+  punct_quotes                   +2.2657
+  bigram_has_jennifer_lopez      +1.8465
+  ner_language                   +1.8144
+  fw_the                         +1.7820
+
+MEDIA:
+  punct_quotes                   +3.0789
+  bigram_has_digital_media       +1.9599
+  bigram_has_wall_street         +1.8876
+  bigram_has_white_house         +1.8411
+  bigram_has_media_company       +1.8225
+
+MONEY:
+  punct_period                   -4.4421
+  bigram_has_credit_card         +3.2787
+  ner_money                      +2.4518
+  bigram_has_credit_cards        +2.3567
+  prefix_re_count                +2.2565
+
+PARENTING:
+  punct_period                   -3.4427
+  fw_i                           +2.5460
+  ner_density                    -2.4360
+  sentence_count                 +1.8431
+  stddev_sent_length             +1.7025
+
+PARENTS:
+  fw_i                           +3.8777
+  pos_prop_pron                  +2.5511
+  titlecase_ratio                -2.3480
+  prefix_re_count                -1.8094
+  ner_loc                        -1.6412
+
+POLITICS:
+  bigram_has_donald_trump        +2.4114
+  bigram_has_bernie_sanders      +2.3480
+  prefix_de_count                +2.1803
+  fw_the                         +2.1306
+  stddev_sent_length             -2.0848
+
+QUEER VOICES:
+  bigram_has_gay_men             +2.7418
+  punct_quotes                   +2.5293
+  bigram_has_lgbt_people         +2.3172
+  bigram_has_harvey_milk         +2.1160
+  fw_i                           +1.9010
+
+RELIGION:
+  ner_norp                       +2.0735
+  type_token_ratio               -1.8022
+  function_word_ratio            +1.6320
+  ner_money                      -1.6191
+  bigram_has_muslim_americans    +1.5736
+
+SCIENCE:
+  pos_prop_pron                  -2.8284
+  fw_it                          +2.5024
+  fw_i                           -2.1321
+  ner_loc                        +2.0360
+  fw_the                         +1.9456
+
+SPORTS:
+  fw_the                         +2.6764
+  fw_was                         +2.2433
+  fw_of                          -2.2144
+  ner_event                      +1.9390
+  bigram_has_super_bowl          +1.8652
+
+STYLE:
+  punct_period                   +2.2963
+  mean_sent_length               -1.9841
+  bigram_has_time_year           +1.9078
+  stddev_sent_length             -1.8227
+  median_sent_length             -1.8109
+
+STYLE & BEAUTY:
+  punct_period                   -3.7372
+  punct_colon                    +2.9672
+  bigram_has_huffpost_style      +2.9124
+  pos_prop_pron                  +2.2017
+  bigram_has_look_back           +2.1377
+
+TASTE:
+  titlecase_ratio                -2.5849
+  fw_it                          +2.2040
+  suffix_tion_count              -1.8688
+  suffix_ed_count                -1.8652
+  punct_period                   +1.6779
+
+TECH:
+  bigram_has_looking_see         +4.0965
+  bigram_has_every_week          +2.0888
+  bigram_has_chief_executive     +2.0655
+  bigram_has_social_media        +1.8092
+  fw_i                           -1.7845
+
+THE WORLDPOST:
+  stddev_sent_length             -3.3401
+  ner_density                    +2.6365
+  punct_comma                    -2.5718
+  bigram_has_human_rights        +2.3672
+  fw_the                         +2.3615
+
+TRAVEL:
+  ner_loc                        +2.0646
+  bigram_has_great_deal          +2.0544
+  stddev_sent_length             +1.7605
+  punct_comma                    +1.6490
+  bigram_has_summer_vacation     +1.5630
+
+U.S. NEWS:
+  suffix_ed_count                +3.4846
+  pos_prop_verb                  +2.9561
+  punct_period                   +2.6250
+  fw_the                         +2.5932
+  type_token_ratio               +2.5346
+
+WEDDINGS:
+  punct_period                   -5.2737
+  bigram_has_huffpost_weddings   +3.8829
+  suffix_ing_count               +3.6427
+  bigram_has_click_slideshow     +3.0795
+  titlecase_ratio                +2.5707
+
+WEIRD NEWS:
+  stddev_sent_length             -4.1510
+  mean_sent_length               -2.5208
+  median_sent_length             -2.2805
+  pos_prop_det                   +1.8809
+  doc_length_tokens              -1.8200
+
+WELLNESS:
+  punct_period                   -3.7756
+  ner_density                    -3.4721
+  pos_prop_det                   -2.4577
+  stddev_sent_length             +2.1475
+  punct_quotes                   -1.9565
+
+WOMEN:
+  bigram_has_planned_parenthood  +3.5077
+  fw_i                           +2.5898
+  bigram_has_sexual_assault      +2.4066
+  bigram_has_sexual_harassment   +2.2326
+  type_token_ratio               -1.7586
+
+WORLD NEWS:
+  stddev_sent_length             -3.4934
+  suffix_ed_count                +3.4496
+  fw_the                         +3.0887
+  bigram_has_prime_minister      +2.8756
+  pos_prop_pron                  -2.7091
+
+WORLDPOST:
+  doc_length_tokens              +6.2691
+  sentence_count                 +3.6857
+  type_token_ratio               -3.5186
+  stddev_sent_length             +3.2716
+  pos_prop_pron                  -3.0160

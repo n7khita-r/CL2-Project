@@ -1,0 +1,297 @@
+================================================================================
+TOP FEATURES PER category (by log probability)
+================================================================================
+
+ARTS:
+  pos_count_noun                 -1.9610
+  pos_count_verb                 -2.5804
+  pos_count_prep                 -2.7627
+  pos_count_det                  -2.8717
+  pos_count_adj                  -2.9678
+
+ARTS & CULTURE:
+  pos_count_noun                 -2.1918
+  pos_count_verb                 -2.7372
+  pos_count_det                  -3.2305
+  pos_count_prep                 -3.2450
+  pos_count_adj                  -3.2802
+
+BLACK VOICES:
+  pos_count_noun                 -2.0968
+  pos_count_verb                 -2.5871
+  pos_count_prep                 -3.0225
+  pos_count_det                  -3.1066
+  pos_count_adj                  -3.2772
+
+BUSINESS:
+  pos_count_noun                 -2.0489
+  pos_count_verb                 -2.5348
+  pos_count_prep                 -2.9078
+  pos_count_det                  -3.0065
+  pos_count_adj                  -3.1177
+
+COLLEGE:
+  pos_count_noun                 -2.0753
+  pos_count_verb                 -2.4612
+  pos_count_prep                 -2.8354
+  pos_count_det                  -3.0446
+  pos_count_adj                  -3.1668
+
+COMEDY:
+  pos_count_noun                 -2.2729
+  pos_count_verb                 -2.6621
+  pos_count_det                  -3.1639
+  pos_count_prep                 -3.2109
+  pos_count_adj                  -3.3268
+
+CRIME:
+  pos_count_noun                 -2.1095
+  pos_count_verb                 -2.5497
+  pos_count_prep                 -3.0366
+  pos_count_det                  -3.1022
+  pos_count_adj                  -3.4045
+
+CULTURE & ARTS:
+  pos_count_noun                 -1.9668
+  pos_count_verb                 -2.6459
+  pos_count_prep                 -2.8327
+  pos_count_det                  -2.9859
+  pos_count_adj                  -3.0754
+
+DIVORCE:
+  pos_count_noun                 -2.1609
+  pos_count_verb                 -2.4127
+  pos_count_prep                 -2.8409
+  pos_count_det                  -3.1038
+  pos_count_pron                 -3.1524
+
+EDUCATION:
+  pos_count_noun                 -2.0031
+  pos_count_verb                 -2.4734
+  pos_count_prep                 -2.8139
+  pos_count_det                  -2.9763
+  pos_count_adj                  -3.1109
+
+ENTERTAINMENT:
+  pos_count_noun                 -2.1747
+  pos_count_verb                 -2.7307
+  pos_count_det                  -3.0596
+  pos_count_prep                 -3.1710
+  pos_count_adj                  -3.3375
+
+ENVIRONMENT:
+  pos_count_noun                 -1.9977
+  pos_count_verb                 -2.6150
+  pos_count_prep                 -2.8580
+  pos_count_det                  -3.0040
+  pos_count_adj                  -3.0951
+
+FIFTY:
+  pos_count_noun                 -2.0739
+  pos_count_verb                 -2.2653
+  pos_count_prep                 -2.7725
+  pos_count_det                  -3.0132
+  pos_count_pron                 -3.0177
+
+FOOD & DRINK:
+  pos_count_noun                 -2.1950
+  pos_count_verb                 -2.6058
+  pos_count_prep                 -2.9975
+  pos_count_det                  -3.0653
+  pos_count_adj                  -3.1521
+
+GOOD NEWS:
+  pos_count_noun                 -2.2475
+  pos_count_verb                 -2.5791
+  pos_count_prep                 -3.1427
+  pos_count_det                  -3.1958
+  pos_count_pron                 -3.3318
+
+GREEN:
+  pos_count_noun                 -2.0368
+  pos_count_verb                 -2.5486
+  pos_count_prep                 -2.9211
+  pos_count_det                  -2.9627
+  pos_count_adj                  -3.0465
+
+HEALTHY LIVING:
+  pos_count_noun                 -2.1810
+  pos_count_verb                 -2.3853
+  pos_count_prep                 -2.9201
+  pos_count_det                  -3.1154
+  pos_count_adj                  -3.1849
+
+HOME & LIVING:
+  pos_count_noun                 -2.1101
+  pos_count_verb                 -2.5928
+  pos_count_prep                 -3.0102
+  pos_count_det                  -3.0764
+  pos_count_adj                  -3.2119
+
+IMPACT:
+  pos_count_noun                 -2.0457
+  pos_count_verb                 -2.4591
+  pos_count_prep                 -2.8374
+  pos_count_det                  -3.0186
+  pos_count_adj                  -3.1467
+
+LATINO VOICES:
+  pos_count_noun                 -2.1141
+  pos_count_verb                 -2.6244
+  pos_count_prep                 -3.0130
+  pos_count_det                  -3.1160
+  pos_count_adj                  -3.2503
+
+MEDIA:
+  pos_count_noun                 -2.0996
+  pos_count_verb                 -2.6163
+  pos_count_det                  -3.0858
+  pos_count_prep                 -3.0945
+  pos_count_adj                  -3.2678
+
+MONEY:
+  pos_count_noun                 -2.0880
+  pos_count_verb                 -2.4410
+  pos_count_prep                 -2.8674
+  pos_count_det                  -3.0293
+  pos_count_adj                  -3.1416
+
+PARENTING:
+  pos_count_noun                 -2.1007
+  pos_count_verb                 -2.3703
+  pos_count_prep                 -2.8612
+  pos_count_det                  -3.0431
+  pos_count_pron                 -3.1373
+
+PARENTS:
+  pos_count_noun                 -2.1985
+  pos_count_verb                 -2.3550
+  pos_count_prep                 -3.0190
+  pos_count_pron                 -3.0322
+  pos_count_det                  -3.1150
+
+POLITICS:
+  pos_count_noun                 -2.1098
+  pos_count_verb                 -2.6358
+  pos_count_det                  -3.1005
+  pos_count_prep                 -3.1268
+  pos_count_adj                  -3.2310
+
+QUEER VOICES:
+  pos_count_noun                 -2.1144
+  pos_count_verb                 -2.5158
+  pos_count_prep                 -2.9304
+  pos_count_det                  -3.0625
+  pos_count_adj                  -3.2604
+
+RELIGION:
+  pos_count_noun                 -2.0943
+  pos_count_verb                 -2.5083
+  pos_count_prep                 -2.8344
+  pos_count_det                  -2.9821
+  pos_count_adj                  -3.0926
+
+SCIENCE:
+  pos_count_noun                 -2.0859
+  pos_count_verb                 -2.6050
+  pos_count_prep                 -2.9261
+  pos_count_det                  -2.9409
+  pos_count_adj                  -3.1237
+
+SPORTS:
+  pos_count_noun                 -2.1394
+  pos_count_verb                 -2.6829
+  pos_count_det                  -3.0478
+  pos_count_prep                 -3.1236
+  pos_count_adj                  -3.3060
+
+STYLE:
+  pos_count_noun                 -2.2619
+  pos_count_verb                 -2.7715
+  pos_count_prep                 -3.2167
+  pos_count_det                  -3.2467
+  pos_count_adj                  -3.3614
+
+STYLE & BEAUTY:
+  pos_count_noun                 -2.0761
+  pos_count_verb                 -2.5695
+  pos_count_prep                 -3.0174
+  pos_count_adj                  -3.1581
+  pos_count_det                  -3.2038
+
+TASTE:
+  pos_count_noun                 -2.2175
+  pos_count_verb                 -2.6522
+  pos_count_prep                 -3.1176
+  pos_count_det                  -3.1279
+  pos_count_adj                  -3.2148
+
+TECH:
+  pos_count_noun                 -2.1173
+  pos_count_verb                 -2.6187
+  pos_count_prep                 -3.0542
+  pos_count_det                  -3.0921
+  pos_count_adj                  -3.2561
+
+THE WORLDPOST:
+  pos_count_noun                 -2.1104
+  pos_count_verb                 -2.6842
+  pos_count_prep                 -3.0769
+  pos_count_det                  -3.1510
+  pos_count_adj                  -3.2494
+
+TRAVEL:
+  pos_count_noun                 -2.0317
+  pos_count_verb                 -2.5467
+  pos_count_prep                 -2.8017
+  pos_count_det                  -2.8922
+  pos_count_adj                  -3.0765
+
+U.S. NEWS:
+  pos_count_noun                 -2.0033
+  pos_count_verb                 -2.5737
+  pos_count_prep                 -3.0005
+  pos_count_det                  -3.0990
+  pos_count_adj                  -3.2661
+
+WEDDINGS:
+  pos_count_noun                 -2.1052
+  pos_count_verb                 -2.4631
+  pos_count_prep                 -2.8461
+  pos_count_det                  -3.0931
+  pos_count_pron                 -3.2308
+
+WEIRD NEWS:
+  pos_count_noun                 -2.3322
+  pos_count_verb                 -2.7002
+  pos_count_det                  -3.1610
+  length_bin_0                   -3.4160
+  sent_bin_0                     -3.4174
+
+WELLNESS:
+  pos_count_noun                 -2.1109
+  pos_count_verb                 -2.3537
+  pos_count_prep                 -2.7799
+  pos_count_det                  -3.0490
+  pos_count_adj                  -3.1468
+
+WOMEN:
+  pos_count_noun                 -2.1388
+  pos_count_verb                 -2.4173
+  pos_count_prep                 -2.9615
+  pos_count_det                  -3.1194
+  pos_count_pron                 -3.2337
+
+WORLD NEWS:
+  pos_count_noun                 -2.0577
+  pos_count_verb                 -2.6895
+  pos_count_prep                 -3.0090
+  pos_count_det                  -3.1206
+  pos_count_adj                  -3.2018
+
+WORLDPOST:
+  pos_count_noun                 -1.9619
+  pos_count_verb                 -2.5180
+  pos_count_prep                 -2.6679
+  pos_count_det                  -2.8059
+  pos_count_adj                  -2.8572

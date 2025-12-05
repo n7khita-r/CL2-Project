@@ -1,0 +1,115 @@
+================================================================================
+TOP FEATURES PER GENRE (by absolute weight)
+================================================================================
+
+ACTION:
+  allcaps_ratio                  +2.0104
+  bigram_has_alien_race          +1.8255
+  bigram_has_task_force          +1.5228
+  suffix_ly_count                -1.5154
+  bigram_has_new_drug            +1.4862
+
+ADVENTURE:
+  bigram_has_lost_treasure       +1.8423
+  fw_on                          +1.6807
+  pos_prop_pron                  -1.6100
+  suffix_ly_count                -1.5654
+  bigram_has_searching_lost      +1.5247
+
+ANIMATION:
+  suffix_er_count                -3.8299
+  prefix_in_count                -2.2869
+  pos_prop_pron                  -2.2062
+  bigram_has_fantasy_patrol      +2.0031
+  bigram_has_save_kingdom        +1.9090
+
+BIOGRAPHY:
+  fw_of                          +5.1482
+  fw_the                         +3.0528
+  bigram_has_add_plot            +2.6028
+  bigram_has_life_story          +2.3625
+  pos_prop_verb                  -2.3362
+
+CRIME:
+  suffix_er_count                +2.5770
+  fw_a                           +2.0142
+  bigram_has_order_solve         +1.9440
+  fw_is                          +1.9259
+  bigram_has_sex_trafficking     +1.8830
+
+FAMILY:
+  suffix_ly_count                +3.9614
+  prefix_de_count                -2.9691
+  suffix_ed_count                -2.4574
+  prefix_in_count                -1.8130
+  fw_of                          -1.6973
+
+FANTASY:
+  bigram_has_magical_world       +1.7513
+  suffix_er_count                -1.6961
+  bigram_has_come_true           +1.6763
+  bigram_has_evil_queen          +1.6706
+  bigram_has_santa_claus         +1.6601
+
+FILM-NOIR:
+  suffix_er_count                +4.2578
+  bigram_has_add_plot            -3.1564
+  prefix_in_count                +2.3298
+  bigram_has_prison_break        +2.2373
+  fw_a                           +2.0093
+
+HISTORY:
+  ner_density                    +3.9661
+  fw_the                         +3.8061
+  fw_of                          +3.3089
+  fw_a                           -3.2777
+  pos_prop_prep                  +2.7696
+
+HORROR:
+  ner_density                    -3.0707
+  suffix_er_count                -1.9487
+  bigram_has_serial_killer       +1.7832
+  bigram_has_evil_spirits        +1.7511
+  bigram_has_five_friends        +1.7404
+
+MYSTERY:
+  prefix_in_count                +3.0759
+  ner_density                    -2.3108
+  prefix_de_count                +2.2492
+  suffix_ive_count               +2.1811
+  suffix_ious_count              +2.1457
+
+ROMANCE:
+  pos_prop_pron                  +3.0147
+  fw_the                         -2.9068
+  bigram_has_romantic_comedy     +2.5150
+  bigram_has_arranged_marriage   +2.4913
+  bigram_has_love_story          +2.1437
+
+SCIFI:
+  suffix_ity_count               +2.4950
+  pos_prop_pron                  -2.3324
+  suffix_ty_count                +2.0957
+  pos_prop_det                   +2.0061
+  bigram_has_years_future        +1.9804
+
+SPORTS:
+  suffix_ing_count               +3.7699
+  bigram_has_soccer_team         +3.1567
+  suffix_er_count                +3.0556
+  bigram_has_race_horse          +2.7478
+  bigram_has_basketball_team     +2.6866
+
+THRILLER:
+  bigram_has_psychological_thriller +2.5825
+  prefix_de_count                +2.1882
+  suffix_ed_count                +1.9022
+  fw_a                           +1.8254
+  bigram_has_serial_killer       +1.8031
+
+WAR:
+  ner_density                    +4.8791
+  pos_prop_prep                  +3.8539
+  ner_event                      +2.6469
+  fw_the                         +2.5169
+  ner_norp                       +2.0557

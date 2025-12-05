@@ -1,0 +1,346 @@
+================================================================================
+TOP FEATURES PER GENRE (by absolute weight)
+================================================================================
+
+ACTION:
+  ner_date                       -1.9809
+  punct_quotes                   -1.9169
+  punct_comma                    -1.8588
+  bigram_has_lead_role           +1.8557
+  bigram_has_shakti_kapoor       +1.7852
+
+ACTION/ADVENTURE:
+  pos_prop_verb                  +2.0427
+  ner_date                       -2.0267
+  ner_time                       -1.7479
+  titlecase_ratio                +1.7336
+  suffix_ed_count                +1.6293
+
+ADVENTURE:
+  titlecase_ratio                +2.3151
+  fw_the                         +1.9878
+  ner_date                       -1.7255
+  ner_loc                        +1.6500
+  bigram_has_characters_first    +1.4855
+
+ANIMATION:
+  bigram_has_one_point           +1.4013
+  bigram_has_get_back            +1.3355
+  fw_the                         +1.0513
+  bigram_has_flying_ship         +0.9414
+  bigram_has_begins_reminisce    +0.9309
+
+B-MOVIE:
+  titlecase_ratio                -1.5738
+  bigram_has_modern_day          +1.5218
+  bigram_has_years_ago           +1.3854
+  bigram_has_police_officers     +1.2729
+  bigram_has_years_later         +1.2288
+
+BIOGRAPHICAL FILM:
+  ner_cardinal                   -1.6182
+  titlecase_ratio                +1.5302
+  bigram_has_personal_life       +1.3440
+  ner_date                       +1.3073
+  pos_prop_verb                  -1.2954
+
+BIOGRAPHY:
+  bigram_has_death_father        +1.8459
+  pos_prop_verb                  -1.6412
+  titlecase_ratio                +1.6086
+  pos_prop_prep                  +1.4530
+  bigram_has_film_shows          +1.3776
+
+BLACK COMEDY:
+  titlecase_ratio                -1.7545
+  bigram_has_last_days           +1.7229
+  bigram_has_spend_last          +1.3910
+  bigram_has_enough_money        +1.2231
+  bigram_has_day_school          +1.2148
+
+BLACK-AND-WHITE:
+  bigram_has_nazi_germany        +1.9475
+  bigram_has_tries_make          +1.5657
+  bigram_has_wealthy_man         +1.4546
+  bigram_has_older_sister        +1.3294
+  bigram_has_world_war           +1.3056
+
+BOLLYWOOD:
+  bigram_has_police_inspector    +1.9934
+  bigram_has_get_married         +1.7346
+  type_token_ratio               -1.5530
+  bigram_has_family_member       +1.4688
+  bigram_has_wife_daughter       +1.4432
+
+CHILDREN'S/FAMILY:
+  bigram_has_santa_claus         +2.6890
+  type_token_ratio               -1.5981
+  bigram_has_north_pole          +1.5426
+  ner_norp                       -1.3804
+  bigram_has_first_film          +1.2250
+
+CHRISTIAN FILM:
+  bigram_has_first_day           +1.3005
+  bigram_has_tells_story         +1.0844
+  bigram_has_get_back            +1.0724
+  ner_norp                       +1.0662
+  sentence_count                 +0.9568
+
+COMEDY:
+  ner_loc                        -1.5974
+  punct_comma                    -1.5068
+  bigram_has_getting_drunk       +1.4787
+  pos_prop_adv                   +1.3721
+  ner_ordinal                    +1.3599
+
+COMEDY FILM:
+  bigram_has_job_working         +1.9570
+  fw_the                         -1.8087
+  bigram_has_come_true           +1.4165
+  bigram_has_movie_tells         +1.3911
+  bigram_has_wife_three          +1.3567
+
+COMEDY-DRAMA:
+  bigram_has_baseball_player     +1.6788
+  bigram_has_enough_money        +1.5009
+  ner_date                       +1.2060
+  bigram_has_film_takes          +1.0086
+  bigram_has_young_son           +0.9972
+
+COSTUME DRAMA:
+  bigram_has_previous_marriage   +1.6581
+  bigram_has_native_americans    +1.6413
+  titlecase_ratio                +1.5546
+  bigram_has_young_woman         +1.3408
+  bigram_has_three_months        +1.2052
+
+CRIME FICTION:
+  ner_money                      +3.1371
+  suffix_er_count                +2.9918
+  pos_prop_verb                  +2.4560
+  bigram_has_gambling_den        +2.0371
+  suffix_ed_count                +2.0352
+
+CULT:
+  bigram_has_mysterious_figure   +1.9532
+  bigram_has_man_lives           +1.4567
+  ner_density                    -1.3077
+  bigram_has_comes_home          +1.2521
+  doc_length_tokens              +1.2113
+
+CULTURE & SOCIETY:
+  ner_person                     -1.9040
+  sentence_count                 -1.5755
+  pos_prop_noun                  +1.5612
+  bigram_has_also_includes       +1.5540
+  bigram_has_film_depicts        +1.4290
+
+DOCUMENTARY:
+  pos_prop_noun                  +3.2209
+  pos_prop_pron                  -2.9795
+  ner_person                     -2.6021
+  fw_a                           -2.5827
+  pos_prop_verb                  -2.4974
+
+DRAMA:
+  pos_prop_pron                  +2.7522
+  punct_period                   +2.0114
+  function_word_ratio            +1.9683
+  pos_prop_det                   -1.8212
+  fw_the                         -1.8072
+
+ENSEMBLE FILM:
+  bigram_has_film_depicts        +1.7980
+  bigram_has_ocean_liner         +1.5355
+  bigram_has_wants_get           +1.3623
+  bigram_has_revolves_around     +1.3377
+  bigram_has_comes_home          +1.2482
+
+FAMILY DRAMA:
+  bigram_has_store_owner         +1.3661
+  bigram_has_happily_married     +1.3421
+  bigram_has_wife_two            +1.2386
+  suffix_er_count                +1.1990
+  bigram_has_car_accident        +1.0916
+
+FAMILY FILM:
+  type_token_ratio               -3.1471
+  bigram_has_santa_claus         +2.5124
+  pos_prop_prep                  -2.0230
+  bigram_has_mouse_named         +1.9841
+  bigram_has_family_drama        +1.6723
+
+FANTASY:
+  bigram_has_beautiful_young     +1.7360
+  bigram_has_everyone_else       +1.2331
+  ner_density                    -1.2321
+  pos_prop_det                   +1.0867
+  type_token_ratio               -0.9356
+
+HISTORY:
+  titlecase_ratio                +2.0578
+  ner_density                    +1.6596
+  pos_prop_pron                  -1.5782
+  ner_norp                       +1.5429
+  fw_the                         +1.4831
+
+HORROR:
+  titlecase_ratio                -4.1337
+  pos_prop_det                   +2.4777
+  ner_density                    -2.2112
+  pos_prop_verb                  +1.7628
+  suffix_ed_count                +1.7334
+
+INDIE:
+  bigram_has_new_girlfriend      +1.5014
+  bigram_has_best_friends        +1.3746
+  bigram_has_personal_life       +1.2763
+  bigram_has_man_lives           +1.1866
+  bigram_has_story_young         +1.1836
+
+JAPANESE MOVIES:
+  bigram_has_ref_mihara          +4.1604
+  punct_period                   +3.4177
+  titlecase_ratio                -1.9592
+  bigram_has_cite_web            +1.9180
+  bigram_has_older_sister        +1.5700
+
+LGBT:
+  fw_the                         -2.5466
+  pos_prop_det                   -1.9092
+  titlecase_ratio                -1.9029
+  pos_prop_adj                   +1.8916
+  bigram_has_make_love           +1.6495
+
+MELODRAMA:
+  bigram_has_close_relationship  +1.6186
+  bigram_has_ocean_liner         +1.4316
+  prop_long_sent                 -1.2095
+  bigram_has_run_away            +1.1915
+  bigram_has_world_war           +1.1872
+
+MONSTER MOVIE:
+  pos_prop_det                   +1.5841
+  bigram_has_man_named           +1.5768
+  fw_the                         +1.4803
+  ner_date                       -1.4590
+  bigram_has_north_pole          +1.4541
+
+MUSIC:
+  titlecase_ratio                +1.6029
+  bigram_has_one_final           +1.5927
+  bigram_has_mysterious_woman    +1.4756
+  bigram_has_personal_life       +1.4750
+  pos_prop_noun                  +1.3260
+
+MUSICAL:
+  titlecase_ratio                +1.9332
+  bigram_has_generation_gap      +1.6304
+  function_word_ratio            +1.6099
+  bigram_has_new_broadway        +1.5673
+  bigram_has_giving_birth        +1.5578
+
+MYSTERY:
+  bigram_has_found_dead          +2.2852
+  bigram_has_get_car             +1.6026
+  bigram_has_rich_man            +1.3590
+  bigram_has_wealthy_businessman +1.1571
+  bigram_has_police_inspector    +1.0943
+
+PARODY:
+  type_token_ratio               +2.2277
+  function_word_ratio            -2.1990
+  pos_prop_pron                  -1.9818
+  ner_work_of_art                +1.8450
+  doc_length_tokens              +1.7969
+
+PERIOD PIECE:
+  ner_norp                       +1.8564
+  ner_date                       +1.7365
+  bigram_has_world_war           +1.4161
+  bigram_has_wealthy_family      +1.2690
+  bigram_has_younger_brother     +1.2493
+
+ROMANCE FILM:
+  fw_the                         -3.7374
+  pos_prop_pron                  +3.3683
+  function_word_ratio            +2.5825
+  pos_prop_det                   -2.4863
+  punct_comma                    -1.8573
+
+ROMANTIC COMEDY:
+  fw_the                         -5.6826
+  pos_prop_pron                  +4.4759
+  pos_prop_noun                  -4.0888
+  pos_prop_det                   -4.0833
+  suffix_ed_count                -3.4431
+
+ROMANTIC DRAMA:
+  pos_prop_pron                  +3.4055
+  fw_the                         -3.3052
+  pos_prop_det                   -2.4192
+  function_word_ratio            +2.3633
+  pos_prop_noun                  -2.0895
+
+SCIENCE FICTION:
+  pos_prop_pron                  -4.2505
+  ner_loc                        +3.6746
+  pos_prop_det                   +3.6228
+  bigram_has_space_station       +2.6341
+  fw_the                         +2.5771
+
+SHORT FILM:
+  ner_density                    -6.6313
+  punct_quotes                   +6.0416
+  pos_prop_det                   +5.4990
+  suffix_ing_count               +5.3503
+  function_word_ratio            -5.2743
+
+SILENT FILM:
+  bigram_has_cite_news           +2.6886
+  function_word_ratio            +1.9586
+  pos_prop_verb                  +1.7867
+  doc_length_tokens              -1.6006
+  pos_prop_adj                   -1.5547
+
+SPORTS:
+  bigram_has_championship_game   +2.6782
+  bigram_has_baseball_player     +2.1441
+  ner_ordinal                    +2.1204
+  bigram_has_little_league       +2.1171
+  function_word_ratio            -2.0388
+
+THRILLER:
+  pos_prop_verb                  +3.2063
+  suffix_ed_count                +3.1123
+  titlecase_ratio                -3.1075
+  prefix_de_count                +2.2539
+  bigram_has_fbi_agent           +1.9605
+
+WAR FILM:
+  ner_norp                       +2.9282
+  titlecase_ratio                +2.3244
+  bigram_has_world_war           +2.0003
+  bigram_has_film_depicts        +1.6215
+  ner_person                     -1.5998
+
+WESTERN:
+  bigram_has_arrives_town        +2.4491
+  bigram_has_store_owner         +1.7912
+  bigram_has_old_friend          +1.7735
+  titlecase_ratio                +1.6772
+  bigram_has_money_buy           +1.4397
+
+WORLD CINEMA:
+  type_token_ratio               -2.3689
+  pos_prop_det                   -2.2620
+  bigram_has_rich_businessman    +2.0452
+  bigram_has_love_life           +1.6931
+  bigram_has_fall_love           +1.5025
+
+ZOMBIE FILM:
+  bigram_has_band_together       +1.5292
+  titlecase_ratio                -1.3327
+  sentence_count                 +1.3275
+  ner_cardinal                   +1.3036
+  bigram_has_years_later         +1.2566

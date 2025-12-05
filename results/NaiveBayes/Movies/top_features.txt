@@ -1,0 +1,115 @@
+================================================================================
+TOP FEATURES PER GENRE (by log probability)
+================================================================================
+
+ACTION:
+  pos_count_noun                 -1.8919
+  pos_count_verb                 -2.5447
+  pos_count_det                  -2.7616
+  pos_count_prep                 -2.8806
+  pos_count_adj                  -3.0512
+
+ADVENTURE:
+  pos_count_noun                 -1.8944
+  pos_count_verb                 -2.5439
+  pos_count_det                  -2.7351
+  pos_count_prep                 -2.8579
+  pos_count_adj                  -3.0411
+
+ANIMATION:
+  pos_count_noun                 -1.9008
+  pos_count_verb                 -2.5497
+  pos_count_det                  -2.7264
+  pos_count_prep                 -2.9019
+  pos_count_adj                  -2.9968
+
+BIOGRAPHY:
+  pos_count_noun                 -1.8420
+  pos_count_prep                 -2.7667
+  pos_count_verb                 -2.7787
+  pos_count_det                  -2.8176
+  pos_count_adj                  -2.9325
+
+CRIME:
+  pos_count_noun                 -1.9148
+  pos_count_verb                 -2.5190
+  pos_count_det                  -2.7887
+  pos_count_prep                 -2.9032
+  pos_count_adj                  -3.0548
+
+FAMILY:
+  pos_count_noun                 -1.9019
+  pos_count_verb                 -2.5113
+  pos_count_det                  -2.8062
+  pos_count_prep                 -2.9078
+  pos_count_adj                  -3.0415
+
+FANTASY:
+  pos_count_noun                 -1.9294
+  pos_count_verb                 -2.5255
+  pos_count_det                  -2.7187
+  pos_count_prep                 -2.8520
+  pos_count_adj                  -3.0032
+
+FILM-NOIR:
+  pos_count_noun                 -1.9664
+  pos_count_verb                 -2.5940
+  pos_count_det                  -2.8447
+  pos_count_prep                 -2.9668
+  pos_count_adj                  -3.1831
+
+HISTORY:
+  pos_count_noun                 -1.8806
+  pos_count_verb                 -2.7117
+  pos_count_det                  -2.7206
+  pos_count_prep                 -2.7234
+  pos_count_adj                  -2.9320
+
+HORROR:
+  pos_count_noun                 -1.9410
+  pos_count_verb                 -2.5098
+  pos_count_det                  -2.7226
+  pos_count_prep                 -2.8617
+  pos_count_adj                  -3.0179
+
+MYSTERY:
+  pos_count_noun                 -1.9334
+  pos_count_verb                 -2.5175
+  pos_count_det                  -2.7215
+  pos_count_prep                 -2.8798
+  pos_count_adj                  -3.0023
+
+ROMANCE:
+  pos_count_noun                 -1.9254
+  pos_count_verb                 -2.5183
+  pos_count_det                  -2.8614
+  pos_count_prep                 -2.8886
+  pos_count_adj                  -3.0134
+
+SCIFI:
+  pos_count_noun                 -1.9240
+  pos_count_verb                 -2.5430
+  pos_count_det                  -2.6911
+  pos_count_prep                 -2.8575
+  pos_count_adj                  -2.9698
+
+SPORTS:
+  pos_count_noun                 -1.8646
+  pos_count_verb                 -2.5945
+  pos_count_det                  -2.7905
+  pos_count_prep                 -2.9324
+  pos_count_adj                  -3.0323
+
+THRILLER:
+  pos_count_noun                 -1.9450
+  pos_count_verb                 -2.4880
+  pos_count_det                  -2.7438
+  pos_count_prep                 -2.8758
+  pos_count_adj                  -3.0279
+
+WAR:
+  pos_count_noun                 -1.9021
+  pos_count_verb                 -2.6771
+  pos_count_prep                 -2.7230
+  pos_count_det                  -2.7472
+  pos_count_adj                  -2.9034

@@ -621,7 +621,7 @@ def main():
     print("="*80)
     
     print("\n1. Loading balanced data from ../data...")
-    df = load_data('../data', samples_per_genre=3000)
+    df = load_data('../data', samples_per_genre=6000)
     
     print("\n2. Splitting data (70% train, 30% test) with stratification...")
     X = df['description'].tolist()
