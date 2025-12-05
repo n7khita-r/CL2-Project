@@ -1,0 +1,15 @@
+================================================================================
+MODEL SUMMARY
+================================================================================
+
+Model Type: Maximum Entropy (Logistic Regression)
+Regularization (C): 1.0
+Max Iterations: 500
+Total Features: 3027
+Number of Classes: 16
+Training Samples: 32190
+Testing Samples: 13796
+
+Final Accuracy: 0.2325
+Final Macro F1: 0.2254
+================================================================================
